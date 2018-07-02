@@ -1,0 +1,23 @@
+matrix:
+    include:
+        - language: node_js
+            node_js:
+                - "7"
+                - "6"
+                - "5"
+            script:
+                - npm run lin
+                - npm run test:cov
+            after_success:
+                - npm run coverage
+            cache:
+                npm: true
+                directories:
+                    - node_modules
+
+notifications:
+    email:
+        recipients:
+            - 265815F@curtin.edu.au
+        on_success: never
+        on_failure: always
