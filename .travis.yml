@@ -1,23 +1,35 @@
-matrix:
-    include:
-        - language: node_js
-            node_js:
-                - "7"
-                - "6"
-                - "5"
-            script:
-                - npm run lin
-                - npm run test:cov
-            after_success:
-                - npm run coverage
-            cache:
-                npm: true
-                directories:
-                    - node_modules
+sudo: false
+
+language: node_js
+
+node_js:
+  - 10
+  - 9
+  - 8
+
+os:
+  - linux
+
+cache:
+  directories:
+    - node_modules
 
 notifications:
-    email:
-        recipients:
-            - 265815F@curtin.edu.au
-        on_success: never
-        on_failure: always
+  email: false
+
+stages:
+  - compile
+  - name: release
+    if: branch = master
+
+jobs:
+  include:
+    - stage: compile
+      script: npm run build
+
+    - stage: release
+      node_js: lts/*
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script: bash scripts/deploy.sh
