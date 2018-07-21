@@ -3,7 +3,7 @@
 </div>
 
 <br />
-<div align="center"><strong>Back end server for the camera maintenance GUI within the Desert Fireball Camera Network.</strong></div>
+<div align="center"><strong>Front end for the camera maintenance GUI within the Desert Fireball Camera Network.</strong></div>
 <div align="center">Frontend written in React + Redux-Saga.</div>
 <br />
 
@@ -31,7 +31,7 @@
 <br />
 
 <div align="center">
-  <sub>Created by <a href="https://github.com/CPedersen3245">Campbell Pedersen</a> and maintained with ❤️ by <a href="https://github.com/ScottDay">Scott Day</a>.</sub>
+  <sub>Created by <a href="https://github.com/CPedersen3245">Campbell Pedersen</a>, and maintained with ❤️ by <a href="https://github.com/ScottDay">Scott Day</a> and <a href="https://github.com/Thrashers">Ash Tulett</a>.</sub>
 </div>
 
 * * *
@@ -43,10 +43,6 @@ For those who do look at this repository, please note that this system
 is meant to be installed and run on our cameras placed out in the field.
 You can install it on your own machine, however the backend is not
 simulated to run without the camera as of yet.
-
-# Documentation
-
-See [docs/README.md](docs/README.md) for all project documentation.
 
 # License
 
