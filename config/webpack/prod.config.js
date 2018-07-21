@@ -8,7 +8,6 @@ const webpack = require('webpack');
 const WebpackBaseConfig = require('./common.config');
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const OfflinePlugin = require('offline-plugin');
 
 const path = require('path');
 
@@ -67,8 +66,7 @@ class WebpackDistConfig extends WebpackBaseConfig {
                         from: root('src/assets/images-demo'),
                         to: root('dist/assets/images-demo')
                     }
-                ]),
-                new OfflinePlugin()
+                ])
             ]
         };
 
