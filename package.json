@@ -1,6 +1,6 @@
 {
-    "name": "dfn-maintenance-gui",
-    "productName": "Desert Fireball Maintenance GUI",
+    "name": "DFN-Maintenance-GUI-Frontend",
+    "productName": "Desert Fireball Maintenance GUI Frontend",
     "description": "GUI for maintaining the camera network for the Fireballs in the Sky project.",
     "author": "Ryan Scott Day <265815F@curtin.edu.au>",
     "version": "2.0.0",
@@ -9,23 +9,18 @@
     "main": "src/client.js",
     "repository": {
         "type": "git",
-        "url": "https://github.com/ScottDay/Desert-Fireball-Maintainence-GUI"
+        "url": "https://github.com/ScottDay/DFN-Maintenance-GUI-Frontend"
+	},
+	"engines": {
+        "node": ">=7.2.0",
+        "npm": ">=4.0.2"
     },
     "scripts": {
-        "clean": "rimraf dist/*",
-        "build": "npm run clean && webpack --progress --bail --env prod -p",
-        "lint": "npm run lint-fix && npm run lint-sass && npm run link-eslint",
-        "lint-eslint": "eslint --ignore-path .gitignore",
-        "lint-fix": "eslint ./src --fix",
-        "lint-sass": "sass-lint -c .sass-lint.yml 'src/styles/**/*.scss' -v -q",
-        "lint:staged": "lint-staged",
-        "posttest": "npm run lint",
-        "reinstall": "rimraf node_modules && rm -f package-lock.json && npm install",
+        "build": "webpack --progress --bail --env prod -p",
+        "lint": "eslint ./src",
         "serve:dev": "webpack-dev-server --env dev",
-        "serve:prod": "webpack-dev-server --open --env prod -p --progress",
-        "start": "npm run serve:dev"
-    },
-    "pre-commit": "lint:staged",
+        "serve:prod": "webpack-dev-server --open --env prod -p --progress"
+	},
     "dependencies": {
         "ajv": "^5.5.2",
         "axios": "^0.17.1",
@@ -97,20 +92,13 @@
         "eslint-plugin-redux-saga": "^0.6.0",
         "file-loader": "^0.11.2",
         "glob": "^7.1.2",
-        "lint-staged": "^6.0.0",
         "node-sass": "^4.5.3",
         "null-loader": "^0.1.1",
         "postcss-loader": "^2.0.5",
-        "rimraf": "^2.6.1",
-        "sass-lint": "^1.11.1",
         "sass-loader": "^6.0.5",
         "style-loader": "^0.18.2",
         "url-loader": "^0.5.8",
         "webpack": "^3.1.0",
         "webpack-dev-server": "^2.4.5"
-    },
-    "engines": {
-        "node": ">=7.2.0",
-        "npm": ">=4.0.2"
     }
 }
