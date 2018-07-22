@@ -1,5 +1,5 @@
 {
-    "name": "DFN-Maintenance-GUI-Frontend",
+    "name": "dfn-maintenance-gui-frontend",
     "productName": "Desert Fireball Maintenance GUI Frontend",
     "description": "GUI for maintaining the camera network for the Fireballs in the Sky project.",
     "author": "Ryan Scott Day <265815F@curtin.edu.au>",
@@ -18,8 +18,7 @@
     "scripts": {
         "build": "webpack --progress --bail --env prod -p",
         "lint": "eslint ./src",
-        "serve:dev": "webpack-dev-server --env dev",
-        "serve:prod": "webpack-dev-server --open --env prod -p --progress"
+        "start": "webpack-dev-server --env dev"
 	},
     "dependencies": {
         "ajv": "^5.5.2",
