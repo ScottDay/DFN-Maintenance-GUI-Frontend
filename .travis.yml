@@ -1,23 +1,42 @@
-matrix:
-    include:
-        - language: node_js
-            node_js:
-                - "7"
-                - "6"
-                - "5"
-            script:
-                - npm run lin
-                - npm run test:cov
-            after_success:
-                - npm run coverage
-            cache:
-                npm: true
-                directories:
-                    - node_modules
+sudo: false
+
+language: node_js
+
+node_js:
+  - 10
+  - 9
+  - 8
+  - 7
+
+os:
+  - linux
+
+cache:
+  directories:
+    - node_modules
 
 notifications:
-    email:
-        recipients:
-            - 265815F@curtin.edu.au
-        on_success: never
-        on_failure: always
+  email: false
+
+stages:
+  - compile
+  - test
+  - name: deploy
+    if: branch = master AND type = push AND fork = false
+  - name: webhook
+    if: branch = master AND type = push AND fork = false AND tags = true
+
+jobs:
+  include:
+    - stage: compile
+      script: npm run build
+
+    - stage: deploy
+	  node_js: 10
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script: bash scripts/deploy.sh
+
+    - stage: webhook
+	  script: bash scripts/webhook.sh
