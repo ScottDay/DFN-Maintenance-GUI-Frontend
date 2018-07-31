@@ -31,7 +31,6 @@ jobs:
 
     - stage: deploy
       node_js: 10
-      deploy:
-        provider: script
-        skip_cleanup: true
-        script: bash scripts/deploy.sh
+      script:
+       - .travis/deploy.sh
+       - .travis/webhook.sh
