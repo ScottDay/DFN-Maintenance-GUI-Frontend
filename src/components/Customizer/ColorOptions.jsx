@@ -1,20 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
-import { changeColorOption } from '../../actions/settings';
 
-function mapStateToProps(state) {
-    return {
-        colorOption: state.settings.colorOption
-    };
-}
-
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ changeColorOption }, dispatch);
-}
-
-@connect(mapStateToProps, mapDispatchToProps)
 class ColorSchemeOptions extends React.Component {
     constructor(props) {
         super(props);

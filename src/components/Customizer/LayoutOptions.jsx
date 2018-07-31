@@ -1,10 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import Select from 'material-ui/Select';
 import { MenuItem } from 'material-ui/Menu';
 
-import { changeSidebarWidth } from '../../actions/settings';
 
 const sideWidthSelectStyle = {
     fontSize: '14px',
@@ -12,21 +9,7 @@ const sideWidthSelectStyle = {
     marginTop: '-15px'
 };
 
-function mapStateToProps(state) {
-    return {
-        layoutBoxed: state.settings.layoutBoxed,
-        navCollapsed: state.settings.navCollapsed,
-        navBehind: state.settings.navBehind,
-        fixedHeader: state.settings.fixedHeader,
-        sidebarWidth: state.settings.sidebarWidth
-    };
-}
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ changeSidebarWidth }, dispatch);
-}
-
-@connect(mapStateToProps, mapDispatchToProps)
 class LayoutOptions extends React.Component {
     constructor(props) {
         super(props);

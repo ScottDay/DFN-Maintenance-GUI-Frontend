@@ -1,6 +1,4 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 /*
 import Paper from 'material-ui/Paper';
 import {
@@ -26,20 +24,7 @@ import {
 import { PercentTypeProvider } from 'material-ui/components/percent-type-provider';
 */
 
-import { checkHDD } from '../../../../actions/api';
-import { checkHDDSelector } from '../../../../selectors/api';
 
-function mapStateToProps(state) {
-    return {
-        hdd: checkHDDSelector(state)
-    };
-}
-
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ checkHDD }, dispatch);
-}
-
-@connect(mapStateToProps, mapDispatchToProps)
 class HDDTable extends React.PureComponent {
     constructor(props) {
         super(props);

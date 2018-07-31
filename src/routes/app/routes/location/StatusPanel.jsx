@@ -1,21 +1,6 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 
-import { outputTimeSelector } from '../../../../selectors/api';
-import { outputTime } from '../../../../actions/api';
 
-function mapStateToProps(state) {
-    return {
-        time: outputTimeSelector(state)
-    };
-}
-
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ outputTime }, dispatch);
-}
-
-@connect(mapStateToProps, mapDispatchToProps)
 class StatusPanel extends React.Component {
     constructor(props) {
         super(props);

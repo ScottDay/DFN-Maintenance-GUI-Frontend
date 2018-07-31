@@ -1,6 +1,4 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Button from 'material-ui/Button';
 import Dialog from 'material-ui/Dialog';
@@ -11,11 +9,6 @@ import Typography from 'material-ui/Typography';
 import Slide from 'material-ui/transitions/Slide';
 import CloseIcon from '@material-ui/icons/Close';
 
-import { secondLatestLog } from '../../../../../../actions/api';
-import {
-    secondLatestLogFileSelector,
-    secondLatestLogTimestampSelector
-} from '../../../../../../selectors/api';
 
 const StyledAppBar = styled(AppBar)`
     position: relative;
@@ -29,18 +22,7 @@ function Transition(props) {
     return <Slide direction='up' {...props} />;
 }
 
-function mapStateToProps(state) {
-    return {
-        logfile: secondLatestLogFileSelector(state),
-        timestamp: secondLatestLogTimestampSelector(state)
-    };
-}
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ secondLatestLog }, dispatch);
-}
-
-@connect(mapStateToProps, mapDispatchToProps)
 class ViewSecondLatestLogsDialog extends React.Component {
     constructor(props) {
         super(props);
