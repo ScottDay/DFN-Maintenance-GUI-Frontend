@@ -9,8 +9,6 @@ import darkTheme from './themes/darkTheme';
 import grayTheme from './themes/grayTheme';
 
 import MainApp from '../routes/app/';
-import Page404 from '../routes/404/';
-import Page500 from '../routes/500/';
 import PageLogin from '../routes/login/';
 
 import '../styles/bootstrap.scss';
@@ -80,8 +78,6 @@ class App extends Component {
                     >
                         <Switch>
                             <Route path={`${match.url}app`} component={MainApp} />
-                            <Route exact path='/404' component={Page404} />
-                            <Route exact path='/500' component={Page500} />
                             <Route exact path='/login' component={PageLogin} />
                         </Switch>
                     </div>

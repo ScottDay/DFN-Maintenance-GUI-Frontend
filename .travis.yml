@@ -23,8 +23,6 @@ stages:
   - test
   - name: deploy
     if: branch = master AND type = push AND fork = false
-  - name: webhook
-    if: branch = master AND type = push AND fork = false AND tags = true
 
 jobs:
   include:
@@ -32,11 +30,7 @@ jobs:
       script: npm run build
 
     - stage: deploy
-	  node_js: 10
-      deploy:
-        provider: script
-        skip_cleanup: true
-        script: bash scripts/deploy.sh
-
-    - stage: webhook
-	  script: bash scripts/webhook.sh
+      node_js: 10
+      script:
+       - .travis/deploy.sh
+       - .travis/webhook.sh
