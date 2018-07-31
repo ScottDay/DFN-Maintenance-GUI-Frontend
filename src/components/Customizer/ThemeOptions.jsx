@@ -1,20 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
-import { changeTheme } from '../../actions/settings';
 
-function mapStateToProps(state) {
-    return {
-        theme: state.settings.theme
-    };
-}
-
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ changeTheme }, dispatch);
-}
-
-@connect(mapStateToProps, mapDispatchToProps)
 class ThemeOptions extends React.Component {
     constructor(props) {
         super(props);

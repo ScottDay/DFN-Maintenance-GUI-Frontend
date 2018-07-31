@@ -1,6 +1,4 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import Paper from 'material-ui/Paper';
 import { EditingState } from '@devexpress/dx-react-grid';
 import {
@@ -12,20 +10,7 @@ import {
     TableHeaderRow
 } from '@devexpress/dx-react-grid-material-ui';
 
-import { configWhitelist, updateConfigFile } from '../../../../../../actions/api';
-import { organiseConfigWhitelistById } from '../../../../../../selectors/api';
 
-function mapStateToProps(state) {
-    return {
-        rows: organiseConfigWhitelistById(state)
-    };
-}
-
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ configWhitelist, updateConfigFile }, dispatch);
-}
-
-@connect(mapStateToProps, mapDispatchToProps)
 class EditConfigTable extends React.PureComponent {
     constructor(props) {
         super(props);

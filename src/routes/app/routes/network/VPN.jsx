@@ -1,23 +1,13 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import NotificationSystem from 'react-notification-system';
 import Button from 'material-ui/Button';
 
-import { checkVPN, restartVPN } from '../../../../actions/api';
 
 const minWidthStyle = {
     minWidth: '135px'
 };
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({
-        checkVPN,
-        restartVPN
-    }, dispatch);
-}
 
-@connect(null, mapDispatchToProps)
 class VPN extends React.Component {
     constructor(props) {
         super(props);

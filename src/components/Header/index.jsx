@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom';
 import Menu from '@material-ui/icons/Menu';
@@ -8,14 +7,7 @@ import NavRightList from './NavRightList';
 
 import APPCONFIG from '../../constants/Config';
 
-function mapStateToProps(state) {
-    return {
-        colorOption: state.settings.colorOption,
-        isFixedHeader: state.settings.isFixedHeader
-    };
-}
 
-@connect(mapStateToProps)
 class Header extends React.Component {
     constructor(props) {
         super(props);

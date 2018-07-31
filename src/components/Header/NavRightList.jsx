@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 import classNames from 'classnames';
 import { Manager, Popper, Target } from 'react-popper';
@@ -12,7 +10,6 @@ import { MenuItem, MenuList } from 'material-ui/Menu';
 import IconButton from 'material-ui/IconButton/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-import { logout } from '../../actions/auth';
 
 const styles = () => ({
     popperClose: {
@@ -30,11 +27,7 @@ const StyledMenuList = styled(MenuList)`
     height: inherit;
 `;
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ logout }, dispatch);
-}
 
-@connect(null, mapDispatchToProps)
 class NavRightList extends React.Component {
     constructor(props) {
         super(props);

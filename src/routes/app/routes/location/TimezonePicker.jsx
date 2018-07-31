@@ -1,11 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from "redux";
 import styled from 'styled-components';
 import NotificationSystem from 'react-notification-system';
 
-import { getTimezone, changeTimezone } from "../../../../actions/api";
-import { getTimezoneSelector, changeTimezoneSelector } from '../../../../selectors/api';
 
 const OuterDiv = styled.div`
     display: inline-block;
@@ -54,24 +50,9 @@ const ListButton = styled.button`
     font: inherit;
 `;
 
-function mapStateToProps(state) {
-    return {
-        timezone: getTimezoneSelector(state).data.timezone,
-        getTimezoneError: getTimezoneSelector(state).error,
-        changeTimezoneError: changeTimezoneSelector(state).error,
-    };
-}
-
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({
-        getTimezone,
-        changeTimezone
-    }, dispatch);
-}
-
 // TODO: Bug in setting the received timezone from the server. Does not currently set.
 
-@connect(mapStateToProps, mapDispatchToProps)
+
 class TimezonePicker extends React.Component {
     constructor(props) {
         super(props);

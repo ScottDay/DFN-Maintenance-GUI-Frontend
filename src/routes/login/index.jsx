@@ -1,32 +1,13 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import QueueAnim from 'rc-queue-anim';
 import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import NotificationSystem from 'react-notification-system';
 
 import config from '../../constants/Config';
-import { login } from '../../actions/auth';
-import { getHostname } from '../../actions/api';
 import { validateEmail } from '../../utils/misc';
-import { getHostnameSelector } from '../../selectors/api';
 
-function mapStateToProps(state) {
-    return {
-        hostname: getHostnameSelector(state).data.hostname,
-        error: getHostnameSelector(state).error,
-    };
-}
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({
-        login,
-        getHostname
-    }, dispatch);
-}
-
-@connect(mapStateToProps, mapDispatchToProps)
 class Login extends React.Component {
     constructor(props) {
         super(props);

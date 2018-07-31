@@ -1,6 +1,4 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import Paper from 'material-ui/Paper';
 import {
     GroupingState,
@@ -14,20 +12,7 @@ import {
     TableGroupRow
 } from '@devexpress/dx-react-grid-material-ui';
 
-import { configFile } from '../../../../../../actions/api';
-import { organiseConfigFileById } from '../../../../../../selectors/api';
 
-function mapStateToProps(state) {
-    return {
-        rows: organiseConfigFileById(state)
-    };
-}
-
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ configFile }, dispatch);
-}
-
-@connect(mapStateToProps, mapDispatchToProps)
 class ViewConfigTable extends React.PureComponent {
     constructor(props) {
         super(props);

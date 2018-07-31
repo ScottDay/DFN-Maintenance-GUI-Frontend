@@ -1,26 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import classnames from 'classnames';
 import { Link, withRouter } from 'react-router-dom';
 
 import SidenavContent from './SidenavContent';
 
 import APPCONFIG from '../../constants/Config';
-import { toggleCollapsedNav } from '../../actions/settings';
 
-function mapStateToProps(state) {
-    return {
-        navCollapsed: state.settings.navCollapsed,
-        colorOption: state.settings.colorOption
-    };
-}
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ toggleCollapsedNav }, dispatch);
-}
-
-@connect(mapStateToProps, mapDispatchToProps)
 class Sidebar extends React.Component {
     constructor(props) {
         super(props);

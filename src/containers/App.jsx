@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router';
 import classnames from 'classnames';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
@@ -17,18 +16,7 @@ import '../styles/theme.scss';
 import '../styles/ui.scss';
 import '../styles/app.scss';
 
-function mapStateToProps(state) {
-    return {
-        layoutBoxed: state.settings.layoutBoxed,
-        navCollapsed: state.settings.navCollapsed,
-        navBehind: state.settings.navBehind,
-        fixedHeader: state.settings.fixedHeader,
-        sidebarWidth: state.settings.sidebarWidth,
-        theme: state.settings.theme
-    };
-}
 
-@connect(mapStateToProps)
 class App extends Component {
     constructor(props) {
         super(props);
