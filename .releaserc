@@ -1,0 +1,5 @@
+{
+  "npmPublish": false,
+  "tarballDir": "dist",
+  "getLastRelease": "last-release-git"
+}
