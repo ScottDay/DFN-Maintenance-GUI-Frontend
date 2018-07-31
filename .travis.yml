@@ -30,7 +30,7 @@ jobs:
       script: npm run build
 
     - stage: deploy
-	  node_js: 10
+      node_js: 10
       deploy:
         provider: script
         skip_cleanup: true
