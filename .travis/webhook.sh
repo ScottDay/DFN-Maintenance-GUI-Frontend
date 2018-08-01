@@ -1,13 +1,5 @@
 # Trigger a new build of the parent repo.
 
-main() {
-	if [[ "$TRAVIS_BRANCH" == "master" ]]; then
-		master_branch_request()
-	elif [[ "$TRAVIS_BRANCH" == "develop" ]]; then
-		develop_branch_request()
-	fi
-}
-
 
 master_branch_request() {
 	# Trigger build on build repo develop branch, reset its counter.
@@ -15,7 +7,7 @@ master_branch_request() {
 		"request": {
 			"branch":"master",
 			"config": {
-				"env": "REQUEST_TYPE=release"
+				"env": "REQUEST_TYPE=reset"
 			}
 		}
 	}'
@@ -36,7 +28,7 @@ develop_branch_request() {
 		"request": {
 			"branch":"develop",
 			"config": {
-				"env": "REQUEST_TYPE=dev"
+				"env": "REQUEST_TYPE=increment"
 			}
 		}
 	}'
@@ -51,4 +43,8 @@ develop_branch_request() {
 }
 
 
-main
+if [ "$TRAVIS_BRANCH" == "master" ]; then
+	master_branch_request
+elif [ "$TRAVIS_BRANCH" == "develop" ]; then
+	develop_branch_request
+fi
