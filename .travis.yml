@@ -20,9 +20,9 @@ notifications:
 
 stages:
   - compile
-  - test
   - name: deploy
-    if: branch = master AND type = push AND fork = false
+	if: branch = master AND type = push AND fork = false
+  - release
 
 jobs:
   include:
@@ -31,6 +31,8 @@ jobs:
 
     - stage: deploy
       node_js: 10
-      script:
-       - .travis/deploy.sh
-       - .travis/webhook.sh
+      script: .travis/deploy.sh
+
+	- stage: release
+      node_js: 10
+      script: .travis/webhook.sh
