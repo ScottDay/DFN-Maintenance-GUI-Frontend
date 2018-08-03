@@ -59,11 +59,11 @@ class WebpackDistConfig extends WebpackBaseConfig {
                         to: root('dist/vendors')
                     },
                     {
-                        from: root('src/assets/images'),
+                        from: root('public/assets/images'),
                         to: root('dist/assets/images')
                     },
                     {
-                        from: root('src/assets/images-demo'),
+                        from: root('public/assets/images-demo'),
                         to: root('dist/assets/images-demo')
                     }
                 ])
