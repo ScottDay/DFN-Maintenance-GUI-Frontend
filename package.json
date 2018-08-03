@@ -17,7 +17,8 @@
     },
     "scripts": {
         "build": "webpack --progress --bail --env prod -p",
-        "lint": "eslint ./src",
+		"lint": "eslint ./src",
+        "lint-fix": "eslint ./src --fix",
         "start": "webpack-dev-server --env dev"
     },
     "dependencies": {

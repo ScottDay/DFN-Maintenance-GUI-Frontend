@@ -38,7 +38,7 @@
         "class-methods-use-this": [
             "warn",
             {
-                "exceptMethods": []
+                "exceptMethods": ["render"]
             }
         ],
         "comma-dangle": [
@@ -83,7 +83,7 @@
         "import/prefer-default-export": 1,
         "indent": [
             "error",
-            4,
+			"tab",
             {
                 "SwitchCase": 1
             }
@@ -108,7 +108,7 @@
         "lines-around-directive": 1,
         "max-len": [
             "warn",
-            100
+            120
         ],
         "no-bitwise": 1,
         "no-case-declarations": 1,
@@ -170,6 +170,7 @@
         ],
         "react/jsx-closing-tag-location": 1,
         "react/jsx-curly-brace-presence": [
+			"warn",
             {
                 "children": "never",
                 "props": "never"
@@ -181,7 +182,7 @@
         ],
         "react/jsx-indent": [
             "warn",
-            4
+            "tab"
         ],
         "react/jsx-indent-props": [
             "error",
@@ -198,7 +199,8 @@
         "react/no-string-refs": 1,
         "react/no-unescaped-entities": 1,
         "react/no-unused-prop-types": 1,
-        "react/no-unused-state": 1,
+		"react/no-unused-state": 1,
+        "react/prefer-stateless-function": 0,
         "react/prop-types": 0,
         "react/react-in-jsx-scope": 1,
         "react/require-default-props": 1,
@@ -211,7 +213,7 @@
         ],
         "space-before-function-paren": 1,
         "spaced-comment": 1,
-        "strict": 1,
+        "strict": 0,
         "vars-on-top": 1,
         "wrap-iife": 1
     }

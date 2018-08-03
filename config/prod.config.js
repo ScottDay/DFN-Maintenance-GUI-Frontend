@@ -12,48 +12,48 @@ const WebpackBaseConfig = require('./common.config');
 const ROOT = path.resolve(__dirname, '../');
 
 function root(args) {
-    args = Array.prototype.slice.call(arguments, 0);
+	args = Array.prototype.slice.call(arguments, 0);
 
-    return path.join(...[ROOT].concat(args));
+	return path.join(...[ROOT].concat(args));
 }
 
 
 class WebpackProdConfig extends WebpackBaseConfig {
-    constructor() {
+	constructor() {
 		super();
 
-        this.config = {
-            cache: false,
-            devtool: 'cheap-module-source-map',
-            entry: [
-                './index.jsx'
-            ],
-            output: {
-                path: root('dist'),
-                publicPath: '/',
-                filename: 'assets/app.js'
-            },
-            plugins: [
-                new webpack.DefinePlugin({
-                    'process.env.NODE_ENV': '"production"'
-                }),
-                new webpack.optimize.AggressiveMergingPlugin(),
-                new CopyWebpackPlugin([
-                    {
-                        from: root('public/index.html'),
-                        to: root('dist/')
-                    },
-                    {
-                        from: root('public/fireballs-flame.ico'),
-                        to: root('dist/')
-                    }
-                ])
-            ]
-        };
+		this.config = {
+			cache: false,
+			devtool: 'cheap-module-source-map',
+			entry: [
+				'./index.jsx'
+			],
+			output: {
+				path: root('dist'),
+				publicPath: '/',
+				filename: 'assets/app.js'
+			},
+			plugins: [
+				new webpack.DefinePlugin({
+					'process.env.NODE_ENV': '"production"'
+				}),
+				new webpack.optimize.AggressiveMergingPlugin(),
+				new CopyWebpackPlugin([
+					{
+						from: root('public/index.html'),
+						to: root('dist/')
+					},
+					{
+						from: root('public/fireballs-flame.ico'),
+						to: root('dist/')
+					}
+				])
+			]
+		};
 
-        // Deactivate hot-reloading if we run dist build on the dev server
-        this.config.devServer.hot = false;
-    }
+		// Deactivate hot-reloading if we run dist build on the dev server
+		this.config.devServer.hot = false;
+	}
 }
 
 module.exports = WebpackProdConfig;

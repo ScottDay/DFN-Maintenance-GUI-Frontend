@@ -5,10 +5,7 @@
     "README.md": true,
     "GUIDELINES.md": true,
     ".releaserc": true,
-    ".gitignore": true,
-    ".eslintrc": true,
     ".eslintignore": true,
-    ".editorconfig": true,
     "package-lock.json": true,
     "webpack.config.js": true,
     ".babelrc": true,
@@ -16,6 +13,8 @@
     ".vscode": true,
     ".travis": true,
     "node_modules": true,
-    "dist": true
+    "dist": true,
+    ".gitignore": true,
+    ".editorconfig": true
   }
 }

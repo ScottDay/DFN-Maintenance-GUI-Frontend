@@ -1,36 +1,39 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 import { configure } from 'mobx';
 import { Provider } from 'mobx-react';
 
 import * as stores from './shared/stores';
-import App from './App.jsx';
-import Login from './modules/login/index.jsx';
+import ProtectedRoute from './shared/components/ProtectedRoute';
+import App from './App';
+import Login from './modules/Login/index';
 
 
 configure({
-    enforceActions: true
+	enforceActions: true
 });
 
 render(
-    <Provider {...stores}>
-        <HashRouter>
+	<Provider {...stores}>
+		<HashRouter>
 			<Switch>
-				<Redirect exact from='/' to='app' />
-				<Route path='/app' component={App} />
-				<Route path='/login' component={Login} />
+				<Route exact path='/login' component={Login} />
 				{/* 404 page */}
+				<ProtectedRoute path='/' component={App} />
 			</Switch>
-        </HashRouter>
-    </Provider>,
-    document.getElementById('app-container')
+		</HashRouter>
+	</Provider>,
+	document.getElementById('app-container')
 );
 
 if (module.hot) {
 	module.hot.accept();
 
-	if (process.env.NODE_ENV === 'dev') {
-		console.clear();
-	}
+	/* window.addEventListener('message', () => {
+		if ('production' !== process.env.NODE_ENV) {
+			// eslint-disable-next-line no-console
+			console.clear();
+		}
+	}); */
 }
