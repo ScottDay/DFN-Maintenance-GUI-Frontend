@@ -5,7 +5,6 @@ import Button from 'material-ui/Button';
 import NotificationSystem from 'react-notification-system';
 
 import config from '../../constants/Config';
-import { validateEmail } from '../../utils/misc';
 
 
 class Login extends React.Component {
@@ -40,6 +39,13 @@ class Login extends React.Component {
         // Grab a reference to the notification system object in render().
         this.notificationSystem = this.refs.notificationSystem;
     }
+
+	validateEmail(email) {
+		// eslint-disable-next-line max-len
+		const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+		return re.test(email);
+	}
 
     isDisabled() {
         let emailIsValid = false;
