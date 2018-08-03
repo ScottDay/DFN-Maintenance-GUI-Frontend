@@ -1,7 +1,7 @@
 // rgba(#000, .035) // #eee
 
-$image_path: "../assets/images/" !default;
-$image_pathdemo: "../assets/images-demo/" !default;
+$image_path: "../../public/assets/images/" !default;
+$image_pathdemo: "../../public/assets/images-demo/" !default;
 
 $skin: theme-color("primary");
 $skin-light: #42A5F5 !default; // Blue 400

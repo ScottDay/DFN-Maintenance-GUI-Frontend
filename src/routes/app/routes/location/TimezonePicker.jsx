@@ -57,7 +57,7 @@ class TimezonePicker extends React.Component {
     constructor(props) {
         super(props);
 
-        this.timezones = require('../../../../assets/timezones.json');
+        this.timezones = require('./timezones.json');
         this.notificationSystem = null;
 
         this.notifications = [

@@ -8,7 +8,6 @@ import createHistory from 'history/createHashHistory';
 import App from './containers/App';
 
 const history = createHistory();
-const store = reduxStore(history);
 
 render(
     <Provider store={store}>

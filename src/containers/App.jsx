@@ -3,9 +3,9 @@ import { Switch, Route, Redirect } from 'react-router';
 import classnames from 'classnames';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 
-import lightTheme from './themes/lightTheme';
-import darkTheme from './themes/darkTheme';
-import grayTheme from './themes/grayTheme';
+import lightTheme from '../themes/lightTheme';
+import darkTheme from '../themes/darkTheme';
+import grayTheme from '../themes/grayTheme';
 
 import MainApp from '../routes/app/';
 import PageLogin from '../routes/login/';
