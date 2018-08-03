@@ -44,7 +44,7 @@ class WebpackProdConfig extends WebpackBaseConfig {
                         to: root('dist/')
                     },
                     {
-                        from: root('public/favicon.ico'),
+                        from: root('public/fireballs-flame.ico'),
                         to: root('dist/')
                     }
                 ])
