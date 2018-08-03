@@ -44,15 +44,12 @@ class WebpackProdConfig extends WebpackBaseConfig {
 						to: root('dist/')
 					},
 					{
-						from: root('public/fireballs-flame.ico'),
+						from: root('public/fireballs-flame.svg'),
 						to: root('dist/')
 					}
 				])
 			]
 		};
-
-		// Deactivate hot-reloading if we run dist build on the dev server
-		this.config.devServer.hot = false;
 	}
 }
 
