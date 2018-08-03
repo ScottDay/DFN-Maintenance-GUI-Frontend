@@ -2,6 +2,7 @@
  * Default dev server configuration.
  */
 const webpack = require('webpack');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 const WebpackBaseConfig = require('./common.config');
 
@@ -21,8 +22,13 @@ class WebpackDevConfig extends WebpackBaseConfig {
             plugins: [
                 new webpack.optimize.ModuleConcatenationPlugin(),
 				new webpack.HotModuleReplacementPlugin(),
-				new webpack.NamedModulesPlugin()
-            ]
+				new webpack.NamedModulesPlugin(),
+				new ProgressBarPlugin()
+			],
+			devServer: {
+				quiet: true,
+				stats: 'minimal'
+			}
         };
     }
 }
