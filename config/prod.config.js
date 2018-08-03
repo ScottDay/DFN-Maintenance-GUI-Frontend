@@ -1,17 +1,15 @@
-
-
 /**
  * Dist configuration. Used to build the
  * final output when running npm run dist.
  */
+const path = require('path');
 const webpack = require('webpack');
-const WebpackBaseConfig = require('./common.config');
-
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const path = require('path');
+const WebpackBaseConfig = require('./common.config');
 
-const ROOT = path.resolve(__dirname, '../..');
+
+const ROOT = path.resolve(__dirname, '../');
 
 function root(args) {
     args = Array.prototype.slice.call(arguments, 0);
@@ -19,9 +17,11 @@ function root(args) {
     return path.join(...[ROOT].concat(args));
 }
 
-class WebpackDistConfig extends WebpackBaseConfig {
+
+class WebpackProdConfig extends WebpackBaseConfig {
     constructor() {
-        super();
+		super();
+
         this.config = {
             cache: false,
             devtool: 'cheap-module-source-map', // cheap-source-map will not work with UglifyJsPlugin.
@@ -31,20 +31,13 @@ class WebpackDistConfig extends WebpackBaseConfig {
             output: {
                 path: root('dist'),
                 publicPath: '/',
-                filename: 'assets/app.js',
-                chunkFilename: 'assets/[id].[hash].chunk.js'
+                filename: 'assets/app.js'
             },
             plugins: [
                 new webpack.DefinePlugin({
                     'process.env.NODE_ENV': '"production"'
                 }),
                 new webpack.optimize.AggressiveMergingPlugin(),
-                new webpack.NoEmitOnErrorsPlugin(),
-                new webpack.ProvidePlugin({
-                    $: 'jquery',
-                    jQuery: 'jquery',
-                    'window.jQuery': 'jquery'
-                }),
                 new CopyWebpackPlugin([
                     {
                         from: root('public/index.html'),
@@ -72,35 +65,7 @@ class WebpackDistConfig extends WebpackBaseConfig {
 
         // Deactivate hot-reloading if we run dist build on the dev server
         this.config.devServer.hot = false;
-
-        this.config.module.rules = this.config.module.rules.concat([
-            {
-                test: /^.((?!cssmodule).)*\.(sass|scss)$/,
-                loaders: [
-                    { loader: 'style-loader' },
-                    { loader: 'css-loader' },
-                    { loader: 'postcss-loader' },
-                    { loader: 'sass-loader' }
-                ]
-            }, {
-                test: /^.((?!cssmodule).)*\.less$/,
-                loaders: [
-                    { loader: 'style-loader' },
-                    { loader: 'css-loader' },
-                    { loader: 'postcss-loader' },
-                    { loader: 'less-loader' }
-                ]
-            }
-        ]);
-    }
-
-    /**
-     * Get the environment name
-     * @return {String} The current environment
-     */
-    get env() {
-        return 'dist';
     }
 }
 
-module.exports = WebpackDistConfig;
+module.exports = WebpackProdConfig;
