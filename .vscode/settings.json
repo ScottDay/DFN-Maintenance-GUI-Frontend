@@ -1,0 +1,17 @@
+{
+  "files.exclude": {
+    "__error": "Not found",
+    "LICENSE.md": true,
+    "README.md": true,
+    "GUIDELINES.md": true,
+    ".releaserc": true,
+    ".gitignore": true,
+    ".eslintrc": true,
+    ".eslintignore": true,
+    ".editorconfig": true,
+    "package-lock.json": true,
+    ".travis.yml": true,
+    "webpack.config.js": true,
+    ".babelrc": true
+  }
+}
