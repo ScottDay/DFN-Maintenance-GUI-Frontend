@@ -10,8 +10,12 @@
     ".eslintignore": true,
     ".editorconfig": true,
     "package-lock.json": true,
-    ".travis.yml": true,
     "webpack.config.js": true,
-    ".babelrc": true
+    ".babelrc": true,
+    ".travis.yml": true,
+    ".vscode": true,
+    ".travis": true,
+    "node_modules": true,
+    "dist": true
   }
 }

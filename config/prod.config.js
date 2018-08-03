@@ -24,7 +24,7 @@ class WebpackProdConfig extends WebpackBaseConfig {
 
         this.config = {
             cache: false,
-            devtool: 'cheap-module-source-map', // cheap-source-map will not work with UglifyJsPlugin.
+            devtool: 'cheap-module-source-map',
             entry: [
                 './index.jsx'
             ],
@@ -46,18 +46,6 @@ class WebpackProdConfig extends WebpackBaseConfig {
                     {
                         from: root('public/favicon.ico'),
                         to: root('dist/')
-                    },
-                    {
-                        from: root('public/vendors'),
-                        to: root('dist/vendors')
-                    },
-                    {
-                        from: root('public/assets/images'),
-                        to: root('dist/assets/images')
-                    },
-                    {
-                        from: root('public/assets/images-demo'),
-                        to: root('dist/assets/images-demo')
                     }
                 ])
             ]

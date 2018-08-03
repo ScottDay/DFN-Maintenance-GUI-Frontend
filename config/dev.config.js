@@ -12,7 +12,20 @@ class WebpackDevConfig extends WebpackBaseConfig {
 		super();
 
         this.config = {
-            devtool: 'source-map',
+			devtool: 'source-map',
+            devServer: {
+                contentBase: ['./public/', './src/'],
+                publicPath: '/assets/',
+                historyApiFallback: true,
+                hot: true,
+                inline: true,
+                port: 3000,
+                host: '0.0.0.0',
+				disableHostCheck: true,
+				quiet: true,
+				noInfo: false,
+				stats: 'minimal'
+            },
             entry: [
                 'webpack-dev-server/client?http://0.0.0.0:3000/',
                 'webpack/hot/only-dev-server',
@@ -24,11 +37,7 @@ class WebpackDevConfig extends WebpackBaseConfig {
 				new webpack.HotModuleReplacementPlugin(),
 				new webpack.NamedModulesPlugin(),
 				new ProgressBarPlugin()
-			],
-			devServer: {
-				quiet: true,
-				stats: 'minimal'
-			}
+			]
         };
     }
 }

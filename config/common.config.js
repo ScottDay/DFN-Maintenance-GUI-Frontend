@@ -73,17 +73,6 @@ class WebpackBaseConfig {
     get defaultSettings() {
         return {
             context: this.srcPathAbsolute,
-            devtool: 'eval',
-            devServer: {
-                contentBase: ['./public/', './src/'],
-                publicPath: '/assets/',
-                historyApiFallback: true,
-                hot: true,
-                inline: true,
-                port: 3000,
-                host: '0.0.0.0',
-                disableHostCheck: true
-            },
             entry: ['babel-polyfill', './src/index.jsx'],
             module: {
                 rules: [
