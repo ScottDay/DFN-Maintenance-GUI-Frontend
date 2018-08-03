@@ -4,9 +4,7 @@ import React from 'react';
 export default class App extends React.Component {
 	render() {
 		return (
-			<div>
-				HI
-			</div>
+			<div>App</div>
 		);
 	}
 }
