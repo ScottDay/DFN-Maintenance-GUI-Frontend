@@ -7,8 +7,7 @@
     "extends": [
         "airbnb",
         "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:redux-saga/recommended"
+        "plugin:react/recommended"
     ],
     "globals": {
         "React": true
@@ -20,8 +19,7 @@
         }
     },
     "plugins": [
-        "react",
-        "redux-saga"
+        "react"
     ],
     "rules": {
         "array-bracket-spacing": [
