@@ -91,7 +91,7 @@ class WebpackBaseConfig {
                 host: '0.0.0.0',
                 disableHostCheck: true
             },
-            entry: ['babel-polyfill', './src/client.jsx'],
+            entry: ['babel-polyfill', './src/index.jsx'],
             module: {
                 rules: [
                     {

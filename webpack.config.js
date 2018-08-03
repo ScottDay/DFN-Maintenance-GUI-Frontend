@@ -1,5 +1,5 @@
 /* eslint no-console: "off" */
-const webpackConfigs = require('./config/webpack');
+const webpackConfigs = require('./webpack');
 
 const defaultConfig = 'dev';
 
