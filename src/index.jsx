@@ -6,8 +6,9 @@ import { Provider } from 'mobx-react';
 
 import * as stores from './shared/stores';
 import ProtectedRoute from './shared/components/ProtectedRoute';
+import Login from './modules/Login';
 import App from './App';
-import Login from './modules/Login/index';
+import PageNotFound from './modules/PageNotFound';
 
 
 configure({
@@ -19,8 +20,8 @@ render(
 		<HashRouter>
 			<Switch>
 				<Route exact path='/login' component={Login} />
-				{/* 404 page */}
-				<ProtectedRoute path='/' component={App} />
+				<ProtectedRoute exact path='/' component={App} />
+				<Route component={PageNotFound} />
 			</Switch>
 		</HashRouter>
 	</Provider>,

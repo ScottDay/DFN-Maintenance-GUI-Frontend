@@ -46,6 +46,10 @@ class WebpackProdConfig extends WebpackBaseConfig {
 					{
 						from: root('public/fireballs-flame.svg'),
 						to: root('dist/')
+					},
+					{
+						from: root('public/coding-cat.png'),
+						to: root('dist/')
 					}
 				])
 			]
