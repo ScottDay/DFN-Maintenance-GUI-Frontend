@@ -9,7 +9,7 @@ import { requestTypes } from '../../constants';
 
 // API middleware.
 
-const API_ROOT = ':5000/api';
+const API_ROOT = `http://${window.location.hostname}:5000/api`;
 const superagent = superagentDefaults(superagentPromise(_superagent, global.Promise));
 
 superagent
@@ -35,9 +35,9 @@ const outputPlugins = (result, requestType) => {
 		sessionAction.logout();
 	}
 
-	if ('production' !== process.env.NODE_ENV) {
+	if ('production' !== process.env.NODE_ENV && result.response.status) {
 		// eslint-disable-next-line no-console
-		console.log(`${requestType}: ${result}`);
+		console.log(`${requestType}: ${result.response.status}`);
 	}
 
 	return result;
