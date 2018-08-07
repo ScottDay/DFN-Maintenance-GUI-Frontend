@@ -1,10 +1,11 @@
 import React from 'react';
-import { observer, inject } from 'mobx-react';
+import { observer } from 'mobx-react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
+import { sessionStore } from '../../../shared/stores';
 
-@inject('loginStore', 'sessionStore')
+
 @observer
 export default class LoginContainer extends React.Component {
 	handleKeyPress(event) {
@@ -16,7 +17,7 @@ export default class LoginContainer extends React.Component {
 	}
 
 	render() {
-		const {	loginService, loginStore, sessionStore } = this.props;
+		const {	loginService, loginStore } = this.props;
 
 		return (
 			// eslint-disable-next-line jsx-a11y/no-static-element-interactions
@@ -51,7 +52,7 @@ export default class LoginContainer extends React.Component {
 					<div className='card-action no-border text-right'>
 						<Button
 							variant='raised'
-							disabled={loginStore.isDisabled()}
+							disabled={loginStore.isDisabled}
 							onClick={() => loginService.login(loginStore.username, loginStore.password)}
 						>
 							Login

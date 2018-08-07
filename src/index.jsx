@@ -2,9 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import { configure } from 'mobx';
-import { Provider } from 'mobx-react';
 
-import * as stores from './shared/stores';
 import ProtectedRoute from './shared/components/ProtectedRoute';
 import Login from './modules/Login';
 import App from './App';
@@ -16,15 +14,13 @@ configure({
 });
 
 render(
-	<Provider {...stores}>
-		<HashRouter>
-			<Switch>
-				<Route exact path='/login' component={Login} />
-				<ProtectedRoute exact path='/' component={App} />
-				<Route component={PageNotFound} />
-			</Switch>
-		</HashRouter>
-	</Provider>,
+	<HashRouter>
+		<Switch>
+			<Route exact path='/login' component={Login} />
+			<ProtectedRoute exact path='/' component={App} />
+			<Route component={PageNotFound} />
+		</Switch>
+	</HashRouter>,
 	document.getElementById('app-container')
 );
 

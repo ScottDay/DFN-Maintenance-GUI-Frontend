@@ -1,6 +1,6 @@
 import sessionAction from './session';
 
 
-export default {
+export {
 	sessionAction
 }

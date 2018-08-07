@@ -2,8 +2,9 @@ import superagentPromise from 'superagent-promise';
 import superagentDefaults from 'superagent-defaults';
 import _superagent from 'superagent';
 
-import { sessionStore } from '../../stores';
+import { sessionStore, requestStore } from '../../stores';
 import { sessionAction } from '../../actions';
+import { requestTypes } from '../../constants';
 
 
 // API middleware.
@@ -19,46 +20,50 @@ superagent
 	.set('Content-Type', 'application/json;charset=UTF-8');
 
 
-const tokenPlugin = (request) => {
+const inputPlugins = (request, requestType) => {
+	requestStore.setRequestInProgress(requestType, true);
+
 	if (sessionStore.token) {
 		request.set('authorization', `Token ${sessionStore.token}`);
 	}
 };
 
-const handleErrors = (error) => {
-	if (error && error.response && error.response.status === 401) {
+const outputPlugins = (result, requestType) => {
+	requestStore.setRequestInProgress(requestType, false);
+
+	if (result && result.response && result.response.status === 401) {
 		sessionAction.logout();
 	}
 
-	return error;
+	return result;
 };
 
 const responseBody = (result) => result.body;
 
 const api = {
-	get: (url) =>
+	get: (url, requestType) =>
 		superagent
 			.get(`${API_ROOT}${url}`)
-			.use(tokenPlugin)
-			.end(handleErrors)
+			.use((request) => inputPlugins(request, requestType))
+			.end((result) => outputPlugins(result, requestType))
 			.then(responseBody),
-	post: (url, body) =>
+	post: (url, body, requestType) =>
 		superagent
 			.post(`${API_ROOT}${url}`, body)
-			.use(tokenPlugin)
-			.end(handleErrors)
+			.use((request) => inputPlugins(request, requestType))
+			.end((result) => outputPlugins(result, requestType))
 			.then(responseBody),
-	put: (url, body) =>
+	put: (url, body, requestType) =>
 		superagent
 			.put(`${API_ROOT}${url}`, body)
-			.use(tokenPlugin)
-			.end(handleErrors)
+			.use((request) => inputPlugins(request, requestType))
+			.end((result) => outputPlugins(result, requestType))
 			.then(responseBody),
-	del: (url) =>
+	del: (url, requestType) =>
 		superagent
 			.del(`${API_ROOT}${url}`)
-			.use(tokenPlugin)
-			.end(handleErrors)
+			.use((request) => inputPlugins(request, requestType))
+			.end((result) => outputPlugins(result, requestType))
 			.then(responseBody)
 };
 
@@ -66,11 +71,11 @@ const api = {
 
 const Session = {
 	check: (token) =>
-		api.post('/token/check', token),
+		api.post('/token/check', token, requestTypes.SESSION),
 	generate: (username, password) =>
-		api.post('/token/generate', { username, password }),
+		api.post('/token/generate', { username, password }, requestTypes.SESSION),
 	hostname: () =>
-		api.get('/hostname')
+		api.get('/hostname', requestTypes.SESSION)
 }
 
 

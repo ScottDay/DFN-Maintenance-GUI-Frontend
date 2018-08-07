@@ -4,9 +4,10 @@ import { action, observable, reaction } from 'mobx';
 class SessionStore {
 	@observable hostname;
 	@observable token;
+	@observable authenticated;
 
 	constructor() {
-		this.hostname = '';
+		this.hostname = 'test-host';
 		this.token = window.localStorage.getItem('token');
 
 		reaction(
@@ -32,9 +33,15 @@ class SessionStore {
 	}
 
 	@action
+	setAuthenticated(authenticated) {
+		this.authenticated = authenticated;
+	}
+
+	@action
 	reset() {
 		this.hostname = '';
 		this.token = null;
+		this.authenticated = false;
 	}
 }
 
