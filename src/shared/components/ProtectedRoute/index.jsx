@@ -1,15 +1,17 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 
+import sessionAction from '../../actions';
+
 
 export default class ProtectedRoute extends React.Component {
 	render() {
-		// TODO: Check store if authenticated.
-		// eslint-disable-next-line no-constant-condition
-		if (true) {
+		sessionAction.authenticate();
+
+		if (isAuthenticated) {
 			return <Route {...this.props} />;
 		}
 
-		return <Redirect to='/' />;
+		return <Redirect to='/login' />;
 	}
 }

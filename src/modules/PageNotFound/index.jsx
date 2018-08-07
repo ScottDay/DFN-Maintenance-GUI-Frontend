@@ -11,10 +11,6 @@ const StyledDiv = Styled.div`
 `;
 
 export default class PageNotFound extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-
 	componentDidMount() {
 		const body = document.getElementById('body');
 

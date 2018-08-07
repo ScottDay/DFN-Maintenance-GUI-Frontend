@@ -3,6 +3,8 @@
 /**
  * Webpack configuration base class
  */
+const webpack = require('webpack');
+
 const fs = require('fs');
 const path = require('path');
 
@@ -123,7 +125,12 @@ class WebpackBaseConfig {
 			},
 			resolve: {
 				extensions: ['.js', '.jsx', '.json']
-			}
+			},
+			plugins: [
+				new webpack.ProvidePlugin({
+					'React': 'react'
+				})
+			]
 		};
 	}
 }
