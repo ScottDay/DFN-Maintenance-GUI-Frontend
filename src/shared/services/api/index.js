@@ -35,6 +35,11 @@ const outputPlugins = (result, requestType) => {
 		sessionAction.logout();
 	}
 
+	if ('production' !== process.env.NODE_ENV) {
+		// eslint-disable-next-line no-console
+		console.log(`${requestType}: ${result}`);
+	}
+
 	return result;
 };
 
@@ -79,6 +84,7 @@ const Session = {
 }
 
 
-export default {
+export {
+	// eslint-disable-next-line
 	Session
 }

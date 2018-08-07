@@ -5,4 +5,4 @@ import requestStore from './request';
 export {
 	sessionStore,
 	requestStore
-};
+}

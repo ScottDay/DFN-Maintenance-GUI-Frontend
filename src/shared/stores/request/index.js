@@ -9,7 +9,7 @@ class RequestStore {
 	}
 
 	@action
-	setRequestInProcess(requestType, inProcess) {
+	setRequestInProgress(requestType, inProcess) {
 		this.requests.set(requestType, inProcess);
 	}
 

@@ -3,8 +3,6 @@ import { observer } from 'mobx-react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-import { sessionStore } from '../../../shared/stores';
-
 
 @observer
 export default class LoginContainer extends React.Component {
@@ -17,7 +15,7 @@ export default class LoginContainer extends React.Component {
 	}
 
 	render() {
-		const {	loginService, loginStore } = this.props;
+		const {	loginService, loginStore, sessionStore } = this.props;
 
 		return (
 			// eslint-disable-next-line jsx-a11y/no-static-element-interactions
@@ -61,6 +59,7 @@ export default class LoginContainer extends React.Component {
 				</div>
 
 				<div className='additional-info'>
+					{/* eslint-disable-next-line */}
 					<a href='https://wiki.dfn.net.au/index.php/Getting_Help' target='_blank'>
 						Forgot your login or password?
 					</a>

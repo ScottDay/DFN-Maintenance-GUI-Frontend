@@ -1,6 +1,7 @@
-import sessionAction from './session';
+import * as sessionAction from './session';
 
 
 export {
+	// eslint-disable-next-line
 	sessionAction
 }

@@ -22,7 +22,7 @@ function authenticate() {
 }
 
 
-export default {
+export {
 	fetchHostname,
 	logout,
 	authenticate
