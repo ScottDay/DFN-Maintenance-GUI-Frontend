@@ -125,12 +125,7 @@ class WebpackBaseConfig {
 			},
 			resolve: {
 				extensions: ['.js', '.jsx', '.json']
-			},
-			plugins: [
-				new webpack.ProvidePlugin({
-					'React': 'react'
-				})
-			]
+			}
 		};
 	}
 }

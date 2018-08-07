@@ -7,7 +7,7 @@ class SessionStore {
 	@observable authenticated;
 
 	constructor() {
-		this.hostname = 'test-host';
+		this.hostname = '';
 		this.token = window.localStorage.getItem('token');
 
 		reaction(

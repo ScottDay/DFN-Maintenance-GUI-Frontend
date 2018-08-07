@@ -35,7 +35,10 @@ const outputPlugins = (result, requestType) => {
 		sessionAction.logout();
 	}
 
-	if ('production' !== process.env.NODE_ENV && result.response.status) {
+	if ('production' !== process.env.NODE_ENV
+		&& result
+		&& result.response
+		&& result.response.status) {
 		// eslint-disable-next-line no-console
 		console.log(`${requestType}: ${result.response.status}`);
 	}
