@@ -1,12 +1,12 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { inject, observer } from 'mobx-react';
+import { observer } from 'mobx-react';
 
 import { sessionAction } from '../../actions';
 import { requestTypes } from '../../constants';
+import { sessionStore, requestStore } from '../../stores';
 
 
-@inject('sessionStore', 'requestStore')
 @observer
 export default class ProtectedRoute extends React.Component {
 	constructor(props) {
@@ -15,8 +15,6 @@ export default class ProtectedRoute extends React.Component {
 	}
 
 	render() {
-		const { sessionStore, requestStore } = this.props;
-
 		if (requestStore.getRequestByType(requestTypes.SESSION)) {
 			return <div>Loading...</div>;
 		} else if (sessionStore.authenticated) {
