@@ -33,14 +33,19 @@ class WebpackDevConfig extends WebpackBaseConfig {
 				'./index.jsx'
 			],
 			plugins: [
-				new webpack.optimize.ModuleConcatenationPlugin(),
+				new webpack.DefinePlugin({
+					'process.env.NODE_ENV': '"development"'
+				}),
 				new webpack.HotModuleReplacementPlugin(),
-				new webpack.NamedModulesPlugin(),
 				new ProgressBarPlugin({
 					format: 'Build [:bar] :percent (:elapsed seconds)',
 					clear: true
 				})
-			]
+			],
+			optimization: {
+				namedModules: true,
+				concatenateModules: true
+			}
 		};
 	}
 }
