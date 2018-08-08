@@ -2,9 +2,9 @@ import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { observer } from 'mobx-react';
 
-import { sessionAction } from '../../actions';
-import { requestTypes } from '../../constants';
-import { sessionStore, requestStore } from '../../stores';
+import { sessionAction } from 'actions';
+import { sessionStore, requestStore } from 'stores';
+import { requestTypes } from 'constants';
 
 
 @observer

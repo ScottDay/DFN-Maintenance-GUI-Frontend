@@ -3,10 +3,11 @@ import { render } from 'react-dom';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import { configure } from 'mobx';
 
-import ProtectedRoute from './shared/components/ProtectedRoute';
+import ProtectedRoute from 'components/ProtectedRoute';
+
 import Login from './modules/Login';
-import App from './App';
 import PageNotFound from './modules/PageNotFound';
+import App from './App';
 
 
 configure({

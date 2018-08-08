@@ -2,9 +2,9 @@ import superagentPromise from 'superagent-promise';
 import superagentDefaults from 'superagent-defaults';
 import _superagent from 'superagent';
 
-import { sessionStore, requestStore } from '../../stores';
-import { sessionAction } from '../../actions';
-import { requestTypes } from '../../constants';
+import { sessionAction } from 'actions';
+import { sessionStore, requestStore } from 'stores';
+import { requestTypes } from 'constants';
 
 
 // API middleware.

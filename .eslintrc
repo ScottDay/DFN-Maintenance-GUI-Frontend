@@ -68,9 +68,9 @@
         "import/newline-after-import": 1,
         "import/no-extraneous-dependencies": 1,
         "import/no-mutable-exports": 1,
-        "import/no-unresolved": 1,
+        "import/no-unresolved": 0,
         "import/order": [
-            "error",
+            0,
             {
                 "groups": [
                     "external",

@@ -124,7 +124,14 @@ class WebpackBaseConfig {
 				publicPath: './assets/'
 			},
 			resolve: {
-				extensions: ['.js', '.jsx', '.json']
+				extensions: ['.js', '.jsx', '.json'],
+				alias: {
+					actions: `${this.srcPathAbsolute}/shared/actions`,
+					components: `${this.srcPathAbsolute}/shared/components`,
+					constants: `${this.srcPathAbsolute}/shared/constants`,
+					services: `${this.srcPathAbsolute}/shared/services`,
+					stores: `${this.srcPathAbsolute}/shared/stores`,
+				}
 			}
 		};
 	}

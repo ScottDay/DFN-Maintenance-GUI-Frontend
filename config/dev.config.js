@@ -36,7 +36,10 @@ class WebpackDevConfig extends WebpackBaseConfig {
 				new webpack.optimize.ModuleConcatenationPlugin(),
 				new webpack.HotModuleReplacementPlugin(),
 				new webpack.NamedModulesPlugin(),
-				new ProgressBarPlugin()
+				new ProgressBarPlugin({
+					format: 'Build [:bar] :percent (:elapsed seconds)',
+					clear: true
+				})
 			]
 		};
 	}

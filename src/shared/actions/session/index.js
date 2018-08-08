@@ -1,7 +1,7 @@
 import browserHistory from 'react-router-dom';
 
-import { api } from '../../services';
-import { sessionStore } from '../../stores';
+import { api } from 'services';
+import { sessionStore } from 'stores';
 
 
 function fetchHostname() {
