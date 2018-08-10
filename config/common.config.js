@@ -3,8 +3,6 @@
 /**
  * Webpack configuration base class
  */
-const webpack = require('webpack');
-
 const fs = require('fs');
 const path = require('path');
 
@@ -75,7 +73,7 @@ class WebpackBaseConfig {
 	get defaultSettings() {
 		return {
 			context: this.srcPathAbsolute,
-			entry: ['babel-polyfill', './src/index.jsx'],
+			entry: ['./src/index.jsx'],
 			module: {
 				rules: [
 					{
@@ -106,15 +104,8 @@ class WebpackBaseConfig {
 						loader: 'json-loader'
 					},
 					{
-						test: /\.(js|jsx)$/,
-						include: [].concat(
-							this.includedPackages,
-							[this.srcPathAbsolute]
-						),
-						loaders: [
-							// Note: Moved this to .babelrc
-							{ loader: 'babel-loader' }
-						]
+						test: /\.scss$/,
+						loaders: ['style-loader', 'css-loader', 'sass-loader']
 					}
 				]
 			},
@@ -124,13 +115,15 @@ class WebpackBaseConfig {
 				publicPath: './assets/'
 			},
 			resolve: {
-				extensions: ['.js', '.jsx', '.json'],
+				extensions: ['.js', '.jsx', '.json', '.scss'],
 				alias: {
 					actions: `${this.srcPathAbsolute}/shared/actions`,
 					components: `${this.srcPathAbsolute}/shared/components`,
 					constants: `${this.srcPathAbsolute}/shared/constants`,
 					services: `${this.srcPathAbsolute}/shared/services`,
 					stores: `${this.srcPathAbsolute}/shared/stores`,
+					styles: `${this.srcPathAbsolute}/shared/styles`,
+					themes: `${this.srcPathAbsolute}/shared/themes`
 				}
 			}
 		};

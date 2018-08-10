@@ -3,9 +3,8 @@ import { render } from 'react-dom';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import { configure } from 'mobx';
 
-import ProtectedRoute from 'components/ProtectedRoute';
+import 'styles/main';
 
-import Login from './modules/Login';
 import PageNotFound from './modules/PageNotFound';
 import App from './App';
 
@@ -17,8 +16,7 @@ configure({
 render(
 	<HashRouter>
 		<Switch>
-			<Route exact path='/login' component={Login} />
-			<ProtectedRoute exact path='/' component={App} />
+			<Route path='/' component={App} />
 			<Route component={PageNotFound} />
 		</Switch>
 	</HashRouter>,
