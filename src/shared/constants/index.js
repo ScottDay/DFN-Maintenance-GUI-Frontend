@@ -1,7 +1,8 @@
 import * as requestTypes from './requestTypes';
+import * as notificationTypes from './notificationTypes';
 
 
 export {
-	// eslint-disable-next-line
-	requestTypes
+	requestTypes,
+	notificationTypes
 }

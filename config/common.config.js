@@ -117,6 +117,7 @@ class WebpackBaseConfig {
 			resolve: {
 				extensions: ['.js', '.jsx', '.json', '.scss'],
 				alias: {
+					modules: `${this.srcPathAbsolute}/modules`,
 					actions: `${this.srcPathAbsolute}/shared/actions`,
 					components: `${this.srcPathAbsolute}/shared/components`,
 					constants: `${this.srcPathAbsolute}/shared/constants`,

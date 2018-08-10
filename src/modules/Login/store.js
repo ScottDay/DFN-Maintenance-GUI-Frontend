@@ -1,7 +1,7 @@
 import { action, computed, observable } from 'mobx';
 
 
-class LoginStore {
+class Store {
 	@observable username;
 	@observable password;
 
@@ -39,4 +39,4 @@ class LoginStore {
 }
 
 
-export default new LoginStore();
+export default new Store();

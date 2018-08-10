@@ -2,10 +2,9 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 
-import ProtectedRoute from 'components/ProtectedRoute';
+import { Login } from 'modules';
+import { ProtectedRoute, Snackbar } from 'components';
 import lightTheme from 'themes/lightTheme';
-
-import Login from './modules/Login';
 
 
 export default class App extends React.Component {
@@ -22,6 +21,7 @@ export default class App extends React.Component {
 							<ProtectedRoute path='/app' component={<div />} />
 						</Switch>
 					</div>
+					<Snackbar />
 				</div>
 			</MuiThemeProvider>
 		);

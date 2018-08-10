@@ -36,7 +36,7 @@
             "always"
         ],
         "class-methods-use-this": [
-            "warn",
+            0,
             {
                 "exceptMethods": [
 					"render",

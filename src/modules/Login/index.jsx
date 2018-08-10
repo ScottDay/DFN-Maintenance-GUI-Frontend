@@ -4,8 +4,8 @@ import { sessionAction } from 'actions';
 import { sessionStore } from 'stores';
 
 import Presenter from './presenter';
-import loginService from './loginService';
-import loginStore from './loginStore';
+import service from './service';
+import store from './store';
 
 
 export default class Login extends React.Component {
@@ -16,8 +16,8 @@ export default class Login extends React.Component {
 	render() {
 		return (
 			<Presenter
-				loginService={loginService}
-				loginStore={loginStore}
+				service={service}
+				store={store}
 				sessionStore={sessionStore}
 			/>
 		);

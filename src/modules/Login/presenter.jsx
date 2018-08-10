@@ -5,17 +5,17 @@ import Button from '@material-ui/core/Button';
 
 
 @observer
-export default class LoginContainer extends React.Component {
+export default class Presenter extends React.Component {
 	handleKeyPress(event) {
-		const {	loginService, loginStore } = this.props;
+		const {	service, store } = this.props;
 
-		if (event.key === 'Enter' && !loginStore.isDisabled()) {
-			loginService.login(loginStore.username, loginStore.password)
+		if (event.key === 'Enter' && !store.isDisabled()) {
+			service.login(store.username, store.password)
 		}
 	}
 
 	render() {
-		const {	loginService, loginStore, sessionStore } = this.props;
+		const {	service, store, sessionStore } = this.props;
 
 		return (
 			<div className='page-login'>
@@ -36,13 +36,13 @@ export default class LoginContainer extends React.Component {
 											<TextField
 												placeholder='Email'
 												type='email'
-												onChange={(e) => loginStore.setUsername(e.target.value)}
+												onChange={(e) => store.setUsername(e.target.value)}
 												fullWidth
 											/>
 											<TextField
 												placeholder='Password'
 												type='password'
-												onChange={(e) => loginStore.setPassword(e.target.value)}
+												onChange={(e) => store.setPassword(e.target.value)}
 												fullWidth
 											/>
 										</div>
@@ -52,8 +52,8 @@ export default class LoginContainer extends React.Component {
 							<div className='card-action no-border text-right'>
 								<Button
 									variant='raised'
-									disabled={loginStore.isDisabled}
-									onClick={() => loginService.login(loginStore.username, loginStore.password)}
+									disabled={store.isDisabled}
+									onClick={() => service.login(store.username, store.password)}
 								>
 									Login
 								</Button>
