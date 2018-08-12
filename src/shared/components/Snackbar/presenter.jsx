@@ -3,16 +3,17 @@ import styled from 'styled-components';
 
 import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
-import CloseIcon from '@material-ui/icons/Close';
-import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import WarningIcon from '@material-ui/icons/Warning';
 import ErrorIcon from '@material-ui/icons/Error';
+import CloseIcon from '@material-ui/icons/Close';
 import blue from '@material-ui/core/colors/blue';
 import green from '@material-ui/core/colors/green';
 import amber from '@material-ui/core/colors/amber';
 import red from '@material-ui/core/colors/red';
+
+import { IconButtonWrapper } from 'components';
 
 
 /* eslint-disable prefer-destructuring */
@@ -37,10 +38,6 @@ const StyledSpan = styled.span`
 	display: flex;
 	align-items: center;
 	white-space: pre-line;
-`;
-
-const StyledCloseIcon = styled(CloseIcon)`
-	font-size: 20;
 `;
 
 const StyledInfoIcon = styled(InfoIcon)`
@@ -72,14 +69,11 @@ export default class Presenter extends React.Component {
 	determineAction(action, renderClose, onClose) {
 		let result = [];
 		const close = (
-			<IconButton
+			<IconButtonWrapper
 				key='close'
-				aria-label='Close'
-				color='inherit'
 				onClick={onClose}
-			>
-				<StyledCloseIcon />
-			</IconButton>
+				icon={CloseIcon}
+			/>
 		);
 
 		if (!action) { // No action given.

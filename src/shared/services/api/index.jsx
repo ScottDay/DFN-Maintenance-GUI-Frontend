@@ -1,10 +1,14 @@
+import React from 'react';
 import superagentPromise from 'superagent-promise';
 import superagentDefaults from 'superagent-defaults';
 import _superagent from 'superagent';
 
+import RefreshIcon from '@material-ui/icons/Refresh';
+
 import { sessionAction } from 'actions';
 import { sessionStore, requestStore, notificationStore } from 'stores';
 import { requestTypes, notificationTypes } from 'constants';
+import { IconButtonWrapper } from 'components';
 
 
 // API middleware.
@@ -61,7 +65,15 @@ const errorPlugins = (error) => {
 					duration: null,
 					message: "Unable to connect to the backend server...\n\n" +
 						"Ensure the camera box is on and you're properly connected to it."
-				}
+				},
+				renderClose: true,
+				action: [
+					<IconButtonWrapper
+						key='refresh'
+						onClick={() => window.location.reload()}
+						icon={RefreshIcon}
+					/>
+				]
 			});
 
 			break;

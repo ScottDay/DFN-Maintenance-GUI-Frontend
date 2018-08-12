@@ -1,10 +1,10 @@
-import notificationStore from './notification';
 import requestStore from './request';
 import sessionStore from './session';
+import notificationStore from './notification';
 
 
 export {
-	notificationStore,
 	requestStore,
-	sessionStore
+	sessionStore,
+	notificationStore
 }
