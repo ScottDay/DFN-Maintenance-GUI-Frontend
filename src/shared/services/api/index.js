@@ -3,8 +3,8 @@ import superagentDefaults from 'superagent-defaults';
 import _superagent from 'superagent';
 
 import { sessionAction } from 'actions';
-import { sessionStore, requestStore } from 'stores';
-import { requestTypes } from 'constants';
+import { sessionStore, requestStore, notificationStore } from 'stores';
+import { requestTypes, notificationTypes } from 'constants';
 
 
 // API middleware.
@@ -28,10 +28,10 @@ const inputPlugins = (request, requestType) => {
 	}
 };
 
-const outputPlugins = (result, requestType) => {
+const outputPlugins = (error, result, requestType) => {
 	requestStore.setRequestInProgress(requestType, false);
 
-	if (result && result.response && result.response.status === 401) {
+	if (error && error.status === 401) {
 		sessionAction.logout();
 	}
 
@@ -48,31 +48,56 @@ const outputPlugins = (result, requestType) => {
 
 const responseBody = (result) => result.body;
 
+const errorPlugins = (error) => {
+	// NOTE: Throw an exception if you want the caller to handle an error as well.
+	switch (error.status) {
+		// Not authorized.
+		case 401: sessionAction.logout(); break;
+		// Connection error.
+		case undefined:
+			notificationStore.addNotification({
+				content: {
+					type: notificationTypes.ERROR,
+					duration: null,
+					message: "Unable to connect to the backend server...\n\n" +
+						"Ensure the camera box is on and you're properly connected to it."
+				}
+			});
+
+			break;
+		default: throw error;
+	}
+};
+
 const api = {
 	get: (url, requestType) =>
 		superagent
 			.get(`${API_ROOT}${url}`)
 			.use((request) => inputPlugins(request, requestType))
-			.end((result) => outputPlugins(result, requestType))
-			.then(responseBody),
+			.end((error, result) => outputPlugins(error, result, requestType))
+			.then(responseBody)
+			.catch((error) => errorPlugins(error)),
 	post: (url, body, requestType) =>
 		superagent
 			.post(`${API_ROOT}${url}`, body)
 			.use((request) => inputPlugins(request, requestType))
-			.end((result) => outputPlugins(result, requestType))
-			.then(responseBody),
+			.end((error, result) => outputPlugins(error, result, requestType))
+			.then(responseBody)
+			.catch((error) => errorPlugins(error)),
 	put: (url, body, requestType) =>
 		superagent
 			.put(`${API_ROOT}${url}`, body)
 			.use((request) => inputPlugins(request, requestType))
-			.end((result) => outputPlugins(result, requestType))
-			.then(responseBody),
+			.end((error, result) => outputPlugins(error, result, requestType))
+			.then(responseBody)
+			.catch((error) => errorPlugins(error)),
 	del: (url, requestType) =>
 		superagent
 			.del(`${API_ROOT}${url}`)
 			.use((request) => inputPlugins(request, requestType))
-			.end((result) => outputPlugins(result, requestType))
+			.end((error, result) => outputPlugins(error, result, requestType))
 			.then(responseBody)
+			.catch((error) => errorPlugins(error))
 };
 
 // API endpoints.

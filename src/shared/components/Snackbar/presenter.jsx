@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import CloseIcon from '@material-ui/icons/Close';
 import IconButton from '@material-ui/core/IconButton';
@@ -14,24 +15,28 @@ import amber from '@material-ui/core/colors/amber';
 import red from '@material-ui/core/colors/red';
 
 
+/* eslint-disable prefer-destructuring */
 const StyledSnackbarContent = styled(SnackbarContent)`
+	flex-wrap: nowrap !important;
 	background-color: ${(props) => {
 		let color = null;
 
 		switch (props.type) {
+			case 'info': color = blue[600]; break;
 			case 'success': color = green[600]; break;
 			case 'warning': color = amber[700]; break;
-			case 'error': color = red[700]; break;
-			default: color = blue[600];
+			case 'error': color = red[700];
 		}
 
 		return color;
-	}};
+	}} !important;
 `;
+/* eslint-enable prefer-destructuring */
 
 const StyledSpan = styled.span`
 	display: flex;
 	align-items: center;
+	white-space: pre-line;
 `;
 
 const StyledCloseIcon = styled(CloseIcon)`
@@ -62,45 +67,77 @@ const StyledErrorIcon = styled(ErrorIcon)`
 	margin-right: 1em;
 `;
 
+
 export default class Presenter extends React.Component {
+	determineAction(action, renderClose, onClose) {
+		let result = [];
+		const close = (
+			<IconButton
+				key='close'
+				aria-label='Close'
+				color='inherit'
+				onClick={onClose}
+			>
+				<StyledCloseIcon />
+			</IconButton>
+		);
+
+		if (!action) { // No action given.
+			result.push(close);
+		} else if (renderClose) { // Action given, still want default button.
+			result.push(action);
+			result.push(close);
+		} else { // Use only provided actions.
+			result = action;
+		}
+
+		return result;
+	}
+
 	determineIconType(type) {
 		let Icon = null;
 
 		switch (type) {
+			case 'info': Icon = StyledInfoIcon; break;
 			case 'success': Icon = StyledCheckCircleIcon; break;
 			case 'warning': Icon = StyledWarningIcon; break;
-			case 'error': Icon = StyledErrorIcon; break;
-			default: Icon = StyledInfoIcon;
+			case 'error': Icon = StyledErrorIcon;
 		}
 
 		return Icon;
 	}
 
 	render() {
-		const { type, message, onClose } = this.props;
+		const {
+			isOpen, content, anchorOrigin, onClose
+		} = this.props;
+
+		const {
+			type, duration, message
+		} = content;
+
+		const action = this.determineAction(this.props.action, this.props.renderClose, onClose);
 		const Icon = this.determineIconType(type);
 
 		return (
-			<StyledSnackbarContent
-				type={type}
-				aria-describedby='client-snackbar'
-				message={
-					<StyledSpan id='client-snackbar'>
-						<Icon />
-						{message}
-					</StyledSpan>
-				}
-				action={[
-					<IconButton
-						key='close'
-						aria-label='Close'
-						color='inherit'
-						onClick={onClose}
-					>
-						<StyledCloseIcon />
-					</IconButton>
-				]}
-			/>
+			<Snackbar
+				open={isOpen}
+				autoHideDuration={duration}
+				anchorOrigin={anchorOrigin}
+				onClose={onClose}
+			>
+				<StyledSnackbarContent
+					type={type}
+					onClose={onClose}
+					message={
+						<StyledSpan>
+							<Icon />
+							{message}
+						</StyledSpan>
+					}
+					action={action}
+				/>
+			</Snackbar>
 		);
 	}
 }

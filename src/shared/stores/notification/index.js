@@ -11,22 +11,26 @@ class NotificationStore {
 	}
 
 	@action
-	addNotification(type = notificationTypes.INFO, message = '') {
-		const notification = {
-			type,
-			message
-		};
+	addNotification(notification = {
+		content: {
+			type: notificationTypes.INFO,
+			duration: 6000,
+			message: ''
+		},
+		anchorOrigin: {
+			vertical: 'bottom',
+			horizontal: 'center'
+		},
+		renderClose: true,
+		action: null
+	}) {
 
 		this.notifications.push(notification);
 	}
 
-	@computed
-	get nextNotification() {
-		const notification = this.notificationStore.notifications[0];
-
-		this.notificationStore.notifications.splice(0, 1);
-
-		return notification;
+	@action
+	nextNotification() {
+		return this.notifications.shift();
 	}
 
 	@computed

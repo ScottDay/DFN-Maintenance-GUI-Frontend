@@ -1,25 +1,34 @@
 import { action, observable } from 'mobx';
 
+import { notificationTypes } from 'constants';
+
 
 class Store {
-	@observable open;
-	@observable notification;
+	@observable isOpen = false;
 
-	constructor() {
-		this.open = false;
-		this.notification = null;
+	@observable notification = {
+		content: {
+			type: notificationTypes.INFO,
+			duration: 6000,
+			message: ''
+		},
+		anchorOrigin: {
+			vertical: 'bottom',
+			horizontal: 'center'
+		},
+		renderClose: true,
+		action: null
 	}
 
-	@action
-	setNotification(notification) {
-		this.open = true;
+	@action.bound
+	open(notification) {
+		this.isOpen = true;
 		this.notification = notification;
 	}
 
-	@action
-	reset() {
-		this.open = false;
-		this.notification = null;
+	@action.bound
+	close() {
+		this.isOpen = false;
 	}
 }
 
