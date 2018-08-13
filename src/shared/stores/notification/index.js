@@ -10,7 +10,7 @@ class NotificationStore {
 		this.notifications = observable([]);
 	}
 
-	@action
+	@action.bound
 	addNotification(notification = {
 		content: {
 			type: notificationTypes.INFO,
@@ -28,9 +28,14 @@ class NotificationStore {
 		this.notifications.push(notification);
 	}
 
-	@action
+	@action.bound
 	nextNotification() {
 		return this.notifications.shift();
+	}
+
+	@action.bound
+	reset() {
+		this.notifications.length = 0;
 	}
 
 	@computed

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import { configure } from 'mobx';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 
@@ -9,6 +9,7 @@ import { PageNotFound, Login } from 'modules';
 import lightTheme from 'themes/lightTheme';
 // eslint-disable-next-line no-unused-vars
 import { ProtectedRoute, Snackbar } from 'components';
+import { historyService } from 'services';
 
 import App from './App';
 
@@ -19,7 +20,7 @@ configure({
 
 render(
 	<MuiThemeProvider theme={createMuiTheme(lightTheme)}>
-		<BrowserRouter>
+		<Router history={historyService}>
 			<div id='app-inner'>
 				<div className='preloaderbar hide'>
 					<span className='bar' />
@@ -34,7 +35,7 @@ render(
 				</div>
 				<Snackbar />
 			</div>
-		</BrowserRouter>
+		</Router>
 	</MuiThemeProvider>,
 	document.getElementById('app-container')
 );

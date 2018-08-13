@@ -1,7 +1,8 @@
-import * as api from './api';
+import * as apiService from './api';
+import historyService from './history';
 
 
 export {
-	// eslint-disable-next-line
-	api
+	apiService,
+	historyService
 }

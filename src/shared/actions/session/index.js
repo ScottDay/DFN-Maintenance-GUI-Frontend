@@ -1,22 +1,21 @@
-import browserHistory from 'react-router-dom';
-
-import { api } from 'services';
-import { sessionStore } from 'stores';
+import { apiService, historyService } from 'services';
+import { sessionStore, notificationStore } from 'stores';
 
 
 function fetchHostname() {
-	api.Session
+	apiService.Session
 		.hostname()
 		.then((hostname) => sessionStore.setHostname(hostname));
 }
 
 function logout() {
 	sessionStore.reset();
-	browserHistory.push('/login');
+	notificationStore.reset();
+	historyService.push('/login');
 }
 
 function authenticate() {
-	api.Session
+	apiService.Session
 		.check(sessionStore.token)
 		.then((token) => sessionStore.setToken(token));
 }

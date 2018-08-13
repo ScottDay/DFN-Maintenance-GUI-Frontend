@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Sidenav } from 'components';
+import { Sidenav, Header } from 'components';
 
 
 export default class App extends React.Component {
@@ -8,6 +8,10 @@ export default class App extends React.Component {
 		return (
 			<div className='main-app-container'>
 				<Sidenav />
+
+				<section className='app-page-container'>
+					<Header />
+				</section>
 			</div>
 		);
 	}

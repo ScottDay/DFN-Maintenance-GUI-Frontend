@@ -8,7 +8,7 @@ class RequestStore {
 		this.requests = observable.map({});
 	}
 
-	@action
+	@action.bound
 	setRequestInProgress(requestType, inProcess) {
 		this.requests.set(requestType, inProcess);
 	}

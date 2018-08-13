@@ -22,22 +22,22 @@ class SessionStore {
 		)
 	}
 
-	@action
+	@action.bound
 	setHostname(hostname) {
 		this.hostname = hostname;
 	}
 
-	@action
+	@action.bound
 	setToken(token) {
 		this.token = token;
 	}
 
-	@action
+	@action.bound
 	setAuthenticated(authenticated) {
 		this.authenticated = authenticated;
 	}
 
-	@action
+	@action.bound
 	reset() {
 		this.hostname = '';
 		this.token = null;

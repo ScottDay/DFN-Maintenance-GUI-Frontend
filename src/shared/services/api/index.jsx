@@ -62,7 +62,7 @@ const errorPlugins = (error) => {
 			notificationStore.addNotification({
 				content: {
 					type: notificationTypes.ERROR,
-					duration: null,
+					duration: 10000,
 					message: "Unable to connect to the backend server...\n\n" +
 						"Ensure the camera box is on and you're properly connected to it."
 				},

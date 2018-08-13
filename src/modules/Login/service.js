@@ -1,11 +1,11 @@
-import { api } from 'services';
+import { apiService } from 'services';
 import { sessionStore } from 'stores';
 
 import store from './store';
 
 
 function login(username, password) {
-	api.Session
+	apiService.Session
 		.generate(username, password)
 		.then((token) => {
 			store.reset();

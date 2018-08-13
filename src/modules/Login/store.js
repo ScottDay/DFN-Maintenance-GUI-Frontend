@@ -10,17 +10,17 @@ class Store {
 		this.password = '';
 	}
 
-	@action
+	@action.bound
 	setUsername(username) {
 		this.username = username
 	}
 
-	@action
+	@action.bound
 	setPassword(password) {
 		this.password = password
 	}
 
-	@action
+	@action.bound
 	reset() {
 		this.username = '';
 		this.password = '';
