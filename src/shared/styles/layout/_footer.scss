@@ -22,6 +22,8 @@
         color: $text-muted;
 
         .brand {
+			padding-left: 4px;
+			padding-right: 4px;
             color: $body-color;
             text-transform: uppercase;
             letter-spacing: 0.02em;
@@ -29,7 +31,8 @@
 
         .material-icons {
             font-size: $font-size-sm;
-            vertical-align: text-top;
+			vertical-align: text-top;
+			color: red;
         }
     }
 }

@@ -3,6 +3,7 @@ import Snackbar from './Snackbar';
 import IconButtonWrapper from './IconButtonWrapper';
 import Sidenav from './Sidenav';
 import Header from './Header';
+import Footer from './Footer';
 
 
 export {
@@ -10,5 +11,6 @@ export {
 	Snackbar,
 	IconButtonWrapper,
 	Sidenav,
-	Header
+	Header,
+	Footer
 }

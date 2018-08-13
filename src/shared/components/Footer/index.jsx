@@ -5,10 +5,10 @@ import { links } from 'constants';
 import Presenter from './presenter';
 
 
-export default class Sidenav extends React.Component {
+export default class Footer extends React.Component {
 	render() {
 		return (
-			<Presenter helpPage={links.HELP} />
+			<Presenter wikiPage={links.WIKI} />
 		);
 	}
 }
