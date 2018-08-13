@@ -18,6 +18,10 @@ const StyledButton = styled(Button)`
     padding-bottom: 18px !important;
 `;
 
+const StyledMoreVertIcon = styled(MoreVertIcon)`
+	color: #a1a1a1;
+`;
+
 const StyledMenuList = styled(MenuList)`
     height: inherit;
 `;
@@ -40,7 +44,7 @@ export default class Presenter extends React.Component {
 										aria-haspopup='true'
 										onClick={() => (store.isOpen ? store.setIsOpen(false) : store.setIsOpen(true))}
 									>
-										<MoreVertIcon />
+										<StyledMoreVertIcon />
 									</StyledButton>
 								</Target>
 								<Popper
