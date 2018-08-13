@@ -50,7 +50,13 @@ const errorPlugins = (error) => {
 	// NOTE: Throw an exception if you want the caller to handle an error as well.
 	switch (error.status) {
 		// Not authorized.
-		case 401: sessionAction.logout(); break;
+		case 401:
+			// Only auto logout if authentication is enabled.
+			if (process.env.auth) {
+				sessionAction.logout();
+			}
+
+			break;
 		// Connection error.
 		case undefined:
 			notificationStore.addNotification({

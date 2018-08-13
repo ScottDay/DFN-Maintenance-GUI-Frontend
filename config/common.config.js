@@ -5,12 +5,14 @@
  */
 const fs = require('fs');
 const path = require('path');
+const webpack = require('webpack');
 
 
 const npmBase = path.join(__dirname, '../../node_modules');
 
 class WebpackBaseConfig {
-	constructor() {
+	constructor(props) {
+		this.props = props;
 		this._config = {};
 	}
 
@@ -43,27 +45,11 @@ class WebpackBaseConfig {
 	}
 
 	/**
-	 * Get the environment name
-	 * @return {String} The current environment
-	 */
-	get env() {
-		return 'dev';
-	}
-
-	/**
 	 * Get the absolute path to src directory
 	 * @return {String}
 	 */
 	get srcPathAbsolute() {
 		return path.resolve('./src');
-	}
-
-	/**
-	 * Get the absolute path to tests directory
-	 * @return {String}
-	 */
-	get testPathAbsolute() {
-		return path.resolve('./test');
 	}
 
 	/**
@@ -126,7 +112,13 @@ class WebpackBaseConfig {
 					styles: `${this.srcPathAbsolute}/shared/styles`,
 					themes: `${this.srcPathAbsolute}/shared/themes`
 				}
-			}
+			},
+			plugins: [
+				new webpack.DefinePlugin({
+					'process.env.config': `${this.props.config}`,
+					'process.env.auth': `${this.props.auth}`
+				})
+			]
 		};
 	}
 }

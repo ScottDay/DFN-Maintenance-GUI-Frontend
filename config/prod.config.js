@@ -34,9 +34,6 @@ class WebpackProdConfig extends WebpackBaseConfig {
 				filename: 'assets/app.js'
 			},
 			plugins: [
-				new webpack.DefinePlugin({
-					'process.env.NODE_ENV': '"production"'
-				}),
 				new webpack.optimize.AggressiveMergingPlugin(),
 				new CopyWebpackPlugin([
 					{

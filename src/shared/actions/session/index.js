@@ -21,7 +21,7 @@ function authenticate() {
 		.check(sessionStore.token)
 		.then((token) => sessionStore.setToken(token))
 		.catch((error) => {
-			// TODO: Catch other error status codes
+			// TODO: Catch other error status codes.
 			if (error.status === 0) {
 				logout();
 			}

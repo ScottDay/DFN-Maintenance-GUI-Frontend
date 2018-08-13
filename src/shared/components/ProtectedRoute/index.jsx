@@ -11,14 +11,18 @@ import { requestTypes } from 'constants';
 export default class ProtectedRoute extends React.Component {
 	constructor(props) {
 		super(props);
-		sessionAction.authenticate();
+
+		// If authentication has been enabled then authenticate with backend.
+		if (process.env.auth) {
+			sessionAction.authenticate();
+		}
 	}
 
 	render() {
-		if (requestStore.getRequestByType(requestTypes.SESSION)) {
-			return <div>Loading...</div>;
-		} else if (sessionStore.authenticated) {
+		if (!process.env.auth || sessionStore.authenticated) {
 			return <Route {...this.props} />;
+		} else if (requestStore.getRequestByType(requestTypes.SESSION)) {
+			return <div>Loading...</div>;
 		}
 
 		return <Redirect to='/login' />;

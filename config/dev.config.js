@@ -8,8 +8,8 @@ const WebpackBaseConfig = require('./common.config');
 
 
 class WebpackDevConfig extends WebpackBaseConfig {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 
 		this.config = {
 			devtool: 'source-map',
@@ -33,9 +33,6 @@ class WebpackDevConfig extends WebpackBaseConfig {
 				'./index.jsx'
 			],
 			plugins: [
-				new webpack.DefinePlugin({
-					'process.env.NODE_ENV': '"development"'
-				}),
 				new webpack.HotModuleReplacementPlugin(),
 				new ProgressBarPlugin({
 					format: 'Build [:bar] :percent (:elapsed seconds)',

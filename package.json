@@ -16,10 +16,12 @@
         "npm": ">=4.0.2"
     },
     "scripts": {
-        "build": "webpack --progress --bail --env prod --mode production",
+        "build": "webpack --progress --bail --mode production --env.config=prod",
         "lint": "eslint ./src",
         "lint-fix": "eslint ./src --fix",
-        "start": "webpack-dev-server --env dev --mode development --open"
+		"start": "webpack-dev-server --mode development",
+        "start-open": "webpack-dev-server --mode development --open",
+		"start-noauth": "webpack-dev-server --mode development --env.auth=false"
     },
     "dependencies": {
         "history": "4.7.2",
