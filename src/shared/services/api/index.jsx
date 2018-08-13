@@ -32,25 +32,19 @@ const inputPlugins = (request, requestType) => {
 	}
 };
 
-const outputPlugins = (error, result, requestType) => {
+const outputPlugins = (result, requestType) => {
 	requestStore.setRequestInProgress(requestType, false);
-
-	if (error && error.status === 401) {
-		sessionAction.logout();
-	}
 
 	if ('production' !== process.env.NODE_ENV
 		&& result
 		&& result.response
 		&& result.response.status) {
 		// eslint-disable-next-line no-console
-		console.log(`${requestType}: ${result.response.status}`);
+		console.log(`DEBUG: ${requestType}: ${result.response.status}`);
 	}
 
-	return result;
+	return result.body;
 };
-
-const responseBody = (result) => result.body;
 
 const errorPlugins = (error) => {
 	// NOTE: Throw an exception if you want the caller to handle an error as well.
@@ -77,8 +71,9 @@ const errorPlugins = (error) => {
 			});
 
 			break;
-		default: throw error;
 	}
+
+	throw error;
 };
 
 const api = {
@@ -86,29 +81,27 @@ const api = {
 		superagent
 			.get(`${API_ROOT}${url}`)
 			.use((request) => inputPlugins(request, requestType))
-			.end((error, result) => outputPlugins(error, result, requestType))
-			.then(responseBody)
+			.then((result) => outputPlugins(result, requestType))
 			.catch((error) => errorPlugins(error)),
 	post: (url, body, requestType) =>
 		superagent
-			.post(`${API_ROOT}${url}`, body)
+			.post(`${API_ROOT}${url}`)
 			.use((request) => inputPlugins(request, requestType))
-			.end((error, result) => outputPlugins(error, result, requestType))
-			.then(responseBody)
+			.send(body)
+			.then((result) => outputPlugins(result, requestType))
 			.catch((error) => errorPlugins(error)),
 	put: (url, body, requestType) =>
 		superagent
-			.put(`${API_ROOT}${url}`, body)
+			.put(`${API_ROOT}${url}`)
 			.use((request) => inputPlugins(request, requestType))
-			.end((error, result) => outputPlugins(error, result, requestType))
-			.then(responseBody)
+			.send(body)
+			.then((result) => outputPlugins(result, requestType))
 			.catch((error) => errorPlugins(error)),
 	del: (url, requestType) =>
 		superagent
 			.del(`${API_ROOT}${url}`)
 			.use((request) => inputPlugins(request, requestType))
-			.end((error, result) => outputPlugins(error, result, requestType))
-			.then(responseBody)
+			.then((result) => outputPlugins(result, requestType))
 			.catch((error) => errorPlugins(error))
 };
 
