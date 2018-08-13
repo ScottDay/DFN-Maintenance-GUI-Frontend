@@ -1,6 +1,28 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 
 import { Sidenav, Header, Footer } from 'components';
+
+
+function StorageStub() {
+	return (<div>StorageStub</div>);
+}
+
+function CameraStub() {
+	return (<div>CameraStub</div>);
+}
+
+function NetworkStub() {
+	return (<div>NetworkStub</div>);
+}
+
+function LocationStub() {
+	return (<div>LocationStub</div>);
+}
+
+function AdvancedStub() {
+	return (<div>AdvancedStub</div>);
+}
 
 
 export default class App extends React.Component {
@@ -15,7 +37,13 @@ export default class App extends React.Component {
 					<div className='app-content-wrapper'>
 						<div className='app-content'>
 							<div className='full-height'>
-								<div />
+								<Switch>
+									<Route path='/' component={StorageStub} />
+									<Route path='/camera' component={CameraStub} />
+									<Route path='/network' component={NetworkStub} />
+									<Route path='/location' component={LocationStub} />
+									<Route path='/advanced' component={AdvancedStub} />
+								</Switch>
 							</div>
 						</div>
 
