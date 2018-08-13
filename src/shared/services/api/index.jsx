@@ -70,6 +70,10 @@ const errorPlugins = (error) => {
 				]
 			});
 
+			// Reassign to status code 0 for easier comparisons.
+			// eslint-disable-next-line no-param-reassign
+			error.status = 0;
+
 			break;
 	}
 

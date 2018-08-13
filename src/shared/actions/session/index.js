@@ -16,12 +16,16 @@ function logout() {
 	historyService.push('/login');
 }
 
-// TODO: Catch error status codes
 function authenticate() {
 	apiService.Session
 		.check(sessionStore.token)
 		.then((token) => sessionStore.setToken(token))
-		.catch(() => {});
+		.catch((error) => {
+			// TODO: Catch other error status codes
+			if (error.status === 0) {
+				logout();
+			}
+		});
 }
 
 
