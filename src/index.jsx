@@ -1,11 +1,14 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { configure } from 'mobx';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 
 import 'styles/main';
+import { PageNotFound, Login } from 'modules';
+import lightTheme from 'themes/lightTheme';
+import { ProtectedRoute, Snackbar } from 'components';
 
-import PageNotFound from './modules/PageNotFound';
 import App from './App';
 
 
@@ -14,12 +17,23 @@ configure({
 });
 
 render(
-	<HashRouter>
-		<Switch>
-			<Route path='/' component={App} />
-			<Route component={PageNotFound} />
-		</Switch>
-	</HashRouter>,
+	<MuiThemeProvider theme={createMuiTheme(lightTheme)}>
+		<BrowserRouter>
+			<div id='app-inner'>
+				<div className='preloaderbar hide'>
+					<span className='bar' />
+				</div>
+				<div className='app-main full-height fixed-header sidebar-sm'>
+					<Switch>
+						<Route exact path='/login' component={Login} />
+						<ProtectedRoute path='/' component={App} />
+						<Route component={PageNotFound} />
+					</Switch>
+				</div>
+				<Snackbar />
+			</div>
+		</BrowserRouter>
+	</MuiThemeProvider>,
 	document.getElementById('app-container')
 );
 

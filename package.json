@@ -19,7 +19,7 @@
         "build": "webpack --progress --bail --env prod --mode production",
         "lint": "eslint ./src",
         "lint-fix": "eslint ./src --fix",
-        "start": "webpack-dev-server --env dev --mode development"
+        "start": "webpack-dev-server --env dev --mode development --open"
     },
     "dependencies": {
         "@material-ui/core": "1.4.3",
