@@ -7,6 +7,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 import 'styles/main';
 import { PageNotFound, Login } from 'modules';
 import lightTheme from 'themes/lightTheme';
+// eslint-disable-next-line no-unused-vars
 import { ProtectedRoute, Snackbar } from 'components';
 
 import App from './App';
@@ -26,7 +27,8 @@ render(
 				<div className='app-main full-height fixed-header sidebar-sm'>
 					<Switch>
 						<Route exact path='/login' component={Login} />
-						<ProtectedRoute path='/' component={App} />
+						{/* <ProtectedRoute path='/' component={App} /> */}
+						<Route path='/' component={App} />
 						<Route component={PageNotFound} />
 					</Switch>
 				</div>
