@@ -38,13 +38,11 @@ const outputPlugins = (result, url) => {
 	requestStore.setRequestInProgress(url, false);
 	requestStore.setRequestInProgress(requestType(url), false);
 
-
-	if ('production' !== process.env.NODE_ENV
+	if (process.env.NODE_ENV === 'development'
 		&& result
-		&& result.response
-		&& result.response.status) {
+		&& result.body) {
 		// eslint-disable-next-line no-console
-		console.log(`DEBUG: ${requestType(url)}: ${result.response.status}`);
+		console.log(`DEBUG: ${url}\n\n${JSON.stringify(result.body)}`);
 	}
 
 	return result.body;

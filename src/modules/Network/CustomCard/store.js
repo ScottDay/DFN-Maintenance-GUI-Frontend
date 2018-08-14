@@ -1,7 +1,7 @@
 import { action, computed, observable } from 'mobx';
 
 
-class Store {
+export default class Store {
 	@observable isOpen = false;
 	@observable summary = '';
 	@observable message = '';
@@ -21,22 +21,32 @@ class Store {
 		this.message = message;
 	}
 
+	@action.bound
+	reset() {
+		this.isOpen = false;
+		this.summary = '';
+		this.message = '';
+	}
+
 	@computed
 	get shouldDisplaySummary() {
-		return this.summary.length > 0;
+		let result = false;
+
+		if (this.summary != null && this.summary.length > 0) {
+			result = true;
+		}
+
+		return result;
 	}
 
 	@computed
 	get canDisplayContent() {
 		let result = false;
 
-		if (this.isOpen && this.message && this.message.length > 0) {
+		if (this.message && this.message.length > 0) {
 			result = true;
 		}
 
 		return result;
 	}
 }
-
-
-export default new Store();

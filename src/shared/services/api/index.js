@@ -3,6 +3,7 @@ import { endpoints } from 'constants';
 import api from './superagent';
 
 
+// TODO: Rename this to session.
 const Session = {
 	check: (token) =>
 		api.post(endpoints.session.check, token),
@@ -12,7 +13,7 @@ const Session = {
 		api.get(endpoints.session.hostname)
 };
 
-const Network = {
+const network = {
 	checkInternet: () =>
 		api.get(endpoints.network.checkInternet)
 };
@@ -20,5 +21,5 @@ const Network = {
 
 export {
 	Session,
-	Network
+	network
 }
