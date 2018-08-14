@@ -2,11 +2,8 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import { Sidenav, Header, Footer } from 'components';
+import { Storage } from 'modules';
 
-
-function StorageStub() {
-	return (<div>StorageStub</div>);
-}
 
 function CameraStub() {
 	return (<div>CameraStub</div>);
@@ -38,7 +35,7 @@ export default class App extends React.Component {
 						<div className='app-content'>
 							<div className='full-height'>
 								<Switch>
-									<Route path='/' component={StorageStub} />
+									<Route path='/' component={Storage} />
 									<Route path='/camera' component={CameraStub} />
 									<Route path='/network' component={NetworkStub} />
 									<Route path='/location' component={LocationStub} />
