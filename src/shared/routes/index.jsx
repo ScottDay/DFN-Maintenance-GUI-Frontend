@@ -1,14 +1,10 @@
 import React from 'react';
 
-import { Storage } from 'modules';
+import { Storage, Network } from 'modules';
 
 
 function CameraStub() {
 	return (<div>CameraStub</div>);
-}
-
-function NetworkStub() {
-	return (<div>NetworkStub</div>);
 }
 
 function LocationStub() {
@@ -22,7 +18,7 @@ function AdvancedStub() {
 const appRoutes = [
 	{ path: '', name: 'StoragePage', component: Storage },
 	{ path: '/camera', name: 'CameraPage', component: CameraStub },
-	{ path: '/network', name: 'NetworkPage', component: NetworkStub },
+	{ path: '/network', name: 'NetworkPage', component: Network },
 	{ path: '/location', name: 'LocationPage', component: LocationStub },
 	{ path: '/advanced', name: 'AdvancedPage', component: AdvancedStub }
 ];
