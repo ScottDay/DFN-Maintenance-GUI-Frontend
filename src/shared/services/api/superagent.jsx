@@ -7,13 +7,11 @@ import RefreshIcon from '@material-ui/icons/Refresh';
 
 import { sessionAction } from 'actions';
 import { sessionStore, requestStore, notificationStore } from 'stores';
-import { requestTypes, notificationTypes } from 'constants';
+import { notificationTypes } from 'constants';
 import { IconButtonWrapper } from 'components';
 
 
-// API middleware.
-
-const API_ROOT = `http://${window.location.hostname}:5000/api`;
+const API_ROOT = `http://${window.location.hostname}:5000/api/`;
 const superagent = superagentDefaults(superagentPromise(_superagent, global.Promise));
 
 superagent
@@ -23,24 +21,30 @@ superagent
 	.set('Access-Control-Allow-Credentials', 'true')
 	.set('Content-Type', 'application/json;charset=UTF-8');
 
+function requestType(str) {
+	return str.substring(0, str.indexOf('/'));
+}
 
-const inputPlugins = (request, requestType) => {
-	requestStore.setRequestInProgress(requestType, true);
+const inputPlugins = (request, url) => {
+	requestStore.setRequestInProgress(url, true);
+	requestStore.setRequestInProgress(requestType(url), true);
 
 	if (sessionStore.token) {
 		request.set('authorization', `Token ${sessionStore.token}`);
 	}
 };
 
-const outputPlugins = (result, requestType) => {
-	requestStore.setRequestInProgress(requestType, false);
+const outputPlugins = (result, url) => {
+	requestStore.setRequestInProgress(url, false);
+	requestStore.setRequestInProgress(requestType(url), false);
+
 
 	if ('production' !== process.env.NODE_ENV
 		&& result
 		&& result.response
 		&& result.response.status) {
 		// eslint-disable-next-line no-console
-		console.log(`DEBUG: ${requestType}: ${result.response.status}`);
+		console.log(`DEBUG: ${requestType(url)}: ${result.response.status}`);
 	}
 
 	return result.body;
@@ -87,47 +91,33 @@ const errorPlugins = (error) => {
 };
 
 const api = {
-	get: (url, requestType) =>
+	get: (url) =>
 		superagent
 			.get(`${API_ROOT}${url}`)
-			.use((request) => inputPlugins(request, requestType))
-			.then((result) => outputPlugins(result, requestType))
+			.use((request) => inputPlugins(request, url))
+			.then((result) => outputPlugins(result, url))
 			.catch((error) => errorPlugins(error)),
-	post: (url, body, requestType) =>
+	post: (url, body) =>
 		superagent
 			.post(`${API_ROOT}${url}`)
-			.use((request) => inputPlugins(request, requestType))
+			.use((request) => inputPlugins(request, url))
 			.send(body)
-			.then((result) => outputPlugins(result, requestType))
+			.then((result) => outputPlugins(result, url))
 			.catch((error) => errorPlugins(error)),
-	put: (url, body, requestType) =>
+	put: (url, body) =>
 		superagent
 			.put(`${API_ROOT}${url}`)
-			.use((request) => inputPlugins(request, requestType))
+			.use((request) => inputPlugins(request, url))
 			.send(body)
-			.then((result) => outputPlugins(result, requestType))
+			.then((result) => outputPlugins(result, url))
 			.catch((error) => errorPlugins(error)),
-	del: (url, requestType) =>
+	del: (url) =>
 		superagent
 			.del(`${API_ROOT}${url}`)
-			.use((request) => inputPlugins(request, requestType))
-			.then((result) => outputPlugins(result, requestType))
+			.use((request) => inputPlugins(request, url))
+			.then((result) => outputPlugins(result, url))
 			.catch((error) => errorPlugins(error))
 };
 
-// API endpoints.
 
-const Session = {
-	check: (token) =>
-		api.post('/token/check', token, requestTypes.SESSION),
-	generate: (username, password) =>
-		api.post('/token/generate', { username, password }, requestTypes.SESSION),
-	hostname: () =>
-		api.get('/hostname', requestTypes.SESSION)
-}
-
-
-export {
-	// eslint-disable-next-line
-	Session
-}
+export default api;

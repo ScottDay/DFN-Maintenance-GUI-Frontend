@@ -1,10 +1,10 @@
-import * as requestTypes from './requestTypes';
 import * as notificationTypes from './notificationTypes';
 import * as links from './links';
+import * as endpoints from './endpoints';
 
 
 export {
-	requestTypes,
 	notificationTypes,
-	links
+	links,
+	endpoints
 }
