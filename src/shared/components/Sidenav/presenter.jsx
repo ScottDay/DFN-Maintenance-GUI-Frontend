@@ -33,7 +33,7 @@ export default class Presenter extends React.Component {
 						<li className='nav-divider' />
 
 						<li>
-							<Button href='/'>
+							<Button href='/app'>
 								<StorageIcon className='nav-icon' />
 								<span className='nav-text'>
 									Storage
@@ -41,7 +41,7 @@ export default class Presenter extends React.Component {
 							</Button>
 						</li>
 						<li>
-							<Button href='/camera'>
+							<Button href='/app/camera'>
 								<PhotoCameraIcon className='nav-icon' />
 								<span className='nav-text'>
 									Camera
@@ -49,7 +49,7 @@ export default class Presenter extends React.Component {
 							</Button>
 						</li>
 						<li>
-							<Button href='/network'>
+							<Button href='/app/network'>
 								<NetworkCellIcon className='nav-icon' />
 								<span className='nav-text'>
 									Network
@@ -57,7 +57,7 @@ export default class Presenter extends React.Component {
 							</Button>
 						</li>
 						<li>
-							<Button href='/location'>
+							<Button href='/app/location'>
 								<MyLocationIcon className='nav-icon' />
 								<span className='nav-text'>
 									Location
@@ -65,7 +65,7 @@ export default class Presenter extends React.Component {
 							</Button>
 						</li>
 						<li>
-							<Button href='/advanced'>
+							<Button href='/app/advanced'>
 								<SettingsApplicationsIcon className='nav-icon' />
 								<span className='nav-text'>
 									Advanced

@@ -98,7 +98,7 @@ class WebpackBaseConfig {
 			output: {
 				path: path.resolve('./dist/assets'),
 				filename: 'app.js',
-				publicPath: './assets/'
+				publicPath: '/'
 			},
 			resolve: {
 				extensions: ['.js', '.jsx', '.json', '.scss'],
@@ -107,6 +107,7 @@ class WebpackBaseConfig {
 					actions: `${this.srcPathAbsolute}/shared/actions`,
 					components: `${this.srcPathAbsolute}/shared/components`,
 					constants: `${this.srcPathAbsolute}/shared/constants`,
+					routes: `${this.srcPathAbsolute}/shared/routes`,
 					services: `${this.srcPathAbsolute}/shared/services`,
 					stores: `${this.srcPathAbsolute}/shared/stores`,
 					styles: `${this.srcPathAbsolute}/shared/styles`,

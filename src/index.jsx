@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, Switch } from 'react-router-dom';
+import { Redirect, Router, Route, Switch } from 'react-router-dom';
 import { configure } from 'mobx';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 
@@ -9,6 +9,7 @@ import { PageNotFound, Login } from 'modules';
 import lightTheme from 'themes/lightTheme';
 import { ProtectedRoute, Snackbar } from 'components';
 import { historyService } from 'services';
+import { appRoutes } from 'routes';
 
 import App from './App';
 
@@ -26,8 +27,24 @@ render(
 				</div>
 				<div className='app-main full-height fixed-header sidebar-sm'>
 					<Switch>
-						<Route exact path='/login' component={Login} />
-						<ProtectedRoute path='/' component={App} />
+						<Route
+							exact
+							path='/login'
+							component={Login}
+						/>
+						<ProtectedRoute
+							path='/app'
+							render={(props) => <App routes={appRoutes} path={props.match.path} />}
+						/>
+						<Route
+							exact
+							path='/'
+							render={() => <Redirect to='/app' />}
+						/>
+						<Route
+							path='/404'
+							component={PageNotFound}
+						/>
 						<Route component={PageNotFound} />
 					</Switch>
 				</div>

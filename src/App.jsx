@@ -1,29 +1,13 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 import { Sidenav, Header, Footer } from 'components';
-import { Storage } from 'modules';
-
-
-function CameraStub() {
-	return (<div>CameraStub</div>);
-}
-
-function NetworkStub() {
-	return (<div>NetworkStub</div>);
-}
-
-function LocationStub() {
-	return (<div>LocationStub</div>);
-}
-
-function AdvancedStub() {
-	return (<div>AdvancedStub</div>);
-}
 
 
 export default class App extends React.Component {
 	render() {
+		const { routes, path } = this.props;
+
 		return (
 			<div className='main-app-container'>
 				<Sidenav />
@@ -35,11 +19,20 @@ export default class App extends React.Component {
 						<div className='app-content'>
 							<div className='full-height'>
 								<Switch>
-									<Route path='/' component={Storage} />
-									<Route path='/camera' component={CameraStub} />
-									<Route path='/network' component={NetworkStub} />
-									<Route path='/location' component={LocationStub} />
-									<Route path='/advanced' component={AdvancedStub} />
+									{/* eslint-disable-next-line */}
+									{routes.map((prop) => {
+										return (
+											<Route
+												exact
+												path={`${path}${prop.path}`}
+												key={prop.name}
+												component={prop.component}
+											/>);
+									})}
+									<Redirect
+										from={`${path}`}
+										to='/404'
+									/>
 								</Switch>
 							</div>
 						</div>
