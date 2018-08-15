@@ -4,7 +4,7 @@ import { sessionStore, notificationStore } from 'stores';
 
 // TODO: Catch error status codes
 function fetchHostname() {
-	apiService.Session
+	apiService.session
 		.hostname()
 		.then((hostname) => sessionStore.setHostname(hostname))
 		.catch(() => {});
@@ -17,7 +17,7 @@ function logout() {
 }
 
 function authenticate() {
-	apiService.Session
+	apiService.session
 		.check(sessionStore.token)
 		.then((token) => sessionStore.setToken(token))
 		.catch((error) => {

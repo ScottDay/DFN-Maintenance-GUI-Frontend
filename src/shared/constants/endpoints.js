@@ -5,5 +5,8 @@ export const session = {
 };
 
 export const network = {
-	checkInternet: 'network/internet/check'
+	checkInternet: 'network/internet/check',
+	restartInternet: 'network/internet/restart',
+	checkVPN: 'network/vpn/check',
+	restartVPN: 'network/vpn/restart'
 };

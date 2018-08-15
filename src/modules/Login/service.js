@@ -6,7 +6,7 @@ import store from './store';
 
 // TODO: Catch error status codes
 function login(username, password) {
-	apiService.Session
+	apiService.session
 		.generate(username, password)
 		.then((token) => {
 			store.reset();

@@ -48,7 +48,10 @@ const outputPlugins = (result, url) => {
 	return result.body;
 };
 
-const errorPlugins = (error) => {
+const errorPlugins = (error, url) => {
+	requestStore.setRequestInProgress(url, false);
+	requestStore.setRequestInProgress(requestType(url), false);
+
 	// NOTE: Throw an exception if you want the caller to handle an error as well.
 	switch (error.status) {
 		// Not authorized.
@@ -59,6 +62,17 @@ const errorPlugins = (error) => {
 			}
 
 			break;
+		// Error while executing a backend command.
+		case 500:
+			notificationStore.addNotification({
+				content: {
+					type: notificationTypes.ERROR,
+					message: `Command: ${error.response.body.cmd}\n\nOutput: ${error.response.body.output}`
+				}
+			});
+
+			break;
+
 		// Connection error.
 		case undefined:
 			notificationStore.addNotification({
@@ -94,27 +108,27 @@ const api = {
 			.get(`${API_ROOT}${url}`)
 			.use((request) => inputPlugins(request, url))
 			.then((result) => outputPlugins(result, url))
-			.catch((error) => errorPlugins(error)),
+			.catch((error) => errorPlugins(error, url)),
 	post: (url, body) =>
 		superagent
 			.post(`${API_ROOT}${url}`)
 			.use((request) => inputPlugins(request, url))
 			.send(body)
 			.then((result) => outputPlugins(result, url))
-			.catch((error) => errorPlugins(error)),
+			.catch((error) => errorPlugins(error, url)),
 	put: (url, body) =>
 		superagent
 			.put(`${API_ROOT}${url}`)
 			.use((request) => inputPlugins(request, url))
 			.send(body)
 			.then((result) => outputPlugins(result, url))
-			.catch((error) => errorPlugins(error)),
+			.catch((error) => errorPlugins(error, url)),
 	del: (url) =>
 		superagent
 			.del(`${API_ROOT}${url}`)
 			.use((request) => inputPlugins(request, url))
 			.then((result) => outputPlugins(result, url))
-			.catch((error) => errorPlugins(error))
+			.catch((error) => errorPlugins(error, url))
 };
 
 

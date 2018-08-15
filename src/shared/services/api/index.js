@@ -3,8 +3,7 @@ import { endpoints } from 'constants';
 import api from './superagent';
 
 
-// TODO: Rename this to session.
-const Session = {
+const session = {
 	check: (token) =>
 		api.post(endpoints.session.check, token),
 	generate: (username, password) =>
@@ -15,11 +14,17 @@ const Session = {
 
 const network = {
 	checkInternet: () =>
-		api.get(endpoints.network.checkInternet)
+		api.get(endpoints.network.checkInternet),
+	restartInternet: () =>
+		api.get(endpoints.network.restartInternet),
+	checkVPN: () =>
+		api.get(endpoints.network.checkVPN),
+	restartVPN: () =>
+		api.get(endpoints.network.restartVPN)
 };
 
 
 export {
-	Session,
+	session,
 	network
 }

@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-
 import { apiService } from 'services';
 import { notificationStore } from 'stores';
 import { notificationTypes } from 'constants';
@@ -14,24 +12,61 @@ function checkInternet(store) {
 		})
 		.catch(() => {
 			store.reset();
-
-			notificationStore.addNotification({
-				content: {
-					type: notificationTypes.ERROR,
-					message: "Error while executing command..."
-				}
-			});
 		});
 }
 
-// TODO: Implement.
-function restartInternet() {
-	console.log("RESTART INTERNET STUB");
+function restartInternet(store) {
+	apiService.network
+		.restartInternet()
+		.then((body) => {
+			store.setMessage(body.output);
+
+			notificationStore.addNotification({
+				content: {
+					type: notificationTypes.SUCCESS,
+					message: 'Successfully restarted the network interface!'
+				}
+			});
+		})
+		.catch(() => {
+			store.reset();
+		});
+}
+
+function checkVPN(store) {
+	apiService.network
+		.checkVPN()
+		.then((body) => {
+			store.setSummary(`VPN IP Address: ${body.ip}`);
+			store.setMessage(body.output);
+		})
+		.catch(() => {
+			store.reset();
+		});
+}
+
+function restartVPN(store) {
+	apiService.network
+		.restartVPN()
+		.then((body) => {
+			store.setMessage(body.output);
+
+			notificationStore.addNotification({
+				content: {
+					type: notificationTypes.SUCCESS,
+					message: 'Successfully restarted the VPN daemon!'
+				}
+			});
+		})
+		.catch(() => {
+			store.reset();
+		});
 }
 
 
 export {
 	checkInternet,
-	restartInternet
+	restartInternet,
+	checkVPN,
+	restartVPN
 }
-/* eslint-enable no-console */
