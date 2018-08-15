@@ -1,17 +1,15 @@
 import React from 'react';
 
+import { Page } from 'components';
+
 
 export default class Presenter extends React.Component {
 	render() {
 		return (
-			<div className='container-fluid with-maxwidth chapter'>
-				<article className='article'>
-					<h2 className='article-title'>Advanced</h2>
-					{/* Update buttons (python software, leostick firmware, maintenance gui) */}
+			<Page title='Advanced'>
+				{/* Update buttons (python software, leostick firmware, maintenance gui) */}
 
-
-				</article>
-			</div>
+			</Page>
 		);
 	}
 }

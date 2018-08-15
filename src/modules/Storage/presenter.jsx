@@ -1,14 +1,14 @@
 import React from 'react';
 
+import { Page } from 'components';
+
 
 export default class Presenter extends React.Component {
 	render() {
 		return (
-			<div className='container-fluid with-maxwidth no-breadcrumbs page-dashboard'>
-				<div>
-					Storage
-				</div>
-			</div>
+			<Page title='Storage'>
+				<div />
+			</Page>
 		);
 	}
 }

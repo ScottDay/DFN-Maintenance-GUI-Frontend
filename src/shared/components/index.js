@@ -4,6 +4,8 @@ import IconButtonWrapper from './IconButtonWrapper';
 import Sidenav from './Sidenav';
 import Header from './Header';
 import Footer from './Footer';
+import CustomCard from './CustomCard';
+import Page from './Page';
 
 
 export {
@@ -12,5 +14,7 @@ export {
 	IconButtonWrapper,
 	Sidenav,
 	Header,
-	Footer
+	Footer,
+	CustomCard,
+	Page
 }
