@@ -4,10 +4,10 @@ import api from './superagent';
 
 
 const session = {
-	check: (token) =>
-		api.post(endpoints.session.check, token),
-	generate: (username, password) =>
-		api.post(endpoints.session.generate, { username, password }),
+	check: () =>
+		api.get(endpoints.session.check),
+	auth: (username, password) =>
+		api.post(endpoints.session.auth, { username, password }),
 	hostname: () =>
 		api.get(endpoints.session.hostname)
 };

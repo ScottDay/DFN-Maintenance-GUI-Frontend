@@ -32,18 +32,19 @@ class WebpackDevConfig extends WebpackBaseConfig {
 				'react-hot-loader/patch',
 				'./index.jsx'
 			],
-			plugins: [
-				new webpack.HotModuleReplacementPlugin(),
-				new ProgressBarPlugin({
-					format: 'Build [:bar] :percent (:elapsed seconds)',
-					clear: true
-				})
-			],
 			optimization: {
 				namedModules: true,
 				concatenateModules: true
 			}
 		};
+
+		this.config.plugins = this.config.plugins.concat([
+			new webpack.HotModuleReplacementPlugin(),
+			new ProgressBarPlugin({
+				format: 'Build [:bar] :percent (:elapsed seconds)',
+				clear: true
+			})
+		]);
 	}
 }
 

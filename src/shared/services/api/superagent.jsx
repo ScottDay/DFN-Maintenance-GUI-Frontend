@@ -11,7 +11,7 @@ import { notificationTypes } from 'constants';
 import { IconButtonWrapper } from 'components';
 
 
-const API_ROOT = `http://${window.location.hostname}:5000/api/`;
+const ROOT_URL = `http://${window.location.hostname}:5000`;
 const superagent = superagentDefaults(superagentPromise(_superagent, global.Promise));
 
 superagent
@@ -21,23 +21,15 @@ superagent
 	.set('Access-Control-Allow-Credentials', 'true')
 	.set('Content-Type', 'application/json;charset=UTF-8');
 
-function requestType(str) {
-	return str.substring(0, str.indexOf('/'));
-}
-
 const inputPlugins = (request, url) => {
 	requestStore.setRequestInProgress(url, true);
-	requestStore.setRequestInProgress(requestType(url), true);
 
 	if (sessionStore.token) {
-		request.set('authorization', `Token ${sessionStore.token}`);
+		request.set('Authorization', `JWT ${sessionStore.token}`);
 	}
 };
 
 const outputPlugins = (result, url) => {
-	requestStore.setRequestInProgress(url, false);
-	requestStore.setRequestInProgress(requestType(url), false);
-
 	if (process.env.NODE_ENV === 'development'
 		&& result
 		&& result.body) {
@@ -48,10 +40,7 @@ const outputPlugins = (result, url) => {
 	return result.body;
 };
 
-const errorPlugins = (error, url) => {
-	requestStore.setRequestInProgress(url, false);
-	requestStore.setRequestInProgress(requestType(url), false);
-
+const errorPlugins = (error) => {
 	// NOTE: Throw an exception if you want the caller to handle an error as well.
 	switch (error.status) {
 		// Not authorized.
@@ -105,30 +94,30 @@ const errorPlugins = (error, url) => {
 const api = {
 	get: (url) =>
 		superagent
-			.get(`${API_ROOT}${url}`)
+			.get(`${ROOT_URL}${url}`)
 			.use((request) => inputPlugins(request, url))
 			.then((result) => outputPlugins(result, url))
-			.catch((error) => errorPlugins(error, url)),
+			.catch((error) => errorPlugins(error)),
 	post: (url, body) =>
 		superagent
-			.post(`${API_ROOT}${url}`)
+			.post(`${ROOT_URL}${url}`)
 			.use((request) => inputPlugins(request, url))
 			.send(body)
 			.then((result) => outputPlugins(result, url))
-			.catch((error) => errorPlugins(error, url)),
+			.catch((error) => errorPlugins(error)),
 	put: (url, body) =>
 		superagent
-			.put(`${API_ROOT}${url}`)
+			.put(`${ROOT_URL}${url}`)
 			.use((request) => inputPlugins(request, url))
 			.send(body)
 			.then((result) => outputPlugins(result, url))
-			.catch((error) => errorPlugins(error, url)),
+			.catch((error) => errorPlugins(error)),
 	del: (url) =>
 		superagent
-			.del(`${API_ROOT}${url}`)
+			.del(`${ROOT_URL}${url}`)
 			.use((request) => inputPlugins(request, url))
 			.then((result) => outputPlugins(result, url))
-			.catch((error) => errorPlugins(error, url))
+			.catch((error) => errorPlugins(error))
 };
 
 

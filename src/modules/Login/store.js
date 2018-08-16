@@ -28,10 +28,10 @@ class Store {
 
 	@computed
 	get isDisabled() {
-		let disabled = false;
+		let disabled = true;
 
 		if (this.username.length > 0 && this.password.length > 0) {
-			disabled = true;
+			disabled = false;
 		}
 
 		return disabled;

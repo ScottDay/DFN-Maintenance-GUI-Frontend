@@ -2,14 +2,11 @@ import { action, observable, reaction } from 'mobx';
 
 
 class SessionStore {
-	@observable hostname;
-	@observable token;
-	@observable authenticated;
+	@observable hostname = '';
+	@observable token = window.localStorage.getItem('token');
+	@observable authenticated = false;
 
 	constructor() {
-		this.hostname = '';
-		this.token = window.localStorage.getItem('token');
-
 		reaction(
 			() => this.token,
 			(token) => {

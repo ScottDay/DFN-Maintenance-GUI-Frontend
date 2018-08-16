@@ -9,7 +9,7 @@ export default class Presenter extends React.Component {
 	handleKeyPress(event) {
 		const {	service, store } = this.props;
 
-		if (event.key === 'Enter' && !store.isDisabled()) {
+		if (event.key === 'Enter' && !store.isDisabled) {
 			service.login(store.username, store.password)
 		}
 	}

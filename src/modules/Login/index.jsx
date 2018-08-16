@@ -10,7 +10,7 @@ import store from './store';
 
 export default class Login extends React.Component {
 	componentDidMount() {
-		sessionAction.fetchHostname();
+		sessionAction.hostname();
 	}
 
 	render() {

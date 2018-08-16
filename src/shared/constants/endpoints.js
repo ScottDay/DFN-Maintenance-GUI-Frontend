@@ -1,12 +1,12 @@
 export const session = {
-	check: 'session/token/check',
-	generate: 'session/token/generate',
-	hostname: 'session/hostname'
+	auth: '/auth',
+	check: '/api/session/check',
+	hostname: '/api/session/hostname'
 };
 
 export const network = {
-	checkInternet: 'network/internet/check',
-	restartInternet: 'network/internet/restart',
-	checkVPN: 'network/vpn/check',
-	restartVPN: 'network/vpn/restart'
+	checkInternet: '/api/network/internet/check',
+	restartInternet: '/api/network/internet/restart',
+	checkVPN: '/api/network/vpn/check',
+	restartVPN: '/api/network/vpn/restart'
 };

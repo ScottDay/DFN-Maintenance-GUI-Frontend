@@ -1,18 +1,28 @@
-import { apiService } from 'services';
-import { sessionStore } from 'stores';
+import { apiService, historyService } from 'services';
+import { sessionStore, notificationStore, requestStore } from 'stores';
+import { notificationTypes, endpoints } from 'constants';
 
 import store from './store';
 
 
-// TODO: Catch error status codes
 function login(username, password) {
 	apiService.session
-		.generate(username, password)
-		.then((token) => {
+		.auth(username, password)
+		.then((body) => {
 			store.reset();
-			sessionStore.setToken(token);
+			sessionStore.setToken(body.access_token);
+			historyService.push('/app');
 		})
-		.catch(() => {});
+		.catch(() => {
+			notificationStore.addNotification({
+				content: {
+					type: notificationTypes.ERROR,
+					duration: 3000,
+					message: 'Incorrect username or password!'
+				}
+			});
+		})
+		.finally(() => requestStore.setRequestInProgress(endpoints.session.auth, false));
 }
 
 

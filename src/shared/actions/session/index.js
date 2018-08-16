@@ -1,13 +1,15 @@
 import { apiService, historyService } from 'services';
-import { sessionStore, notificationStore } from 'stores';
+import { sessionStore, notificationStore, requestStore } from 'stores';
+import { endpoints } from 'constants';
 
 
 // TODO: Catch error status codes
-function fetchHostname() {
+function hostname() {
 	apiService.session
 		.hostname()
-		.then((hostname) => sessionStore.setHostname(hostname))
-		.catch(() => {});
+		.then((body) => sessionStore.setHostname(body.hostname))
+		.catch(() => {})
+		.finally(() => requestStore.setRequestInProgress(endpoints.session.hostname, false));
 }
 
 function logout() {
@@ -16,21 +18,22 @@ function logout() {
 	historyService.push('/login');
 }
 
-function authenticate() {
+function check() {
 	apiService.session
-		.check(sessionStore.token)
-		.then((token) => sessionStore.setToken(token))
+		.check()
+		.then(() => sessionStore.setAuthenticated(true))
 		.catch((error) => {
 			// TODO: Catch other error status codes.
 			if (error.status === 0) {
 				logout();
 			}
-		});
+		})
+		.finally(() => requestStore.setRequestInProgress(endpoints.session.check, false));
 }
 
 
 export {
-	fetchHostname,
+	hostname,
 	logout,
-	authenticate
+	check
 }
