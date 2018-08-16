@@ -1,6 +1,6 @@
 import { apiService } from 'services';
-import { notificationStore } from 'stores';
-import { notificationTypes } from 'constants';
+import { notificationStore, requestStore } from 'stores';
+import { notificationTypes, endpoints } from 'constants';
 
 
 function checkInternet(store) {
@@ -10,9 +10,8 @@ function checkInternet(store) {
 			store.setSummary(`IP Address: ${body.ip}`);
 			store.setMessage(body.output);
 		})
-		.catch(() => {
-			store.reset();
-		});
+		.catch(() => store.reset())
+		.finally(() => requestStore.setRequestInProgress(endpoints.network.internet.check, false));
 }
 
 function restartInternet(store) {
@@ -28,9 +27,8 @@ function restartInternet(store) {
 				}
 			});
 		})
-		.catch(() => {
-			store.reset();
-		});
+		.catch(() => store.reset())
+		.finally(() => requestStore.setRequestInProgress(endpoints.network.internet.restart, false));
 }
 
 function checkVPN(store) {
@@ -40,9 +38,8 @@ function checkVPN(store) {
 			store.setSummary(`VPN IP Address: ${body.ip}`);
 			store.setMessage(body.output);
 		})
-		.catch(() => {
-			store.reset();
-		});
+		.catch(() => store.reset())
+		.finally(() => requestStore.setRequestInProgress(endpoints.network.vpn.check, false));
 }
 
 function restartVPN(store) {
@@ -58,9 +55,8 @@ function restartVPN(store) {
 				}
 			});
 		})
-		.catch(() => {
-			store.reset();
-		});
+		.catch(() => store.reset())
+		.finally(() => requestStore.setRequestInProgress(endpoints.network.vpn.restart, false));
 }
 
 

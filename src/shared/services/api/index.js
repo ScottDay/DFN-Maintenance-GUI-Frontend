@@ -4,23 +4,23 @@ import api from './superagent';
 
 
 const session = {
-	check: () =>
-		api.get(endpoints.session.check),
 	auth: (username, password) =>
 		api.post(endpoints.session.auth, { username, password }),
+	check: () =>
+		api.get(endpoints.session.check),
 	hostname: () =>
 		api.get(endpoints.session.hostname)
 };
 
 const network = {
 	checkInternet: () =>
-		api.get(endpoints.network.checkInternet),
+		api.get(endpoints.network.internet.check),
 	restartInternet: () =>
-		api.get(endpoints.network.restartInternet),
+		api.get(endpoints.network.internet.restart),
 	checkVPN: () =>
-		api.get(endpoints.network.checkVPN),
+		api.get(endpoints.network.vpn.check),
 	restartVPN: () =>
-		api.get(endpoints.network.restartVPN)
+		api.get(endpoints.network.vpn.restart)
 };
 
 
