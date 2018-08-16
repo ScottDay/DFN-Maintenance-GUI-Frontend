@@ -44,18 +44,14 @@ class WebpackBaseConfig {
 		return this._config;
 	}
 
-	/**
-	 * Get the absolute path to src directory
-	 * @return {String}
-	 */
 	get srcPathAbsolute() {
 		return path.resolve('./src');
 	}
 
-	/**
-	 * Get the default settings
-	 * @return {Object}
-	 */
+	get publicPathAbsolute() {
+		return path.resolve('./public');
+	}
+
 	get defaultSettings() {
 		return {
 			context: this.srcPathAbsolute,
@@ -98,11 +94,12 @@ class WebpackBaseConfig {
 			output: {
 				path: path.resolve('./dist/assets'),
 				filename: 'app.js',
-				publicPath: '/'
+				publicPath: ''
 			},
 			resolve: {
-				extensions: ['.js', '.jsx', '.json', '.scss'],
+				extensions: ['.js', '.jsx', '.json', '.scss', '.jpg'],
 				alias: {
+					assets: `${this.publicPathAbsolute}/assets`,
 					modules: `${this.srcPathAbsolute}/modules`,
 					actions: `${this.srcPathAbsolute}/shared/actions`,
 					components: `${this.srcPathAbsolute}/shared/components`,

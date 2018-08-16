@@ -19,39 +19,22 @@ function root(args) {
 
 
 class WebpackProdConfig extends WebpackBaseConfig {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 
 		this.config = {
 			cache: false,
 			devtool: 'cheap-module-source-map',
 			entry: [
 				'./index.jsx'
-			],
-			output: {
-				path: root('dist'),
-				publicPath: '/',
-				filename: 'assets/app.js'
-			}
+			]
 		};
 
 		this.config.plugins = this.config.plugins.concat([
 			new webpack.optimize.AggressiveMergingPlugin(),
 			new CopyWebpackPlugin([
 				{
-					from: root('public/index.html'),
-					to: root('dist/')
-				},
-				{
-					from: root('public/fireballs-flame.svg'),
-					to: root('dist/')
-				},
-				{
-					from: root('public/fireballs-flame.ico'),
-					to: root('dist/')
-				},
-				{
-					from: root('public/coding-cat.png'),
+					from: root('public/'),
 					to: root('dist/')
 				}
 			])

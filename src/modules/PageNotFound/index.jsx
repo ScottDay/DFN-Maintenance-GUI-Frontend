@@ -1,7 +1,7 @@
 import React from 'react';
 import Styled from 'styled-components';
 
-import CodingCatImage from '../../../public/coding-cat.jpg';
+import CodingCatImage from 'assets/coding-cat';
 
 
 const StyledDiv = Styled.div`

@@ -19,7 +19,7 @@ class WebpackDevConfig extends WebpackBaseConfig {
 				historyApiFallback: true,
 				hot: true,
 				inline: true,
-				port: 3000,
+				port: 5001,
 				host: '0.0.0.0',
 				disableHostCheck: true,
 				quiet: true,
@@ -27,7 +27,7 @@ class WebpackDevConfig extends WebpackBaseConfig {
 				stats: 'minimal'
 			},
 			entry: [
-				'webpack-dev-server/client?http://0.0.0.0:3000/',
+				'webpack-dev-server/client?http://0.0.0.0:5001/',
 				'webpack/hot/only-dev-server',
 				'react-hot-loader/patch',
 				'./index.jsx'
