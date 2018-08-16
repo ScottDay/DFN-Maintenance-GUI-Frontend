@@ -1,0 +1,22 @@
+{
+  "files.exclude": {
+    "__error": "Not found",
+    "LICENSE.md": true,
+    "README.md": true,
+    "GUIDELINES.md": true,
+    ".releaserc": true,
+    ".eslintignore": true,
+    "package-lock.json": true,
+    "webpack.config.js": true,
+    ".babelrc": true,
+    ".travis.yml": true,
+    ".vscode": true,
+    ".travis": true,
+    "node_modules": true,
+    "dist": true,
+    ".gitignore": true,
+    ".editorconfig": true,
+    "tsconfig.json": true,
+    ".eslintrc": true
+  }
+}

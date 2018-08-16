@@ -7,8 +7,7 @@
     "extends": [
         "airbnb",
         "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:redux-saga/recommended"
+        "plugin:react/recommended"
     ],
     "globals": {
         "React": true
@@ -20,8 +19,7 @@
         }
     },
     "plugins": [
-        "react",
-        "redux-saga"
+        "react"
     ],
     "rules": {
         "array-bracket-spacing": [
@@ -38,9 +36,13 @@
             "always"
         ],
         "class-methods-use-this": [
-            "warn",
+            0,
             {
-                "exceptMethods": []
+                "exceptMethods": [
+					"render",
+					"componentDidMount",
+					"componentWillUnmount"
+				]
             }
         ],
         "comma-dangle": [
@@ -66,9 +68,9 @@
         "import/newline-after-import": 1,
         "import/no-extraneous-dependencies": 1,
         "import/no-mutable-exports": 1,
-        "import/no-unresolved": 1,
+        "import/no-unresolved": 0,
         "import/order": [
-            "error",
+            0,
             {
                 "groups": [
                     "external",
@@ -85,13 +87,19 @@
         "import/prefer-default-export": 1,
         "indent": [
             "error",
-            4,
+            "tab",
             {
                 "SwitchCase": 1
             }
         ],
         "jsx-a11y/alt-text": 1,
-        "jsx-a11y/anchor-is-valid": 1,
+        "jsx-a11y/anchor-is-valid": [
+			"error",
+			{
+				"components": ["Link"],
+      			"specialLink": ["to"]
+			}
+		],
         "jsx-a11y/click-events-have-key-events": 1,
         "jsx-a11y/interactive-supports-focus": 1,
         "jsx-a11y/label-has-for": 1,
@@ -110,7 +118,7 @@
         "lines-around-directive": 1,
         "max-len": [
             "warn",
-            100
+            120
         ],
         "no-bitwise": 1,
         "no-case-declarations": 1,
@@ -172,6 +180,7 @@
         ],
         "react/jsx-closing-tag-location": 1,
         "react/jsx-curly-brace-presence": [
+        "warn",
             {
                 "children": "never",
                 "props": "never"
@@ -183,10 +192,10 @@
         ],
         "react/jsx-indent": [
             "warn",
-            4
+            "tab"
         ],
         "react/jsx-indent-props": [
-            "error",
+            0,
             4
         ],
         "react/jsx-no-bind": 1,
@@ -201,6 +210,7 @@
         "react/no-unescaped-entities": 1,
         "react/no-unused-prop-types": 1,
         "react/no-unused-state": 1,
+        "react/prefer-stateless-function": 0,
         "react/prop-types": 0,
         "react/react-in-jsx-scope": 1,
         "react/require-default-props": 1,
@@ -213,7 +223,7 @@
         ],
         "space-before-function-paren": 1,
         "spaced-comment": 1,
-        "strict": 1,
+        "strict": 0,
         "vars-on-top": 1,
         "wrap-iife": 1
     }

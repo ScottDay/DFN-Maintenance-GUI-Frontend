@@ -1,0 +1,86 @@
+// global variables
+@import "global/variables-bootstrap";
+@import "global/variables-extra";
+@import "material-design-lite/src/variables";
+@import "material-design-lite/src/mixins";
+@import "layout/variables-layout";
+@import "themes/variables-theme";
+@import "bootstrap/mixins";
+
+@import "vendors/material-ui/material-ui";
+@import "vendors/react";
+@import "vendors/rc-queue-anim";
+// Pages
+@import "pages/demo";
+@import "pages/auth";
+@import "pages/error";
+@import "pages/lock-screen";
+@import "pages/profile";
+@import "pages/invoice";
+@import "pages/dashboard";
+@import "pages/maintenance";
+@import "pages/about";
+@import "pages/terms";
+@import "pages/blog";
+
+// The reason for doing so is to solve "relative assets (images, fonts) fail to find" issue
+// The only file changed is bootstrap/_bootstrap.scss
+@import "bootstrap/bootstrap";
+
+// takes advantage of Bootstrap 4 variables, however it's not required for essential layout
+@import "layout/base";
+@import "layout/header";
+@import "layout/sidebar";
+@import "layout/page-container";
+@import "layout/footer";
+@import "layout/quickview";
+@import "layout/overlay";
+@import "layout/boxed";
+@import "layout/sidebar-removed";
+@import "layout/sidebar-addons";
+@import "layout/sidebar-collapsed";
+@import "layout/sidebar-behind";
+@import "layout/sidebar-width";
+@import "layout/header-theme";
+@import "layout/sidebar-theme";
+@import "layout/page-container-theme";
+@import "layout/overlay-theme";
+@import "layout/quickview-app";
+@import "layout/quickview-customizer";
+@import "layout/md";
+@import "layout/md-sidenav-right";
+
+@import "themes/utilities";
+@import "themes/customzier-options";
+@import "themes/layout-colors";
+@import "themes/theme-light";
+@import "themes/theme-dark";
+
+@import "material-design-lite/material-design-lite";
+// Core CSS
+@import "ui/utilities";
+@import "ui/scaffolding";
+@import "ui/grid";
+@import "ui/type";
+@import "ui/buttons";
+@import "ui/tables-responsive";
+@import "ui/forms";
+@import "ui/form-input";
+// Components
+@import "ui/boxes";
+@import "ui/breadcrumbs";
+@import "ui/call-to-actions";
+@import "ui/callout";
+@import "ui/cards";
+@import "ui/feature-callout";
+@import "ui/hover";
+@import "ui/icon-boxes";
+@import "ui/md-preloader";
+@import "ui/md-cards";
+@import "ui/md-tables";
+@import "ui/image-size";
+@import "ui/pricing-tables";
+@import "ui/ribbons";
+@import "ui/sash";
+@import "ui/testimonials";
+@import "ui/timeline";
