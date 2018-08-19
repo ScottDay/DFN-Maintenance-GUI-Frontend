@@ -1,11 +1,11 @@
-# Trigger a new build of the parent repo.
-
+# Set an option to exit immediately if any error appears.
+set -o errexit
 
 master_branch_request() {
 	# Trigger build on build repo develop branch, reset its counter.
 	BODY='{
 		"request": {
-			"branch":"master",
+			"branch": "master",
 			"message": "Frontend API Build Request: release"
 			"config": {
 				"env": "REQUEST_TYPE=release"
@@ -27,7 +27,7 @@ develop_branch_request() {
 	# Trigger build on build repo develop branch, increment its counter.
 	BODY='{
 		"request": {
-			"branch":"develop",
+			"branch": "master",
 			"message": "Frontend API Build Request: dev"
 			"config": {
 				"env": "REQUEST_TYPE=dev"
@@ -45,6 +45,7 @@ develop_branch_request() {
 }
 
 
+# Trigger a new build of the parent repo.
 if [ "$TRAVIS_BRANCH" == "master" ]; then
 	master_branch_request
 elif [ "$TRAVIS_BRANCH" == "develop" ]; then
