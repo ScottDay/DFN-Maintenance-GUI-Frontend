@@ -17,17 +17,17 @@ notifications:
 
 stages:
   - compile
-  - name: deploy
+  - name: release
     if: branch = master AND type = push AND fork = false
-  - release
+  - deploy
 
 jobs:
   include:
     - stage: compile
       script: npm run build
 
+    - stage: release
+      script: .travis/release.sh
+
     - stage: deploy
       script: .travis/deploy.sh
-
-    - stage: release
-      script: .travis/webhook.sh
