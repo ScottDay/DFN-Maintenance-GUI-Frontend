@@ -6,7 +6,7 @@ master_branch_request() {
 	BODY='{
 		"request": {
 			"branch": "master",
-			"message": "Frontend API Build Request: release"
+			"message": "Frontend API Build Request: release",
 			"config": {
 				"env": "REQUEST_TYPE=release"
 			}
@@ -28,7 +28,7 @@ develop_branch_request() {
 	BODY='{
 		"request": {
 			"branch": "master",
-			"message": "Frontend API Build Request: dev"
+			"message": "Frontend API Build Request: dev",
 			"config": {
 				"env": "REQUEST_TYPE=dev"
 			}
