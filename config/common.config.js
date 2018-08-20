@@ -94,7 +94,7 @@ class WebpackBaseConfig {
 			output: {
 				path: path.resolve('./dist/assets'),
 				filename: 'app.js',
-				publicPath: ''
+				publicPath: 'assets/'
 			},
 			resolve: {
 				extensions: ['.js', '.jsx', '.json', '.scss', '.jpg'],
