@@ -15,8 +15,13 @@ class WebpackDevConfig extends WebpackBaseConfig {
 			devtool: 'source-map',
 			devServer: {
 				contentBase: ['./public/', './src/'],
-				publicPath: '/',
-				historyApiFallback: true,
+				publicPath: '/assets/',
+				historyApiFallback: {
+					index: 'index.html',
+					rewrites: [
+						{ from: '/*app.js', to: '/assets/app.js' }
+					]
+				},
 				hot: true,
 				inline: true,
 				port: 5001,
