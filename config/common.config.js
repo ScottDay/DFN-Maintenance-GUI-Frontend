@@ -104,6 +104,7 @@ class WebpackBaseConfig {
 					actions: `${this.srcPathAbsolute}/shared/actions`,
 					components: `${this.srcPathAbsolute}/shared/components`,
 					constants: `${this.srcPathAbsolute}/shared/constants`,
+					containers: `${this.srcPathAbsolute}/shared/containers`,
 					routes: `${this.srcPathAbsolute}/shared/routes`,
 					services: `${this.srcPathAbsolute}/shared/services`,
 					stores: `${this.srcPathAbsolute}/shared/stores`,
