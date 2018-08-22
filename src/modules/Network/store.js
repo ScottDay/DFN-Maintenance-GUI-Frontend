@@ -15,6 +15,12 @@ export default class Store {
 		this.output = output;
 	}
 
+	@action.bound
+	reset() {
+		this.summary = null;
+		this.output = null;
+	}
+
 	@computed
 	get shouldDisplayContent() {
 		let result = false;
