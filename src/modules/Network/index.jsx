@@ -1,27 +1,60 @@
 import React from 'react';
 
-import Grid from '@material-ui/core/Grid';
-
-import { Page } from 'components';
-
-import Internet from './Internet';
-import VPN from './VPN';
+import Presenter from './presenter';
+import Store from './store';
+import * as service from './service';
 
 
 export default class Network extends React.Component {
+	constructor(props) {
+		super(props);
+
+		const checkInternetStore = new Store();
+		const restartInternetStore = new Store();
+		const checkVPNStore = new Store();
+		const restartVPNStore = new Store();
+
+		this.sections = [
+			{
+				title: 'Internet',
+				cards: [
+					{
+						title: 'Check Connection',
+						subheader: 'Retrieves the IP address of the backend server.',
+						store: checkInternetStore,
+						onClick: () => service.checkInternet(checkInternetStore)
+					},
+					{
+						title: 'Restart Connection',
+						subheader: 'Restarts the modems network interface. May take some time...',
+						store: restartInternetStore,
+						onClick: () => service.restartInternet(restartInternetStore)
+					}
+				]
+			},
+			{
+				title: 'VPN',
+				cards: [
+					{
+						title: 'Check Connection',
+						subheader: 'Retrieves the VPN IP address of the backend server.',
+						store: checkVPNStore,
+						onClick: () => service.checkVPN(checkVPNStore)
+					},
+					{
+						title: 'Restart Connection',
+						subheader: 'Restarts the VPN service.',
+						store: restartVPNStore,
+						onClick: () => service.restartVPN(restartVPNStore)
+					}
+				]
+			}
+		];
+	}
+
 	render() {
 		return (
-			<Page title='Network'>
-				<Grid container spacing={24}>
-					<Grid item xs={12} sm={12}>
-						<Internet />
-					</Grid>
-
-					<Grid item xs={12} sm={12}>
-						<VPN />
-					</Grid>
-				</Grid>
-			</Page>
+			<Presenter sections={this.sections} />
 		);
 	}
 }
