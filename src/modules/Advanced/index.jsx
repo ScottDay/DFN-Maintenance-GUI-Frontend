@@ -1,12 +1,18 @@
 import React from 'react';
 
-import Presenter from './presenter';
+import { Page } from 'components';
+
+import ConfigDialog from './ConfigDialog';
 
 
 export default class Advanced extends React.Component {
 	render() {
 		return (
-			<Presenter />
+			<Page title='Advanced'>
+				{/* Update buttons (python software, leostick firmware, maintenance gui) */}
+
+				<ConfigDialog />
+			</Page>
 		);
 	}
 }
