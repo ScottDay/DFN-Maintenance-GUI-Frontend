@@ -2,15 +2,12 @@ sudo: false
 
 language: node_js
 
-node_js:
-  - 10
+node_js: 10
 
-os:
-  - linux
+os: linux
 
 cache:
-  directories:
-    - node_modules
+  directories: node_modules
 
 notifications:
   email: false
