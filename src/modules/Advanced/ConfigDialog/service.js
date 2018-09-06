@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { apiService } from 'services';
 import { requestStore } from 'stores';
 import { endpoints } from 'constants';
@@ -41,9 +40,17 @@ function getConfig(store) {
 		.finally(() => requestStore.setRequestInProgress(endpoints.configfile.config, false));
 }
 
+function updateConfig(store, id, row) {
+	apiService.configfile
+		.updateConfig(row)
+		.then(() => store.updateRow(id, row[2]))
+		.catch(() => {})
+		.finally(() => requestStore.setRequestInProgress(endpoints.configfile.config, false));
+}
+
 
 export {
 	whitelist,
-	getConfig
+	getConfig,
+	updateConfig
 }
-/* eslint-enable no-console */

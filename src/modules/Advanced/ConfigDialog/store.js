@@ -21,4 +21,9 @@ export default class Store {
 	setRows(rows) {
 		this.rows = rows;
 	}
+
+	@action.bound
+	updateRow(id, value) {
+		this.rows[id].value = value;
+	}
 }

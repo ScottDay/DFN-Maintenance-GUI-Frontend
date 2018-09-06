@@ -65,6 +65,7 @@ export default class ConfigDialog extends React.Component {
 				viewConfigStore={this.viewConfigStore}
 				editConfigStore={this.editConfigStore}
 				tableConfig={this.tableConfig}
+				updateConfig={service.updateConfig}
 			/>
 		);
 	}

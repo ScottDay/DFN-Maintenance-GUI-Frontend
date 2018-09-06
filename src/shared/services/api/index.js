@@ -29,9 +29,9 @@ const configfile = {
 	whitelist: () =>
 		api.get(endpoints.configfile.whitelist),
 	getConfig: () =>
-		api.get(endpoints.configfile.config)
-	/* updateConfig: () =>
-		api.put(endpoints.configfile.config) */
+		api.get(endpoints.configfile.config),
+	updateConfig: (row) =>
+		api.put(endpoints.configfile.config, row)
 };
 
 

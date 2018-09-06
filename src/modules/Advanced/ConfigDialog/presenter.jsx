@@ -38,7 +38,12 @@ const DialogWrapper = (props) => {
 @observer
 export default class Presenter extends React.Component {
 	render() {
-		const { viewConfigStore, editConfigStore, tableConfig } = this.props;
+		const {
+			viewConfigStore,
+			editConfigStore,
+			tableConfig,
+			updateConfig
+		} = this.props;
 
 		return (
 			<BaseCard
@@ -75,7 +80,13 @@ export default class Presenter extends React.Component {
 					onClose={() => editConfigStore.setOpen(false)}
 					title='Edit Configuration File'
 				>
-					<DialogTable rows={editConfigStore.rows} tableConfig={tableConfig} edit />
+					<DialogTable
+						edit
+						store={editConfigStore}
+						rows={editConfigStore.rows}
+						tableConfig={tableConfig}
+						updateConfig={updateConfig}
+					/>
 				</DialogWrapper>
 			</BaseCard>
 		);
