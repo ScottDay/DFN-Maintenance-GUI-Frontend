@@ -55,6 +55,7 @@ export default class ConfigDialog extends React.Component {
 	}
 
 	componentDidMount() {
+		service.whitelist(this.editConfigStore);
 		service.getConfig(this.viewConfigStore);
 	}
 

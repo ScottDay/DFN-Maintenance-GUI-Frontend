@@ -25,9 +25,9 @@ const network = {
 
 const configfile = {
 	/* check: () =>
-		api.get(endpoints.configfile.check),
+		api.get(endpoints.configfile.check), */
 	whitelist: () =>
-		api.get(endpoints.configfile.whitelist), */
+		api.get(endpoints.configfile.whitelist),
 	getConfig: () =>
 		api.get(endpoints.configfile.config)
 	/* updateConfig: () =>

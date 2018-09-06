@@ -9,7 +9,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 
 import { BaseCard } from 'components';
 
-import ViewTable from './ViewTable';
+import DialogTable from './DialogTable';
 
 
 const DialogWrapper = (props) => {
@@ -25,6 +25,7 @@ const DialogWrapper = (props) => {
 			open={open}
 			onClose={onClose}
 			aria-labelledby='form-dialog-title'
+			maxWidth='md'
 		>
 			<DialogTitle id='form-dialog-title'>{title}</DialogTitle>
 			<DialogContent>
@@ -67,14 +68,14 @@ export default class Presenter extends React.Component {
 					onClose={() => viewConfigStore.setOpen(false)}
 					title='View Configuration File'
 				>
-					<ViewTable rows={viewConfigStore.rows} tableConfig={tableConfig} />
+					<DialogTable rows={viewConfigStore.rows} tableConfig={tableConfig} />
 				</DialogWrapper>
 				<DialogWrapper
 					open={editConfigStore.open}
 					onClose={() => editConfigStore.setOpen(false)}
 					title='Edit Configuration File'
 				>
-					<div>HI</div>
+					<DialogTable rows={editConfigStore.rows} tableConfig={tableConfig} edit />
 				</DialogWrapper>
 			</BaseCard>
 		);
