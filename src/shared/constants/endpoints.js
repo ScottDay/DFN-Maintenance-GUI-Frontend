@@ -20,3 +20,7 @@ export const configfile = {
 	whitelist: '/api/configfile/whitelist',
 	config: '/api/configfile/config'
 };
+
+export const storage = {
+	check: '/api/storage/check'
+};

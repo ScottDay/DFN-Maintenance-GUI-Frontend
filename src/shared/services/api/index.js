@@ -34,9 +34,15 @@ const configfile = {
 		api.put(endpoints.configfile.config, row)
 };
 
+const storage = {
+	check: () =>
+		api.get(endpoints.storage.check)
+};
+
 
 export {
 	session,
 	network,
-	configfile
+	configfile,
+	storage
 }
