@@ -41,7 +41,7 @@ export default class Presenter extends React.Component {
 		const {
 			viewConfigStore,
 			editConfigStore,
-			tableConfig,
+			config,
 			updateConfig
 		} = this.props;
 
@@ -73,7 +73,7 @@ export default class Presenter extends React.Component {
 					onClose={() => viewConfigStore.setOpen(false)}
 					title='View Configuration File'
 				>
-					<DialogTable rows={viewConfigStore.rows} tableConfig={tableConfig} />
+					<DialogTable rows={viewConfigStore.rows} config={config} />
 				</DialogWrapper>
 				<DialogWrapper
 					open={editConfigStore.open}
@@ -84,7 +84,7 @@ export default class Presenter extends React.Component {
 						edit
 						store={editConfigStore}
 						rows={editConfigStore.rows}
-						tableConfig={tableConfig}
+						config={config}
 						updateConfig={updateConfig}
 					/>
 				</DialogWrapper>

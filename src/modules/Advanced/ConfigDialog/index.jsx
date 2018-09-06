@@ -12,7 +12,7 @@ export default class ConfigDialog extends React.Component {
 		this.viewConfigStore = new Store();
 		this.editConfigStore = new Store();
 
-		this.tableConfig = {
+		this.config = {
 			columns: [
 				{ name: 'category', title: 'Category' },
 				{ name: 'field', title: 'Field' },
@@ -26,7 +26,8 @@ export default class ConfigDialog extends React.Component {
 			editingStateColumnExtensions: [
 				{ columnName: 'category', editingEnabled: false },
 				{ columnName: 'field', editingEnabled: false }
-			]
+			],
+			grouping: [{ columnName: 'category' }]
 		};
 	}
 
@@ -40,7 +41,7 @@ export default class ConfigDialog extends React.Component {
 			<Presenter
 				viewConfigStore={this.viewConfigStore}
 				editConfigStore={this.editConfigStore}
-				tableConfig={this.tableConfig}
+				config={this.config}
 				updateConfig={service.updateConfig}
 			/>
 		);

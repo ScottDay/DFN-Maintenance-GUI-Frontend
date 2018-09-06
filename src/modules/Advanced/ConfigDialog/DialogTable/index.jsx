@@ -34,23 +34,23 @@ export default class DialogTable extends React.Component {
 	}
 
 	render() {
-		const { rows, tableConfig, edit } = this.props;
+		const { rows, config, edit } = this.props;
 
 		if (edit) {
 			return (
 				<Paper>
 					<Grid
 						rows={rows}
-						columns={tableConfig.columns}
+						columns={config.columns}
 					>
-						<GroupingState grouping={[{ columnName: 'category' }]} />
+						<GroupingState grouping={config.grouping} />
 						<IntegratedGrouping />
 						<Table />
-						<TableColumnResizing defaultColumnWidths={tableConfig.defaultColumnWidths} />
+						<TableColumnResizing defaultColumnWidths={config.defaultColumnWidths} />
 						<TableHeaderRow />
 						<EditingState
 							onCommitChanges={this.commitChanges}
-							columnExtensions={tableConfig.editingStateColumnExtensions}
+							columnExtensions={config.editingStateColumnExtensions}
 						/>
 						<TableEditRow />
 						<TableEditColumn
@@ -66,12 +66,12 @@ export default class DialogTable extends React.Component {
 			<Paper>
 				<Grid
 					rows={rows}
-					columns={tableConfig.columns}
+					columns={config.columns}
 				>
-					<GroupingState grouping={[{ columnName: 'category' }]} />
+					<GroupingState grouping={config.grouping} />
 					<IntegratedGrouping />
 					<Table />
-					<TableColumnResizing defaultColumnWidths={tableConfig.defaultColumnWidths} />
+					<TableColumnResizing defaultColumnWidths={config.defaultColumnWidths} />
 					<TableHeaderRow />
 					<TableGroupRow />
 				</Grid>
