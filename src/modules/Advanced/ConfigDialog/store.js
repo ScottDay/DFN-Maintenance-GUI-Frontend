@@ -28,4 +28,9 @@ export default class Store {
 	setOpen(open) {
 		this.open = open;
 	}
+
+	@action.bound
+	setRows(rows) {
+		this.rows = rows;
+	}
 }

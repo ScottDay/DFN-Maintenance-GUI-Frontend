@@ -14,3 +14,9 @@ export const network = {
 		restart: '/api/network/vpn/restart'
 	}
 };
+
+export const configfile = {
+	check: '/api/configfile/check',
+	whitelist: '/api/configfile/whitelist',
+	config: '/api/configfile/config'
+};

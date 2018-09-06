@@ -23,8 +23,20 @@ const network = {
 		api.get(endpoints.network.vpn.restart)
 };
 
+const configfile = {
+	/* check: () =>
+		api.get(endpoints.configfile.check),
+	whitelist: () =>
+		api.get(endpoints.configfile.whitelist), */
+	getConfig: () =>
+		api.get(endpoints.configfile.config)
+	/* updateConfig: () =>
+		api.put(endpoints.configfile.config) */
+};
+
 
 export {
 	session,
-	network
+	network,
+	configfile
 }

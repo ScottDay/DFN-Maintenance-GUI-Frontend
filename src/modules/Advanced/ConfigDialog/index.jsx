@@ -2,6 +2,7 @@ import React from 'react';
 
 import Presenter from './presenter';
 import Store from './store';
+import * as service from './service';
 
 
 export default class ConfigDialog extends React.Component {
@@ -53,9 +54,9 @@ export default class ConfigDialog extends React.Component {
 		};
 	}
 
-	/*componentDidMount() {
-
-	}*/
+	componentDidMount() {
+		service.getConfig(this.viewConfigStore);
+	}
 
 	render() {
 		return (
