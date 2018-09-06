@@ -37,12 +37,12 @@ const DialogWrapper = (props) => {
 @observer
 export default class Presenter extends React.Component {
 	render() {
-		const { viewConfigStore, editConfigStore } = this.props;
+		const { viewConfigStore, editConfigStore, tableConfig } = this.props;
 
 		return (
 			<BaseCard
-				title='Test'
-				subheader='Test'
+				title='Config File'
+				subheader='View / edit the dfnstation.cfg file.'
 				actions={
 					<CardActions>
 						<Button
@@ -67,7 +67,7 @@ export default class Presenter extends React.Component {
 					onClose={() => viewConfigStore.setOpen(false)}
 					title='View Configuration File'
 				>
-					<ViewTable store={viewConfigStore} />
+					<ViewTable rows={viewConfigStore.rows} tableConfig={tableConfig} />
 				</DialogWrapper>
 				<DialogWrapper
 					open={editConfigStore.open}
