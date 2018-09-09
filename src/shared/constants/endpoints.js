@@ -24,3 +24,7 @@ export const configfile = {
 export const storage = {
 	check: '/api/storage/check'
 };
+
+export const location = {
+	time: '/api/location/time'
+};

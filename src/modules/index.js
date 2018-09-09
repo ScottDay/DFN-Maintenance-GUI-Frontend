@@ -4,6 +4,7 @@ import PageNotFound from './PageNotFound';
 import Storage from './Storage';
 import Network from './Network';
 import Advanced from './Advanced';
+import Location from './Location';
 
 
 export {
@@ -11,5 +12,6 @@ export {
 	PageNotFound,
 	Storage,
 	Network,
-	Advanced
+	Advanced,
+	Location
 }

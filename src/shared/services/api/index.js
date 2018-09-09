@@ -39,10 +39,18 @@ const storage = {
 		api.get(endpoints.storage.check)
 };
 
+const location = {
+	getTime: () =>
+		api.get(endpoints.location.time),
+	updateTimezone: (timezone) =>
+		api.put(endpoints.location.time, timezone)
+};
+
 
 export {
 	session,
 	network,
 	configfile,
-	storage
+	storage,
+	location
 }
