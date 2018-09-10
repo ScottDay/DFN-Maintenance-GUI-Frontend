@@ -5,6 +5,7 @@ import Storage from './Storage';
 import Network from './Network';
 import Advanced from './Advanced';
 import Location from './Location';
+import Camera from './Camera';
 
 
 export {
@@ -13,5 +14,6 @@ export {
 	Storage,
 	Network,
 	Advanced,
-	Location
+	Location,
+	Camera
 }
