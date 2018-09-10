@@ -19,16 +19,14 @@ export default class App extends React.Component {
 						<div className='app-content'>
 							<div className='full-height'>
 								<Switch>
-									{/* eslint-disable-next-line */}
-									{routes.map((prop) => {
-										return (
-											<Route
-												exact
-												path={`${path}${prop.path}`}
-												key={prop.name}
-												component={prop.component}
-											/>);
-									})}
+									{routes.map((prop) => (
+										<Route
+											exact
+											path={`${path}${prop.path}`}
+											key={prop.name}
+											component={prop.component}
+										/>
+									))}
 									<Redirect
 										from={`${path}`}
 										to='/404'

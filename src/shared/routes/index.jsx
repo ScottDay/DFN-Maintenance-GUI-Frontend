@@ -1,7 +1,13 @@
-import { Storage, Network, Advanced, Location, Camera } from 'modules';
+import {
+	Storage,
+	Network,
+	Advanced,
+	Location,
+	Camera
+} from 'modules';
 
 
-const appRoutes = [
+const routes = [
 	{ path: '', name: 'StoragePage', component: Storage },
 	{ path: '/camera', name: 'CameraPage', component: Camera },
 	{ path: '/network', name: 'NetworkPage', component: Network },
@@ -10,5 +16,4 @@ const appRoutes = [
 ];
 
 
-// eslint-disable-next-line import/prefer-default-export
-export { appRoutes }
+export default routes;

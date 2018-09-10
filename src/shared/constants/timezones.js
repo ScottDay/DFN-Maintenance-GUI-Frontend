@@ -1,5 +1,4 @@
-// eslint-disable-next-line
-export const timezones = [
+const timezones = [
 	{ value: "(GMT-11:00) Niue", key: "Pacific/Niue" },
 	{ value: "(GMT-11:00) Pago Pago", key: "Pacific/Pago_Pago" },
 	{ value: "(GMT-10:00) Hawaii Time", key: "Pacific/Honolulu" },
@@ -252,3 +251,6 @@ export const timezones = [
 	{ value: "(GMT+14:00) Apia", key: "Pacific/Apia" },
 	{ value: "(GMT+14:00) Kiritimati", key: "Pacific/Kiritimati" }
 ];
+
+
+export default timezones;

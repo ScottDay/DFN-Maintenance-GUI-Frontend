@@ -1,10 +1,10 @@
-export const session = {
+const session = {
 	auth: '/auth',
 	check: '/api/session/check',
 	hostname: '/api/session/hostname'
 };
 
-export const network = {
+const network = {
 	internet: {
 		check: '/api/network/internet/check',
 		restart: '/api/network/internet/restart'
@@ -15,17 +15,26 @@ export const network = {
 	}
 };
 
-export const configfile = {
+const configfile = {
 	check: '/api/configfile/check',
 	whitelist: '/api/configfile/whitelist',
 	config: '/api/configfile/config'
 };
 
-export const storage = {
+const storage = {
 	check: '/api/storage/check'
 };
 
-export const location = {
+const location = {
 	time: '/api/location/time',
 	gps: '/api/location/gps'
 };
+
+
+export {
+	session,
+	network,
+	configfile,
+	storage,
+	location
+}
