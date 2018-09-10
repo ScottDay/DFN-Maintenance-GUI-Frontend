@@ -1,3 +1,5 @@
+/* eslint-disable no-case-declarations */
+
 import React from 'react';
 import superagentPromise from 'superagent-promise';
 import superagentDefaults from 'superagent-defaults';
@@ -53,10 +55,17 @@ const errorPlugins = (error) => {
 			break;
 		// Error while executing a backend command.
 		case 500:
+			const { cmd, output } = error.response.body;
+			let message = output;
+
+			if (cmd !== '') {
+				message = `${cmd}\n\n${output}`;
+			}
+
 			notificationStore.addNotification({
 				content: {
 					type: notificationTypes.ERROR,
-					message: `Command: ${error.response.body.cmd}\n\nOutput: ${error.response.body.output}`
+					message
 				}
 			});
 
@@ -122,3 +131,5 @@ const api = {
 
 
 export default api;
+
+/* eslint-enable no-case-declarations */
