@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Grid from '@material-ui/core/Grid';
+
 import { BaseCard } from 'components';
 
 import store from './store';
@@ -15,10 +17,12 @@ export default class TimeCard extends React.Component {
 
 	render() {
 		return (
-			<BaseCard basic title='Time'>
-				<Timestamps store={store} />
-				<TimezonePicker store={store} updateTimezone={service.updateTimezone} />
-			</BaseCard>
+			<Grid item sm={12}>
+				<BaseCard basic title='Time'>
+					<Timestamps store={store} />
+					<TimezonePicker store={store} updateTimezone={service.updateTimezone} />
+				</BaseCard>
+			</Grid>
 		);
 	}
 }

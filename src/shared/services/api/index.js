@@ -43,7 +43,9 @@ const location = {
 	getTime: () =>
 		api.get(endpoints.location.time),
 	updateTimezone: (timezone) =>
-		api.put(endpoints.location.time, timezone)
+		api.put(endpoints.location.time, timezone),
+	getGPS: () =>
+		api.get(endpoints.location.gps)
 };
 
 

@@ -26,5 +26,6 @@ export const storage = {
 };
 
 export const location = {
-	time: '/api/location/time'
+	time: '/api/location/time',
+	gps: '/api/location/gps'
 };
