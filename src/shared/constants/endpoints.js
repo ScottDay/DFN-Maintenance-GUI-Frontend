@@ -30,11 +30,20 @@ const location = {
 	gps: '/api/location/gps'
 };
 
+const camera = {
+	dslr: {
+		status: '/api/camera/dslr',
+		on: '/api/camera/dslr/on',
+		off: '/api/camera/dslr/off'
+	}
+}
+
 
 export {
 	session,
 	network,
 	configfile,
 	storage,
-	location
+	location,
+	camera
 }

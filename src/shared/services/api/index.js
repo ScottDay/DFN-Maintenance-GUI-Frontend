@@ -48,11 +48,23 @@ const location = {
 		api.get(endpoints.location.gps)
 };
 
+const camera = {
+	dslr: {
+		status: () =>
+			api.get(endpoints.camera.dslr.status),
+		on: () =>
+			api.get(endpoints.camera.dslr.on),
+		off: () =>
+			api.get(endpoints.camera.dslr.off)
+	}
+}
+
 
 export {
 	session,
 	network,
 	configfile,
 	storage,
-	location
+	location,
+	camera
 }
