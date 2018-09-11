@@ -25,7 +25,7 @@ export default class Presenter extends React.Component {
 						control={
 							<Switch
 								checked={store.status}
-								onClick={toggleCamera()}
+								onClick={() => toggleCamera()}
 							/>
 						}
 					/>
