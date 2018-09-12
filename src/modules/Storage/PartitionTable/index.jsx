@@ -14,29 +14,33 @@ import {
 	TableGroupRow
 } from '@devexpress/dx-react-grid-material-ui';
 
+import { BaseCard } from 'components';
+
 
 @observer
 export default class PartitionTable extends React.Component {
 	render() {
-		const { rows, config } = this.props;
+		const { store, config } = this.props;
 
 		return (
-			<Paper>
-				<Grid
-					rows={rows}
-					columns={config.columns}
-				>
-					<GroupingState
-						grouping={config.grouping}
-						defaultExpandedGroups={config.defaultExpandedGroups}
-					/>
-					<IntegratedGrouping />
-					<Table />
-					<TableColumnResizing defaultColumnWidths={config.defaultColumnWidths} />
-					<TableHeaderRow />
-					<TableGroupRow />
-				</Grid>
-			</Paper>
+			<BaseCard basic title='Drive Partitions'>
+				<Paper>
+					<Grid
+						rows={store.rows}
+						columns={config.columns}
+					>
+						<GroupingState
+							grouping={config.grouping}
+							defaultExpandedGroups={config.defaultExpandedGroups}
+						/>
+						<IntegratedGrouping />
+						<Table />
+						<TableColumnResizing defaultColumnWidths={config.defaultColumnWidths} />
+						<TableHeaderRow />
+						<TableGroupRow />
+					</Grid>
+				</Paper>
+			</BaseCard>
 		);
 	}
 }
