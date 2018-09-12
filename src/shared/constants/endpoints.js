@@ -22,7 +22,13 @@ const configfile = {
 };
 
 const storage = {
-	check: '/api/storage/check'
+	check: '/api/storage/check',
+	power: {
+		on: '/api/storage/power/on',
+		off: '/api/storage/power/off'
+	},
+	mount: '/api/storage/mount',
+	unmount: '/api/storage/unmount'
 };
 
 const location = {

@@ -36,7 +36,17 @@ const configfile = {
 
 const storage = {
 	check: () =>
-		api.get(endpoints.storage.check)
+		api.get(endpoints.storage.check),
+	power: {
+		on: () =>
+			api.get(endpoints.storage.power.on),
+		off: () =>
+			api.get(endpoints.storage.power.off)
+	},
+	mount: () =>
+		api.get(endpoints.storage.mount),
+	unmount: () =>
+		api.get(endpoints.storage.unmount)
 };
 
 const location = {
