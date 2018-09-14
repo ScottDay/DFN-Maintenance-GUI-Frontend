@@ -18,12 +18,12 @@ import {
 @observer
 export default class PartitionTable extends React.Component {
 	render() {
-		const { rows, config } = this.props;
+		const { store, config } = this.props;
 
 		return (
 			<Paper>
 				<Grid
-					rows={rows}
+					rows={store.rows}
 					columns={config.columns}
 				>
 					<GroupingState
