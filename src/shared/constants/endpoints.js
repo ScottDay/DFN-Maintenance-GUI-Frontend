@@ -1,7 +1,8 @@
 const session = {
 	auth: '/api/session/auth',
 	check: '/api/session/check',
-	hostname: '/api/session/hostname'
+	hostname: '/api/session/hostname',
+	refresh: '/api/session/refresh'
 };
 
 const network = {

@@ -10,7 +10,8 @@ function login(username, password) {
 		.auth(username, password)
 		.then((body) => {
 			store.reset();
-			sessionStore.setToken(body);
+			sessionStore.setRefreshToken(body.refresh_token);
+			sessionStore.setAccessToken(body.access_token, body.expires_in);
 			historyService.push('/app');
 		})
 		.catch(() => {

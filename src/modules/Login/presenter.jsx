@@ -1,7 +1,12 @@
 import React from 'react';
 import { observer } from 'mobx-react';
+import { Redirect } from 'react-router-dom';
+
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+
+import { requestStore } from 'stores';
+import { endpoints } from 'constants';
 
 
 @observer
@@ -16,6 +21,12 @@ export default class Presenter extends React.Component {
 
 	render() {
 		const {	service, store, sessionStore } = this.props;
+
+		if (requestStore.getRequestByType(endpoints.session.refresh)) {
+			return <div>Loading...</div>;
+		} else if (sessionStore.authenticated) {
+			return <Redirect to='/app' />;
+		}
 
 		return (
 			<div className='page-login'>

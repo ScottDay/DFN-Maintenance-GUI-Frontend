@@ -9,7 +9,9 @@ const session = {
 	check: () =>
 		api.get(endpoints.session.check),
 	hostname: () =>
-		api.get(endpoints.session.hostname)
+		api.get(endpoints.session.hostname),
+	refresh: () =>
+		api.get(endpoints.session.refresh)
 };
 
 const network = {
@@ -67,7 +69,7 @@ const camera = {
 		off: () =>
 			api.get(endpoints.camera.dslr.off)
 	}
-}
+};
 
 
 export {

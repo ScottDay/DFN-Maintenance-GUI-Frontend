@@ -9,7 +9,7 @@ import RefreshIcon from '@material-ui/icons/Refresh';
 
 import { sessionAction } from 'actions';
 import { sessionStore, requestStore, notificationStore } from 'stores';
-import { notificationTypes } from 'constants';
+import { notificationTypes, endpoints } from 'constants';
 import { IconButtonWrapper } from 'components';
 
 
@@ -26,17 +26,17 @@ superagent
 const inputPlugins = (request, url) => {
 	requestStore.setRequestInProgress(url, true);
 
-	if (sessionStore.access_token) {
+	if (url === endpoints.session.refresh) {
+		request.set('Authorization', `Bearer ${sessionStore.refresh_token}`);
+	} else {
 		request.set('Authorization', `Bearer ${sessionStore.access_token}`);
 	}
 };
 
 const outputPlugins = (result, url) => {
-	if (process.env.NODE_ENV === 'development'
-		&& result
-		&& result.body) {
+	if (process.env.NODE_ENV === 'development') {
 		// eslint-disable-next-line no-console
-		console.log(`DEBUG: ${url}\n\n${JSON.stringify(result.body)}`);
+		console.log(`DEBUG: ${url}`);
 	}
 
 	return result.body;
