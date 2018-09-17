@@ -1,5 +1,5 @@
 const session = {
-	auth: '/auth',
+	auth: '/api/session/auth',
 	check: '/api/session/check',
 	hostname: '/api/session/hostname'
 };

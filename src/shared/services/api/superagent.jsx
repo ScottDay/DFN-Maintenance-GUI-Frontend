@@ -26,8 +26,8 @@ superagent
 const inputPlugins = (request, url) => {
 	requestStore.setRequestInProgress(url, true);
 
-	if (sessionStore.token) {
-		request.set('Authorization', `JWT ${sessionStore.token}`);
+	if (sessionStore.access_token) {
+		request.set('Authorization', `Bearer ${sessionStore.access_token}`);
 	}
 };
 

@@ -10,7 +10,7 @@ function login(username, password) {
 		.auth(username, password)
 		.then((body) => {
 			store.reset();
-			sessionStore.setToken(body.access_token);
+			sessionStore.setToken(body);
 			historyService.push('/app');
 		})
 		.catch(() => {
@@ -26,7 +26,5 @@ function login(username, password) {
 }
 
 
-export {
-	// eslint-disable-next-line import/prefer-default-export
-	login
-}
+// eslint-disable-next-line import/prefer-default-export
+export { login }
