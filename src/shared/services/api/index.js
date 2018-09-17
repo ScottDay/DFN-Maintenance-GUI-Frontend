@@ -37,8 +37,8 @@ const configfile = {
 };
 
 const storage = {
-	check: () =>
-		api.get(endpoints.storage.check),
+	partitions: () =>
+		api.get(endpoints.storage.partitions),
 	power: {
 		on: () =>
 			api.get(endpoints.storage.power.on),

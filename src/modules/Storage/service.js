@@ -3,16 +3,14 @@ import { requestStore } from 'stores';
 import { endpoints } from 'constants';
 
 
-function check(store) {
+function partitions(store) {
 	apiService.storage
-		.check()
+		.partitions()
 		.then((body) => store.setRows(body.partitions))
 		.catch(() => {})
-		.finally(() => requestStore.setRequestInProgress(endpoints.storage.check, false));
+		.finally(() => requestStore.setRequestInProgress(endpoints.storage.partitions, false));
 }
 
 
-export {
-	// eslint-disable-next-line
-	check
-}
+// eslint-disable-next-line
+export { partitions }

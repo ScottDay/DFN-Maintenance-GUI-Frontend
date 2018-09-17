@@ -23,7 +23,7 @@ const configfile = {
 };
 
 const storage = {
-	check: '/api/storage/check',
+	partitions: '/api/storage/partitions',
 	power: {
 		on: '/api/storage/power/on',
 		off: '/api/storage/power/off'
@@ -43,7 +43,7 @@ const camera = {
 		on: '/api/camera/dslr/on',
 		off: '/api/camera/dslr/off'
 	}
-}
+};
 
 
 export {

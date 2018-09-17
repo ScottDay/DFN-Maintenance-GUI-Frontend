@@ -36,7 +36,7 @@ export default class Storage extends React.Component {
 	}
 
 	componentDidMount() {
-		service.check(store);
+		service.partitions(store);
 	}
 
 	render() {
