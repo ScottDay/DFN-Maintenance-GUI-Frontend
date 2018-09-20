@@ -13,7 +13,7 @@ export default class Commands extends React.Component {
 
 		return (
 			<React.Fragment>
-				<Grid item xs={12} sm={6}>
+				<Grid item xs={12} md={6}>
 					<NetworkCard
 						title='Mount'
 						subheader='Test subheader'
@@ -21,7 +21,7 @@ export default class Commands extends React.Component {
 					/>
 				</Grid>
 
-				<Grid item xs={12} sm={6}>
+				<Grid item xs={12} md={6}>
 					<NetworkCard
 						title='Unmount'
 						subheader='Test subheader'
@@ -29,7 +29,7 @@ export default class Commands extends React.Component {
 					/>
 				</Grid>
 
-				<Grid item xs={12} sm={6}>
+				<Grid item xs={12} md={6}>
 					<NetworkCard
 						title='Power On'
 						subheader='Test subheader'
@@ -37,7 +37,7 @@ export default class Commands extends React.Component {
 					/>
 				</Grid>
 
-				<Grid item xs={12} sm={6}>
+				<Grid item xs={12} md={6}>
 					<NetworkCard
 						title='Power Off'
 						subheader='Test subheader'
