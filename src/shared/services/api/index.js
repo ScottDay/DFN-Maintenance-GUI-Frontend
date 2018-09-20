@@ -15,14 +15,18 @@ export const session = {
 };
 
 export const network = {
-	checkInternet: () =>
-		get(endpoints.network.internet.check),
-	restartInternet: () =>
-		get(endpoints.network.internet.restart),
-	checkVPN: () =>
-		get(endpoints.network.vpn.check),
-	restartVPN: () =>
-		get(endpoints.network.vpn.restart)
+	internet: {
+		check: () =>
+			get(endpoints.network.internet.check),
+		restart: () =>
+			get(endpoints.network.internet.restart)
+	},
+	vpn: {
+		check: () =>
+			get(endpoints.network.vpn.check),
+		restart: () =>
+			get(endpoints.network.vpn.restart)
+	}
 };
 
 export const configfile = {

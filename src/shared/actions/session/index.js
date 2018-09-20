@@ -3,14 +3,14 @@ import { sessionStore, notificationStore, requestStore } from 'stores';
 import { endpoints } from 'constants';
 
 
-function hostname() {
+export function hostname() {
 	apiService.session
 		.hostname()
 		.then((body) => sessionStore.setHostname(body.hostname))
 		.finally(() => requestStore.setRequestInProgress(endpoints.session.hostname, false));
 }
 
-function logout() {
+export function logout() {
 	// eslint-disable-next-line
 	console.log('logout');
 
@@ -19,7 +19,7 @@ function logout() {
 	historyService.push('/login');
 }
 
-function refresh() {
+export function refresh() {
 	if (sessionStore.hasRefreshToken) {
 		// eslint-disable-next-line
 		console.log('refresh');
@@ -35,7 +35,7 @@ function refresh() {
 	}
 }
 
-function check() {
+export function check() {
 	if (sessionStore.hasAccessToken && !requestStore.getRequestByType(endpoints.session.check)) {
 		// eslint-disable-next-line
 		console.log('check');
@@ -50,12 +50,4 @@ function check() {
 	} else {
 		logout();
 	}
-}
-
-
-export {
-	hostname,
-	logout,
-	refresh,
-	check
 }
