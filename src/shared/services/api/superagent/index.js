@@ -17,7 +17,7 @@ superagent
 
 
 export function get(url) {
-	superagent
+	return superagent
 		.get(`${rootUrl}${url}`)
 		.use((request) => inputPlugin(request, url))
 		.then((result) => outputPlugin(result, url))
@@ -25,7 +25,7 @@ export function get(url) {
 }
 
 export function post(url, body) {
-	superagent
+	return superagent
 		.post(`${rootUrl}${url}`)
 		.use((request) => inputPlugin(request, url))
 		.send(body)
@@ -34,7 +34,7 @@ export function post(url, body) {
 }
 
 export function put(url, body) {
-	superagent
+	return superagent
 		.put(`${rootUrl}${url}`)
 		.use((request) => inputPlugin(request, url))
 		.send(body)
