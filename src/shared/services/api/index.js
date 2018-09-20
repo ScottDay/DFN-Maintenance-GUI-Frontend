@@ -1,82 +1,72 @@
 import { endpoints } from 'constants';
 
-import api from './superagent';
+import { get, post, put } from './superagent';
 
 
-const session = {
+export const session = {
 	auth: (username, password) =>
-		api.post(endpoints.session.auth, { username, password }),
+		post(endpoints.session.auth, { username, password }),
 	check: () =>
-		api.get(endpoints.session.check),
+		get(endpoints.session.check),
 	hostname: () =>
-		api.get(endpoints.session.hostname),
+		get(endpoints.session.hostname),
 	refresh: () =>
-		api.get(endpoints.session.refresh)
+		get(endpoints.session.refresh)
 };
 
-const network = {
+export const network = {
 	checkInternet: () =>
-		api.get(endpoints.network.internet.check),
+		get(endpoints.network.internet.check),
 	restartInternet: () =>
-		api.get(endpoints.network.internet.restart),
+		get(endpoints.network.internet.restart),
 	checkVPN: () =>
-		api.get(endpoints.network.vpn.check),
+		get(endpoints.network.vpn.check),
 	restartVPN: () =>
-		api.get(endpoints.network.vpn.restart)
+		get(endpoints.network.vpn.restart)
 };
 
-const configfile = {
+export const configfile = {
 	/* check: () =>
 		api.get(endpoints.configfile.check), */
 	whitelist: () =>
-		api.get(endpoints.configfile.whitelist),
+		get(endpoints.configfile.whitelist),
 	getConfig: () =>
-		api.get(endpoints.configfile.config),
+		get(endpoints.configfile.config),
 	updateConfig: (row) =>
-		api.put(endpoints.configfile.config, row)
+		put(endpoints.configfile.config, row)
 };
 
-const storage = {
+export const storage = {
 	partitions: () =>
-		api.get(endpoints.storage.partitions),
+		get(endpoints.storage.partitions),
 	power: {
 		on: () =>
-			api.get(endpoints.storage.power.on),
+			get(endpoints.storage.power.on),
 		off: () =>
-			api.get(endpoints.storage.power.off)
+			get(endpoints.storage.power.off)
 	},
 	mount: () =>
-		api.get(endpoints.storage.mount),
+		get(endpoints.storage.mount),
 	unmount: () =>
-		api.get(endpoints.storage.unmount)
+		get(endpoints.storage.unmount)
 };
 
-const location = {
+export const location = {
 	getTime: () =>
-		api.get(endpoints.location.time),
+		get(endpoints.location.time),
 	updateTimezone: (timezone) =>
-		api.put(endpoints.location.time, timezone),
+		put(endpoints.location.time, timezone),
 	getGPS: () =>
-		api.get(endpoints.location.gps)
+		get(endpoints.location.gps)
 };
 
-const camera = {
+export const camera = {
 	dslr: {
 		status: () =>
-			api.get(endpoints.camera.dslr.status),
+			get(endpoints.camera.dslr.status),
 		on: () =>
-			api.get(endpoints.camera.dslr.on),
+			get(endpoints.camera.dslr.on),
 		off: () =>
-			api.get(endpoints.camera.dslr.off)
+			get(endpoints.camera.dslr.off)
 	}
 };
-
-
-export {
-	session,
-	network,
-	configfile,
-	storage,
-	location,
-	camera
-}
