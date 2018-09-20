@@ -3,32 +3,48 @@ import { observer } from 'mobx-react';
 
 import Grid from '@material-ui/core/Grid';
 
-import { BaseCard } from 'components';
+import { NetworkCard } from 'containers';
 
 
 @observer
 export default class Commands extends React.Component {
 	render() {
+		const { service } = this.props;
+
 		return (
-			<BaseCard basic title='Commands'>
-				<Grid container spacing={24}>
-					<Grid item xs={12} sm={6}>
-						Mount
-					</Grid>
-
-					<Grid item xs={12} sm={6}>
-						Unmount
-					</Grid>
-
-					<Grid item xs={12} sm={6}>
-						Power On
-					</Grid>
-
-					<Grid item xs={12} sm={6}>
-						Power Off
-					</Grid>
+			<React.Fragment>
+				<Grid item xs={12} sm={6}>
+					<NetworkCard
+						title='Mount'
+						subheader='Test subheader'
+						onClick={service.mount}
+					/>
 				</Grid>
-			</BaseCard>
+
+				<Grid item xs={12} sm={6}>
+					<NetworkCard
+						title='Unmount'
+						subheader='Test subheader'
+						onClick={service.unmount}
+					/>
+				</Grid>
+
+				<Grid item xs={12} sm={6}>
+					<NetworkCard
+						title='Power On'
+						subheader='Test subheader'
+						onClick={service.powerOn}
+					/>
+				</Grid>
+
+				<Grid item xs={12} sm={6}>
+					<NetworkCard
+						title='Power Off'
+						subheader='Test subheader'
+						onClick={service.powerOff}
+					/>
+				</Grid>
+			</React.Fragment>
 		);
 	}
 }
