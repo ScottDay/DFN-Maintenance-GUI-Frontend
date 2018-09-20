@@ -8,6 +8,8 @@ import Button from '@material-ui/core/Button';
 
 import { CollapsibleCard } from 'containers';
 
+import Store from './store';
+
 
 const StyledTypography = styled(Typography)`
 	white-space: pre-line;
@@ -16,14 +18,17 @@ const StyledTypography = styled(Typography)`
 
 @observer
 export default class NetworkCard extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.store = new Store();
+	}
+
 	render() {
 		const {
 			title,
 			subheader,
-			disabled,
-			onClick,
-			summary,
-			output
+			onClick
 		} = this.props;
 
 		// TODO: Disable when making network request.
@@ -31,19 +36,19 @@ export default class NetworkCard extends React.Component {
 			<CollapsibleCard
 				title={title}
 				subheader={subheader}
-				disabled={disabled}
+				disabled={!this.store.shouldDisplayContent}
 				actions={
 					<CardActions>
 						<Button
 							size='small'
 							color='primary'
-							onClick={() => onClick}
+							onClick={() => onClick(this.store)}
 						>
 							Execute
 						</Button>
-						{summary ?
+						{this.store.summary ?
 							<div>
-								{summary}
+								{this.store.summary}
 							</div>
 							: null
 						}
@@ -51,7 +56,7 @@ export default class NetworkCard extends React.Component {
 				}
 			>
 				<StyledTypography paragraph>
-					{output}
+					{this.store.output}
 				</StyledTypography>
 			</CollapsibleCard>
 		);

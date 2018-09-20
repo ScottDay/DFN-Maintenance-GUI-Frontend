@@ -1,60 +1,63 @@
 import React from 'react';
 
-import Presenter from './presenter';
-import Store from './store';
+import Grid from '@material-ui/core/Grid';
+
+import { Page } from 'components';
+
 import * as service from './service';
+import SideBySideCard from './SideBySideCard';
 
 
 export default class Network extends React.Component {
 	constructor(props) {
 		super(props);
 
-		const checkInternetStore = new Store();
-		const restartInternetStore = new Store();
-		const checkVPNStore = new Store();
-		const restartVPNStore = new Store();
-
-		this.sections = [
+		this.internetCards = [
 			{
-				title: 'Internet',
-				cards: [
-					{
-						title: 'Check Connection',
-						subheader: 'Retrieves the IP address of the backend server.',
-						store: checkInternetStore,
-						onClick: () => service.checkInternet(checkInternetStore)
-					},
-					{
-						title: 'Restart Connection',
-						subheader: 'Restarts the modems network interface. May take some time...',
-						store: restartInternetStore,
-						onClick: () => service.restartInternet(restartInternetStore)
-					}
-				]
+				title: 'Check Connection',
+				subheader: 'Retrieves the IP address of the backend server.',
+				onClick: service.checkInternet
 			},
 			{
-				title: 'VPN',
-				cards: [
-					{
-						title: 'Check Connection',
-						subheader: 'Retrieves the VPN IP address of the backend server.',
-						store: checkVPNStore,
-						onClick: () => service.checkVPN(checkVPNStore)
-					},
-					{
-						title: 'Restart Connection',
-						subheader: 'Restarts the VPN service.',
-						store: restartVPNStore,
-						onClick: () => service.restartVPN(restartVPNStore)
-					}
-				]
+				title: 'Restart Connection',
+				subheader: 'Restarts the modems network interface. May take some time...',
+				onClick: service.restartInternet
+			}
+		];
+
+		this.vpnCards = [
+			{
+				title: 'Check Connection',
+				subheader: 'Retrieves the VPN IP address of the backend server.',
+				onClick: service.checkVPN
+			},
+			{
+				title: 'Restart Connection',
+				subheader: 'Restarts the VPN service.',
+				onClick: service.restartVPN
 			}
 		];
 	}
 
 	render() {
 		return (
-			<Presenter sections={this.sections} />
+			<Page title='Network'>
+				<Grid container spacing={24}>
+					<Grid item xs={12} sm={12}>
+						<SideBySideCard
+							sectionTitle='Internet'
+							cards={this.internetCards}
+						/>
+					</Grid>
+
+					<Grid item xs={12} sm={12}>
+						<SideBySideCard
+							sectionTitle='VPN'
+							cards={this.vpnCards}
+						/>
+					</Grid>
+				</Grid>
+			</Page>
 		);
 	}
 }

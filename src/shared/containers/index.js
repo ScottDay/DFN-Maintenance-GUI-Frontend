@@ -1,7 +1,8 @@
 import CollapsibleCard from './CollapsibleCard';
+import NetworkCard from './NetworkCard';
 
 
 export {
-	// eslint-disable-next-line
-	CollapsibleCard
+	CollapsibleCard,
+	NetworkCard
 }

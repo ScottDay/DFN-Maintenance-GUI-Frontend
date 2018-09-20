@@ -4,7 +4,7 @@ import { observer } from 'mobx-react';
 import Grid from '@material-ui/core/Grid';
 
 import { BaseCard } from 'components';
-import NetworkCard from '../NetworkCard';
+import { NetworkCard } from 'containers';
 
 
 @observer
@@ -19,7 +19,6 @@ export default class SideBySideCard extends React.Component {
 						const {
 							title,
 							subheader,
-							store,
 							onClick
 						} = props;
 
@@ -28,10 +27,7 @@ export default class SideBySideCard extends React.Component {
 								<NetworkCard
 									title={title}
 									subheader={subheader}
-									disabled={!store.shouldDisplayContent}
 									onClick={onClick}
-									summary={store.summary}
-									output={store.output}
 								/>
 							</Grid>
 						);
