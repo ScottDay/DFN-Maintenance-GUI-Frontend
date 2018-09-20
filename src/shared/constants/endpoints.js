@@ -1,11 +1,11 @@
-const session = {
+export const session = {
 	auth: '/api/session/auth',
 	check: '/api/session/check',
 	hostname: '/api/session/hostname',
 	refresh: '/api/session/refresh'
 };
 
-const network = {
+export const network = {
 	internet: {
 		check: '/api/network/internet/check',
 		restart: '/api/network/internet/restart'
@@ -16,13 +16,13 @@ const network = {
 	}
 };
 
-const configfile = {
+export const configfile = {
 	check: '/api/configfile/check',
 	whitelist: '/api/configfile/whitelist',
 	config: '/api/configfile/config'
 };
 
-const storage = {
+export const storage = {
 	partitions: '/api/storage/partitions',
 	power: {
 		on: '/api/storage/power/on',
@@ -32,25 +32,15 @@ const storage = {
 	unmount: '/api/storage/unmount'
 };
 
-const location = {
+export const location = {
 	time: '/api/location/time',
 	gps: '/api/location/gps'
 };
 
-const camera = {
+export const camera = {
 	dslr: {
 		status: '/api/camera/dslr',
 		on: '/api/camera/dslr/on',
 		off: '/api/camera/dslr/off'
 	}
 };
-
-
-export {
-	session,
-	network,
-	configfile,
-	storage,
-	location,
-	camera
-}
