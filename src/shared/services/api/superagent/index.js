@@ -2,7 +2,7 @@ import superagentPromise from 'superagent-promise';
 import superagentDefaults from 'superagent-defaults';
 import _superagent from 'superagent';
 
-import { inputPlugin, outputPlugin, errorPlugin } from 'plugins';
+import { inputPlugin, outputPlugin, errorPlugin } from './plugins';
 
 
 const rootUrl = `http://${window.location.hostname}:5000`;
