@@ -12,8 +12,8 @@
         "url": "https://github.com/ScottDay/DFN-Maintenance-GUI-Frontend"
     },
     "engines": {
-        "node": ">=7.2.0",
-        "npm": ">=4.0.2"
+        "node": ">=8.11.3",
+        "npm": ">=6.4.1"
     },
     "scripts": {
         "build": "webpack --progress --bail --mode production --env.config=prod",
@@ -65,9 +65,9 @@
         "progress-bar-webpack-plugin": "1.11.0",
         "react-hot-loader": "4.3.4",
         "sass-loader": "7.1.0",
-        "semantic-release": "15.9.12",
+        "semantic-release": "15.9.16",
         "@semantic-release/changelog": "3.0.0",
-        "@semantic-release/git": "7.0.3",
+        "@semantic-release/git": "7.0.4",
         "style-loader": "0.22.1",
         "webpack": "4.16.5",
         "webpack-cli": "3.1.0",
