@@ -10,6 +10,14 @@
           <option name="port" value="22" />
         </fileTransfer>
       </webServer>
+      <webServer id="ac2f11cd-be19-49d0-a3fa-74f799f3a2e4" name="DFNSMALL58" url="http://10.1.17.58">
+        <fileTransfer host="10.1.17.58" port="22" accessType="SFTP" authAgent="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>
