@@ -56,7 +56,7 @@ export default class NetworkCard extends React.Component {
 				}
 			>
 				<StyledTypography paragraph>
-					{this.store.output}
+					{this.store.log}
 				</StyledTypography>
 			</CollapsibleCard>
 		);

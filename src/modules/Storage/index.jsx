@@ -20,7 +20,8 @@ export default class Storage extends React.Component {
 			columns: [
 				{ name: 'status',  title: 'Status' },
 				{ name: 'device',  title: 'Device' },
-				{ name: 'total',   title: 'Total' },
+				{ name: 'label',  title: 'Label' },
+				{ name: 'size',   title: 'Size' },
 				{ name: 'used',    title: 'Used' },
 				{ name: 'free',    title: 'Free' },
 				{ name: 'percent', title: 'Percent' },
@@ -30,7 +31,8 @@ export default class Storage extends React.Component {
 			defaultColumnWidths: [
 				{ columnName: 'status',  width: 100 },
 				{ columnName: 'device',  width: 100 },
-				{ columnName: 'total',   width: 100 },
+				{ columnName: 'label',  width: 100 },
+				{ columnName: 'size',   width: 100 },
 				{ columnName: 'used',    width: 100 },
 				{ columnName: 'free',    width: 100 },
 				{ columnName: 'percent', width: 100 },
@@ -38,7 +40,7 @@ export default class Storage extends React.Component {
 				{ columnName: 'mount',   width: 100 }
 			],
 			grouping: [{ columnName: 'status' }],
-			defaultExpandedGroups: ['mounted']
+			defaultExpandedGroups: ['mounted', 'unmounted', 'off']
 		};
 	}
 

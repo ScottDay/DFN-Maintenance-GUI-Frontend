@@ -20,7 +20,7 @@ export function mount(store) {
 		.mount()
 		.then((body) => {
 			store.setSummary('Test summary');
-			store.setOutput('Test output...');
+			store.setLog(body.log);
 
 			partitionStore.setRows(body.partitions)
 		})
@@ -33,7 +33,7 @@ export function unmount(store) {
 		.unmount()
 		.then((body) => {
 			store.setSummary('Test summary');
-			store.setOutput('Test output...');
+			store.setLog(body.log);
 
 			partitionStore.setRows(body.partitions)
 		})
@@ -46,7 +46,7 @@ export function powerOn(store) {
 		.on()
 		.then((body) => {
 			store.setSummary('Test summary');
-			store.setOutput('Test output...');
+			store.setLog(body.log);
 
 			partitionStore.setRows(body.partitions)
 		})
@@ -59,7 +59,7 @@ export function powerOff(store) {
 		.off()
 		.then((body) => {
 			store.setSummary('Test summary');
-			store.setOutput('Test output...');
+			store.setLog(body.log);
 
 			partitionStore.setRows(body.partitions)
 		})

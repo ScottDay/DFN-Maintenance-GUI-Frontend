@@ -7,7 +7,7 @@ import {
 
 export default class Store {
 	@observable summary = null;
-	@observable output = null;
+	@observable log = null;
 
 	@action.bound
 	setSummary(summary) {
@@ -15,21 +15,21 @@ export default class Store {
 	}
 
 	@action.bound
-	setOutput(output) {
-		this.output = output;
+	setLog(log) {
+		this.log = log;
 	}
 
 	@action.bound
 	reset() {
 		this.summary = null;
-		this.output = null;
+		this.log = null;
 	}
 
 	@computed
 	get shouldDisplayContent() {
 		let result = false;
 
-		if (this.output && this.output.length > 0) {
+		if (this.log && this.log.length > 0) {
 			result = true;
 		}
 

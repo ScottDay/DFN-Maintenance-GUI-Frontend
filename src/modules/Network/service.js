@@ -8,7 +8,7 @@ export function checkInternet(store) {
 		.check()
 		.then((body) => {
 			store.setSummary(`IP Address: ${body.ip}`);
-			store.setOutput(body.output);
+			store.setLog(body.output);
 		})
 		.catch(() => store.reset())
 		.finally(() => requestStore.setRequestInProgress(endpoints.network.internet.check, false));
