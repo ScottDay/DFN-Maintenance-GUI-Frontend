@@ -17,9 +17,9 @@ export const network = {
 };
 
 export const configfile = {
-	check: '/api/configfile/check',
-	whitelist: '/api/configfile/whitelist',
-	config: '/api/configfile/config'
+	config: '/api/config',
+	check: '/api/config/check',
+	whitelist: '/api/config/whitelist'
 };
 
 export const storage = {
@@ -42,5 +42,17 @@ export const camera = {
 		status: '/api/camera/dslr',
 		on: '/api/camera/dslr/on',
 		off: '/api/camera/dslr/off'
+	},
+	picture: {
+		download: '/api/camera/picture/download',
+		find: '/api/camera/picture/find'
+	},
+	thumbnail: {
+		download: '/api/camera/thumbnail/download',
+		remove: '/api/camera/thumbnail/remove'
+	},
+	video: {
+		on: '/api/camera/video/on',
+		off: '/api/camera/video/off'
 	}
 };
