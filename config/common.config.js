@@ -114,8 +114,7 @@ class WebpackBaseConfig {
 			},
 			plugins: [
 				new webpack.DefinePlugin({
-					'process.env.config': `${this.props.config}`,
-					'process.env.auth': `${this.props.auth}`
+					'process.env.config': `${this.props.config}`
 				})
 			]
 		};

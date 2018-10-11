@@ -10,7 +10,6 @@ module.exports = (env) => {
 	const defaultConfig = 'dev';
 
 	env.config = (env.config != null) ? env.config : defaultConfig;
-	env.auth = (env.auth != null) ? env.auth : true;
 
 	// Return a new instance of the webpack config
 	// or the default one if it cannot be found.

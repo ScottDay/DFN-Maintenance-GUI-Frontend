@@ -20,8 +20,7 @@
         "lint": "eslint ./src",
         "lint-fix": "eslint ./src --fix",
         "start": "webpack-dev-server --mode development",
-        "start-open": "webpack-dev-server --mode development --open",
-        "start-noauth": "webpack-dev-server --mode development --env.auth=false"
+        "start-open": "webpack-dev-server --mode development --open"
     },
     "dependencies": {
         "@devexpress/dx-react-core": "1.6.0",

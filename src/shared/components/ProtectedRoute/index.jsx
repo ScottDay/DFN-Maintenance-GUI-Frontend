@@ -12,14 +12,11 @@ export default class ProtectedRoute extends React.Component {
 	constructor(props) {
 		super(props);
 
-		// If authentication has been enabled then authenticate with backend.
-		if (process.env.auth) {
-			sessionAction.check();
-		}
+		sessionAction.check();
 	}
 
 	render() {
-		if (!process.env.auth || sessionStore.authenticated) {
+		if (sessionStore.authenticated) {
 			// eslint-disable-next-line
 			console.log('route');
 
