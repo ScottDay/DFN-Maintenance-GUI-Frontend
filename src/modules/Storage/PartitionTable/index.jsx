@@ -34,7 +34,6 @@ export default class PartitionTable extends React.Component {
 						/>
 						<IntegratedGrouping />
 						<Table />
-						<TableColumnResizing defaultColumnWidths={config.defaultColumnWidths} />
 						<TableHeaderRow />
 						<TableGroupRow />
 					</TableGrid>

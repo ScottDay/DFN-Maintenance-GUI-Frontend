@@ -13,34 +13,34 @@ export default class Commands extends React.Component {
 
 		return (
 			<React.Fragment>
-				<Grid item xs={12} md={6}>
+				<Grid item xs={12} sm={6}>
 					<NetworkCard
 						title='Mount'
-						subheader='Test subheader'
+						subheader='Mounts the systems external drives.'
 						onClick={service.mount}
 					/>
 				</Grid>
 
-				<Grid item xs={12} md={6}>
+				<Grid item xs={12} sm={6}>
 					<NetworkCard
 						title='Unmount'
-						subheader='Test subheader'
+						subheader='Unmounts the systems external drives.'
 						onClick={service.unmount}
 					/>
 				</Grid>
 
-				<Grid item xs={12} md={6}>
+				<Grid item xs={12} sm={6}>
 					<NetworkCard
 						title='Power On'
-						subheader='Test subheader'
+						subheader='Turns on the systems external drives.'
 						onClick={service.powerOn}
 					/>
 				</Grid>
 
-				<Grid item xs={12} md={6}>
+				<Grid item xs={12} sm={6}>
 					<NetworkCard
 						title='Power Off'
-						subheader='Test subheader'
+						subheader='Turns off the systems external drives.'
 						onClick={service.powerOff}
 					/>
 				</Grid>
