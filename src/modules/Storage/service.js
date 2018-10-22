@@ -66,3 +66,14 @@ export function powerOff(store) {
 		.catch(() => {})
 		.finally(() => requestStore.setRequestInProgress(endpoints.storage.power.off, false));
 }
+
+export function smart(store) {
+	apiService.storage
+		.smart()
+		.then((body) => {
+			store.setLog(body.log);
+			partitionStore.setRows(body.partitions)
+		})
+		.catch(() => {})
+		.finally(() => requestStore.setRequestInProgress(endpoints.storage.smart, false));
+}

@@ -10,7 +10,6 @@ import {
 import {
 	Grid as TableGrid,
 	Table,
-	TableColumnResizing,
 	TableHeaderRow,
 	TableGroupRow
 } from '@devexpress/dx-react-grid-material-ui';

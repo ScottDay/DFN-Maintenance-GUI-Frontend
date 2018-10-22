@@ -44,6 +44,14 @@ export default class Commands extends React.Component {
 						onClick={service.powerOff}
 					/>
 				</Grid>
+
+				<Grid item xs={12} sm={6}>
+					<NetworkCard
+						title='SMART Test'
+						subheader='Runs SMART test on all powered drives, takes ~2 minutes.'
+						onClick={service.smart}
+					/>
+				</Grid>
 			</React.Fragment>
 		);
 	}

@@ -26,7 +26,7 @@ export default class Storage extends React.Component {
 				{ name: 'used',    title: 'Used' },
 				{ name: 'free',    title: 'Free' },
 				{ name: 'percent', title: 'Percent' },
-				{ name: 'type',    title: 'Type' }
+				{ name: 'smart',   title: 'Smart' }
 			],
 			grouping: [{ columnName: 'status' }],
 			defaultExpandedGroups: ['mounted', 'unmounted', 'off']

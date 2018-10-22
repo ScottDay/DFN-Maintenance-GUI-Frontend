@@ -29,7 +29,8 @@ export const storage = {
 		off: '/api/storage/power/off'
 	},
 	mount: '/api/storage/mount',
-	unmount: '/api/storage/unmount'
+	unmount: '/api/storage/unmount',
+	smart: '/api/storage/smart'
 };
 
 export const location = {

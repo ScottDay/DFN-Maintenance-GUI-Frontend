@@ -12,7 +12,8 @@ class Store {
 			free: '',
 			percent: '',
 			type: '',
-			mount: ''
+			mount: '',
+			smart: ''
 		}
 	];
 

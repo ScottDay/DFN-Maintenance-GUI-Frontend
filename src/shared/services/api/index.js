@@ -52,7 +52,9 @@ export const storage = {
 	mount: () =>
 		get(endpoints.storage.mount),
 	unmount: () =>
-		get(endpoints.storage.unmount)
+		get(endpoints.storage.unmount),
+	smart: () =>
+		get(endpoints.storage.smart)
 };
 
 export const location = {
