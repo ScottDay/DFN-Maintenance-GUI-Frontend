@@ -41,17 +41,10 @@ export const errorPlugin = (error) => {
 			break;
 		// Error while executing a backend command.
 		case 500:
-			const { cmd, output } = error.response.body;
-			let message = output;
-
-			if (cmd !== '') {
-				message = `${cmd}\n\n${output}`;
-			}
-
 			notificationStore.addNotification({
 				content: {
 					type: notificationTypes.ERROR,
-					message
+					message: error.response.body.error.msg
 				}
 			});
 
