@@ -10,10 +10,10 @@ const superagent = superagentDefaults(superagentPromise(_superagent, global.Prom
 
 superagent
 	.set('Access-Control-Allow-Origin', '*')
-	.set('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-	.set('Access-Control-Allow-Methods', 'GET,POST,PUT')
+	.set('Access-Control-Allow-Headers', 'Accept, Content-Type, Authorization')
+	.set('Access-Control-Allow-Methods', 'GET, POST, PUT')
 	.set('Access-Control-Allow-Credentials', 'true')
-	.set('Content-Type', 'application/json;charset=UTF-8');
+	.set('Accept', 'application/json');
 
 
 export function get(url) {

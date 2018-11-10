@@ -16,6 +16,10 @@ export const inputPlugin = (request, url) => {
 	} else {
 		request.set('Authorization', `Bearer ${sessionStore.access_token}`);
 	}
+
+	if (request.method === 'POST' || request.method === 'PUT') {
+		request.set('Content-Type', 'application/json');
+	}
 };
 
 export const outputPlugin = (result, url) => {
