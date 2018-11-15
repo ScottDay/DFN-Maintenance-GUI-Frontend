@@ -1,6 +1,8 @@
 import React from 'react';
 import Styled from 'styled-components';
 
+import Button from '@material-ui/core/Button';
+
 import CodingCatImage from 'assets/coding-cat';
 
 
@@ -43,9 +45,13 @@ export default class PageNotFound extends React.Component {
 				<center>
 					<h2>Oh no, seems like you have lost your way!</h2>
 					<h3>Click the button below to navigate back to the home page...</h3>
-					<button type='button' onClick={() => this.props.history.push('/')}>
+					<Button
+						size='small'
+						color='primary'
+						onClick={() => this.props.history.push('/')}
+					>
 						Back to Homepage
-					</button>
+					</Button>
 				</center>
 			</StyledDiv>
 		);
