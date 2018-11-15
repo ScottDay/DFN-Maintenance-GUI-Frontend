@@ -57,3 +57,8 @@ export const camera = {
 		off: '/api/camera/video/off'
 	}
 };
+
+export const power = {
+	shutdown: '/api/power/shutdown',
+	restart: '/api/power/restart'
+};

@@ -76,3 +76,8 @@ export const camera = {
 			get(endpoints.camera.dslr.off)
 	}
 };
+
+export const power = {
+	shutdown: () => get(endpoints.power.shutdown),
+	restart: () => get(endpoints.power.restart)
+};
