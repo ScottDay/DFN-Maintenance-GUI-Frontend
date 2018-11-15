@@ -1,6 +1,7 @@
 import React from 'react';
 
 import RefreshIcon from '@material-ui/icons/Refresh';
+import Button from "@material-ui/core/Button/Button";
 
 import { sessionAction } from 'actions';
 import { sessionStore, requestStore, notificationStore } from 'stores';
@@ -37,10 +38,24 @@ export const errorPlugin = (error) => {
 	switch (error.status) {
 		// Not authorized.
 		case 401:
-			// Only auto logout if authentication is enabled.
-			if (process.env.auth) {
-				sessionAction.logout();
-			}
+			notificationStore.addNotification({
+				content: {
+					type: notificationTypes.ERROR,
+					duration: 10000,
+					message: "Endpoint requires authentication, logout to re-authenticate."
+				},
+				renderClose: true,
+				action: [
+					<Button
+						key='logout'
+						size='small'
+						color='primary'
+						onClick={() => sessionAction.logout()}
+					>
+						Logout
+					</Button>
+				]
+			});
 
 			break;
 		// Error while executing a backend command.
