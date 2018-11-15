@@ -33,7 +33,7 @@ const DialogWrapper = (props) => {
 			</DialogContent>
 		</Dialog>
 	);
-}
+};
 
 @observer
 export default class Presenter extends React.Component {
