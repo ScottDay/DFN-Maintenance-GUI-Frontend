@@ -18,7 +18,7 @@ export function restartInternet(store) {
 	apiService.network.internet
 		.restart()
 		.then((body) => {
-			store.setMessage(body.output);
+			store.setLog(body.output);
 
 			notificationStore.addNotification({
 				content: {
@@ -36,7 +36,7 @@ export function checkVPN(store) {
 		.check()
 		.then((body) => {
 			store.setSummary(`VPN IP Address: ${body.ip}`);
-			store.setMessage(body.output);
+			store.setLog(body.output);
 		})
 		.catch(() => store.reset())
 		.finally(() => requestStore.setRequestInProgress(endpoints.network.vpn.check, false));
@@ -46,7 +46,7 @@ export function restartVPN(store) {
 	apiService.network.vpn
 		.restart()
 		.then((body) => {
-			store.setMessage(body.output);
+			store.setLog(body.output);
 
 			notificationStore.addNotification({
 				content: {
