@@ -66,29 +66,29 @@ const StyledErrorIcon = styled(ErrorIcon)`
 
 
 export default class Presenter extends React.Component {
-	determineAction(action, renderClose, onClose) {
-		let result = [];
-		const close = (
-			<IconButtonWrapper
-				key='close'
-				onClick={onClose}
-				icon={CloseIcon}
-			/>
-		);
+	static determineAction(action, renderClose, onClose) {
+		const result = [];
 
-		if (!action) { // No action given.
-			result.push(close);
-		} else if (renderClose) { // Action given, still want default button.
+		if (action) {
 			result.push(action);
+		}
+
+		if (renderClose) {
+			const close = (
+				<IconButtonWrapper
+					key='close'
+					onClick={onClose}
+					icon={CloseIcon}
+				/>
+			);
+
 			result.push(close);
-		} else { // Use only provided actions.
-			result = action;
 		}
 
 		return result;
 	}
 
-	determineIconType(type) {
+	static determineIconType(type) {
 		let Icon = null;
 
 		switch (type) {
@@ -110,8 +110,8 @@ export default class Presenter extends React.Component {
 			type, duration, message
 		} = content;
 
-		const action = this.determineAction(this.props.action, this.props.renderClose, onClose);
-		const Icon = this.determineIconType(type);
+		const action = Presenter.determineAction(this.props.action, this.props.renderClose, onClose);
+		const Icon = Presenter.determineIconType(type);
 
 		return (
 			<Snackbar

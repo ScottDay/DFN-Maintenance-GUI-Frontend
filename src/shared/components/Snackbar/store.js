@@ -5,7 +5,6 @@ import { notificationTypes } from 'constants';
 
 class Store {
 	@observable isOpen = false;
-
 	@observable notification = {
 		content: {
 			type: notificationTypes.INFO,
@@ -18,7 +17,7 @@ class Store {
 		},
 		renderClose: true,
 		action: null
-	}
+	};
 
 	@action.bound
 	open(notification) {
