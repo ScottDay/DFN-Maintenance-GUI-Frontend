@@ -9,7 +9,7 @@ import { PageNotFound, Login } from 'modules';
 import lightTheme from 'themes/lightTheme';
 import { ProtectedRoute, Snackbar } from 'components';
 import { historyService } from 'services';
-import { appRoutes } from 'routes';
+import routes from 'routes';
 
 import App from './App';
 
@@ -34,7 +34,7 @@ render(
 						/>
 						<ProtectedRoute
 							path='/app'
-							render={(props) => <App routes={appRoutes} path={props.match.path} />}
+							render={(props) => <App routes={routes} path={props.match.path} />}
 						/>
 						<Route
 							exact

@@ -1,26 +1,19 @@
-import React from 'react';
+import {
+	Storage,
+	Network,
+	Advanced,
+	Location,
+	Camera
+} from 'modules';
 
-import { Storage, Network, Advanced } from 'modules';
 
-
-function CameraStub() {
-	return (<div>CameraStub</div>);
-}
-
-function LocationStub() {
-	return (<div>LocationStub</div>);
-}
-
-const appRoutes = [
+const routes = [
 	{ path: '', name: 'StoragePage', component: Storage },
-	{ path: '/camera', name: 'CameraPage', component: CameraStub },
+	{ path: '/camera', name: 'CameraPage', component: Camera },
 	{ path: '/network', name: 'NetworkPage', component: Network },
-	{ path: '/location', name: 'LocationPage', component: LocationStub },
+	{ path: '/location', name: 'LocationPage', component: Location },
 	{ path: '/advanced', name: 'AdvancedPage', component: Advanced }
 ];
 
 
-export {
-	// eslint-disable-next-line import/prefer-default-export
-	appRoutes
-}
+export default routes;

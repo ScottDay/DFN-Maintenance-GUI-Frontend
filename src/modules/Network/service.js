@@ -3,22 +3,22 @@ import { notificationStore, requestStore } from 'stores';
 import { notificationTypes, endpoints } from 'constants';
 
 
-function checkInternet(store) {
-	apiService.network
-		.checkInternet()
+export function checkInternet(store) {
+	apiService.network.internet
+		.check()
 		.then((body) => {
 			store.setSummary(`IP Address: ${body.ip}`);
-			store.setMessage(body.output);
+			store.setLog(body.output);
 		})
 		.catch(() => store.reset())
 		.finally(() => requestStore.setRequestInProgress(endpoints.network.internet.check, false));
 }
 
-function restartInternet(store) {
-	apiService.network
-		.restartInternet()
+export function restartInternet(store) {
+	apiService.network.internet
+		.restart()
 		.then((body) => {
-			store.setMessage(body.output);
+			store.setLog(body.output);
 
 			notificationStore.addNotification({
 				content: {
@@ -31,22 +31,22 @@ function restartInternet(store) {
 		.finally(() => requestStore.setRequestInProgress(endpoints.network.internet.restart, false));
 }
 
-function checkVPN(store) {
-	apiService.network
-		.checkVPN()
+export function checkVPN(store) {
+	apiService.network.vpn
+		.check()
 		.then((body) => {
 			store.setSummary(`VPN IP Address: ${body.ip}`);
-			store.setMessage(body.output);
+			store.setLog(body.output);
 		})
 		.catch(() => store.reset())
 		.finally(() => requestStore.setRequestInProgress(endpoints.network.vpn.check, false));
 }
 
-function restartVPN(store) {
-	apiService.network
-		.restartVPN()
+export function restartVPN(store) {
+	apiService.network.vpn
+		.restart()
 		.then((body) => {
-			store.setMessage(body.output);
+			store.setLog(body.output);
 
 			notificationStore.addNotification({
 				content: {
@@ -57,12 +57,4 @@ function restartVPN(store) {
 		})
 		.catch(() => store.reset())
 		.finally(() => requestStore.setRequestInProgress(endpoints.network.vpn.restart, false));
-}
-
-
-export {
-	checkInternet,
-	restartInternet,
-	checkVPN,
-	restartVPN
 }

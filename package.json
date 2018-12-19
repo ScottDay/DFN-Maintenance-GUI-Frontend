@@ -12,18 +12,20 @@
         "url": "https://github.com/ScottDay/DFN-Maintenance-GUI-Frontend"
     },
     "engines": {
-        "node": ">=7.2.0",
-        "npm": ">=4.0.2"
+        "node": ">=8.11.3",
+        "npm": ">=6.4.1"
     },
     "scripts": {
         "build": "webpack --progress --bail --mode production --env.config=prod",
         "lint": "eslint ./src",
         "lint-fix": "eslint ./src --fix",
-		"start": "webpack-dev-server --mode development",
-        "start-open": "webpack-dev-server --mode development --open",
-		"start-noauth": "webpack-dev-server --mode development --env.auth=false"
+        "start": "webpack-dev-server --mode development",
+        "start-open": "webpack-dev-server --mode development --open"
     },
     "dependencies": {
+        "@devexpress/dx-react-core": "1.6.0",
+        "@devexpress/dx-react-grid": "1.6.0",
+        "@devexpress/dx-react-grid-material-ui": "1.6.0",
         "history": "4.7.2",
         "@material-ui/core": "1.4.3",
         "@material-ui/icons": "2.0.1",
@@ -62,6 +64,9 @@
         "progress-bar-webpack-plugin": "1.11.0",
         "react-hot-loader": "4.3.4",
         "sass-loader": "7.1.0",
+        "semantic-release": "15.9.16",
+        "@semantic-release/changelog": "3.0.0",
+        "@semantic-release/git": "7.0.4",
         "style-loader": "0.22.1",
         "webpack": "4.16.5",
         "webpack-cli": "3.1.0",

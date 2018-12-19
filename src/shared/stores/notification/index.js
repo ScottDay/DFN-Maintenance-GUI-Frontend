@@ -40,7 +40,7 @@ class NotificationStore {
 
 	@computed
 	get hasNotificationToShow() {
-		return this.notifications.length > 0 ? true : false;
+		return this.notifications.length > 0;
 	}
 }
 

@@ -1,30 +1,83 @@
 import { endpoints } from 'constants';
 
-import api from './superagent';
+import { get, post, put } from './superagent';
 
 
-const session = {
+export const session = {
 	auth: (username, password) =>
-		api.post(endpoints.session.auth, { username, password }),
+		post(endpoints.session.auth, { username, password }),
 	check: () =>
-		api.get(endpoints.session.check),
+		get(endpoints.session.check),
 	hostname: () =>
-		api.get(endpoints.session.hostname)
+		get(endpoints.session.hostname),
+	refresh: () =>
+		get(endpoints.session.refresh)
 };
 
-const network = {
-	checkInternet: () =>
-		api.get(endpoints.network.internet.check),
-	restartInternet: () =>
-		api.get(endpoints.network.internet.restart),
-	checkVPN: () =>
-		api.get(endpoints.network.vpn.check),
-	restartVPN: () =>
-		api.get(endpoints.network.vpn.restart)
+export const network = {
+	internet: {
+		check: () =>
+			get(endpoints.network.internet.check),
+		restart: () =>
+			get(endpoints.network.internet.restart)
+	},
+	vpn: {
+		check: () =>
+			get(endpoints.network.vpn.check),
+		restart: () =>
+			get(endpoints.network.vpn.restart)
+	}
 };
 
+export const configfile = {
+	/* check: () =>
+		api.get(endpoints.configfile.check), */
+	whitelist: () =>
+		get(endpoints.configfile.whitelist),
+	getConfig: () =>
+		get(endpoints.configfile.config),
+	updateConfig: (row) =>
+		put(endpoints.configfile.config, row)
+};
 
-export {
-	session,
-	network
-}
+export const storage = {
+	partitions: () =>
+		get(endpoints.storage.partitions),
+	power: {
+		on: () =>
+			get(endpoints.storage.power.on),
+		off: () =>
+			get(endpoints.storage.power.off)
+	},
+	mount: () =>
+		get(endpoints.storage.mount),
+	unmount: () =>
+		get(endpoints.storage.unmount),
+	smart: () =>
+		get(endpoints.storage.smart)
+};
+
+export const location = {
+	getTime: () =>
+		get(endpoints.location.time),
+	updateTimezone: (timezone) =>
+		put(endpoints.location.time, timezone),
+	getGPS: () =>
+		get(endpoints.location.gps)
+};
+
+export const camera = {
+	dslr: {
+		status: () =>
+			get(endpoints.camera.dslr.status),
+		on: () =>
+			get(endpoints.camera.dslr.on),
+		off: () =>
+			get(endpoints.camera.dslr.off)
+	}
+};
+
+export const power = {
+	shutdown: () => get(endpoints.power.shutdown),
+	restart: () => get(endpoints.power.restart)
+};

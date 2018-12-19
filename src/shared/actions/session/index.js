@@ -3,37 +3,51 @@ import { sessionStore, notificationStore, requestStore } from 'stores';
 import { endpoints } from 'constants';
 
 
-// TODO: Catch error status codes
-function hostname() {
+export function hostname() {
 	apiService.session
 		.hostname()
 		.then((body) => sessionStore.setHostname(body.hostname))
-		.catch(() => {})
 		.finally(() => requestStore.setRequestInProgress(endpoints.session.hostname, false));
 }
 
-function logout() {
+export function logout() {
+	// eslint-disable-next-line
+	console.log('logout');
+
 	sessionStore.reset();
 	notificationStore.reset();
 	historyService.push('/login');
 }
 
-function check() {
-	apiService.session
-		.check()
-		.then(() => sessionStore.setAuthenticated(true))
-		.catch((error) => {
-			// TODO: Catch other error status codes.
-			if (error.status === 0) {
-				logout();
-			}
-		})
-		.finally(() => requestStore.setRequestInProgress(endpoints.session.check, false));
+export function refresh() {
+	if (sessionStore.hasRefreshToken) {
+		// eslint-disable-next-line
+		console.log('refresh');
+
+		apiService.session
+			.refresh()
+			.then((body) => {
+				sessionStore.setAccessToken(body.access_token, body.expires_in);
+				sessionStore.setAuthenticated(true);
+			})
+			.catch(() => logout())
+			.finally(() => requestStore.setRequestInProgress(endpoints.session.refresh, false));
+	}
 }
 
+export function check() {
+	if (sessionStore.hasAccessToken && !requestStore.getRequestByType(endpoints.session.check)) {
+		// eslint-disable-next-line
+		console.log('check');
 
-export {
-	hostname,
-	logout,
-	check
+		apiService.session
+			.check()
+			.then(() => sessionStore.setAuthenticated(true))
+			.catch(() => logout())
+			.finally(() => requestStore.setRequestInProgress(endpoints.session.check, false));
+	} else if (sessionStore.hasRefreshToken) {
+		refresh();
+	} else {
+		logout();
+	}
 }

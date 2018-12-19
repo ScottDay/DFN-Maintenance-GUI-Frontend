@@ -94,7 +94,7 @@ class WebpackBaseConfig {
 			output: {
 				path: path.resolve('./dist/assets'),
 				filename: 'app.js',
-				publicPath: ''
+				publicPath: 'assets/'
 			},
 			resolve: {
 				extensions: ['.js', '.jsx', '.json', '.scss', '.jpg'],
@@ -104,6 +104,7 @@ class WebpackBaseConfig {
 					actions: `${this.srcPathAbsolute}/shared/actions`,
 					components: `${this.srcPathAbsolute}/shared/components`,
 					constants: `${this.srcPathAbsolute}/shared/constants`,
+					containers: `${this.srcPathAbsolute}/shared/containers`,
 					routes: `${this.srcPathAbsolute}/shared/routes`,
 					services: `${this.srcPathAbsolute}/shared/services`,
 					stores: `${this.srcPathAbsolute}/shared/stores`,
@@ -113,8 +114,7 @@ class WebpackBaseConfig {
 			},
 			plugins: [
 				new webpack.DefinePlugin({
-					'process.env.config': `${this.props.config}`,
-					'process.env.auth': `${this.props.auth}`
+					'process.env.config': `${this.props.config}`
 				})
 			]
 		};

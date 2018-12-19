@@ -2,32 +2,29 @@ sudo: false
 
 language: node_js
 
-node_js:
-  - 10
+node_js: 10
 
-os:
-  - linux
+os: linux
 
 cache:
-  directories:
-    - node_modules
+  directories: $HOME/.npm
 
 notifications:
   email: false
 
 stages:
   - compile
-  - name: deploy
+  - name: release
     if: branch = master AND type = push AND fork = false
-  - release
+  - deploy
 
 jobs:
   include:
     - stage: compile
       script: npm run build
 
+    - stage: release
+      script: .travis/release.sh
+
     - stage: deploy
       script: .travis/deploy.sh
-
-    - stage: release
-      script: .travis/webhook.sh

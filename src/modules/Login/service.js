@@ -5,12 +5,14 @@ import { notificationTypes, endpoints } from 'constants';
 import store from './store';
 
 
-function login(username, password) {
+// eslint-disable-next-line import/prefer-default-export
+export function login(username, password) {
 	apiService.session
 		.auth(username, password)
 		.then((body) => {
 			store.reset();
-			sessionStore.setToken(body.access_token);
+			sessionStore.setRefreshToken(body.refresh_token);
+			sessionStore.setAccessToken(body.access_token, body.expires_in);
 			historyService.push('/app');
 		})
 		.catch(() => {
@@ -23,10 +25,4 @@ function login(username, password) {
 			});
 		})
 		.finally(() => requestStore.setRequestInProgress(endpoints.session.auth, false));
-}
-
-
-export {
-	// eslint-disable-next-line import/prefer-default-export
-	login
 }
